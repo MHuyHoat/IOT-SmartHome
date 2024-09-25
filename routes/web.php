@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +16,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('get.login');
 });
-Route::get('/login')
+Route::get('/login',[LoginController::class,'login'])->name('auth.login');
+Route::post('/login',[LoginController::class,'verify'])->name('auth.login.veriry');
+Route::get('/log-out',[LoginController::class,'logout'])->name('auth.logout');
+
+Route::middleware('admins')->group(function(){
+    Route::get('/dashboard',[DashboardController::class,'index'])->name('admin.dashboard');
+});
