@@ -1,13 +1,16 @@
-<html></html>
+<html>
+
 <head>
-   @include('layouts.head')
-   @stack('styles')
+    @include('layouts.head')
+    @yield('styles')
 </head>
-<body class="bg-gray-900 text-white font-sans" >
-   @include('elements.notice')
-     <div  id="content">
-        @yield('content')
-     </div>
-    @stack('scripts')
+
+<body>
+    @include('layouts.header')
+    <div id="content">
+       @yield('content')
+    </div>
+    @include('layouts.footer')
 </body>
+
 </html>
