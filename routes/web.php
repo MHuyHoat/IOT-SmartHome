@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return redirect()->route('get.login');
+    return redirect()->route('auth.login');
 });
 Route::get('/login',[LoginController::class,'login'])->name('auth.login');
 Route::post('/login',[LoginController::class,'verify'])->name('auth.login.veriry');
