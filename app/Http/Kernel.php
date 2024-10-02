@@ -3,6 +3,8 @@
 namespace App\Http;
 
 use App\Http\Middleware\Admins;
+use App\Http\Middleware\ThietBi;
+use App\Http\Middleware\VerifyThietBi;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -65,6 +67,8 @@ class Kernel extends HttpKernel
         'signed' => \App\Http\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
-        'admins'=> Admins::class
+        'admins'=> Admins::class,
+         'verifyThietBi'=>VerifyThietBi::class
+
     ];
 }
