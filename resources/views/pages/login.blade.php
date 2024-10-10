@@ -1,14 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
+<html></html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Page</title>
-    <!-- Include Tailwind CSS from CDN -->
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <title>Smart Home</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 <body >
-
+    @include('elements.notice')
     <div class="bg-gray-900 text-white flex min-h-screen flex-col items-center pt-16 sm:justify-center sm:pt-0">
         <a href="#">
             <div class="text-foreground font-semibold text-2xl tracking-tighter mx-auto flex items-center gap-2">
@@ -76,6 +73,5 @@
             </div>
         </div>
     </div>
-
 </body>
 </html>
