@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ApiController;
+use App\Http\Controllers\CommandController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -21,4 +22,7 @@ Route::middleware('verifyThietBi')->group(function(){
     Route::prefix('thiet-bi')->group(function(){
        Route::get('/get-all',[ApiController::class,'getAllThietBi'])->name('thietbi.danhsach');
     });
+});
+Route::prefix('/command')->group(function(){
+    Route::post('/',[CommandController::class,'command'])->name('command');
 });

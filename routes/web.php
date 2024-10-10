@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CommandController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
@@ -25,3 +26,4 @@ Route::get('/log-out',[LoginController::class,'logout'])->name('auth.logout');
 Route::middleware('admins')->group(function(){
     Route::get('/dashboard',[DashboardController::class,'index'])->name('admin.dashboard');
 });
+
