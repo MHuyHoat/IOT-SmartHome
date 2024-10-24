@@ -13,7 +13,7 @@ class User
         $this->conn = (new DBConn())->Connect();
         $this->helper= new Helpers();
     }
-    public function getAll()
+    public function getAll($data=[])
     {
         try {
             //code...            
@@ -37,6 +37,8 @@ class User
         try {
             //code...            
             $query= "SELECT * from $this->table where 1=1 ";
+
+            // generate chuỗi string đầu vào 
             $query=$this->helper->strQuery($query,$data);
             $stmt = $this->conn->prepare($query);
 
