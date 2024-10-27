@@ -7,7 +7,7 @@ if (!isset($_SESSION['USER_NAME'])) {
     header("location:login.php");
     die();
 }
-$sql = "SELECT thietbi FROM db_iot where trangthai = 1";
+$sql = "SELECT thietbi FROM thietbi where trangthai = 1";
 $result = $conn->query($sql);
 $backgk = "backgr";
 $backgn = "backgr";
@@ -43,7 +43,7 @@ if ($result->num_rows > 0) {
         if ($row['thietbi'] == "1000") {
             $backgq = "backgr2";
         }
-        $sql = "SELECT count(*) FROM db_iot where trangthai = 1";
+        $sql = "SELECT count(*) FROM thietbi where trangthai = 1";
         $resul = $conn->query($sql)->fetch_assoc();
         $dem = implode($resul);
         if ($dem == 7) {
@@ -93,15 +93,15 @@ if (isset($_POST['btnClick'])) {
     }
     if ($_SESSION['USER_NAME'] == "admin") {
         if (strpos($im, "bật hết") !== false || strpos($im, "Bật hết") !== false || strpos($im, "bật tất") !== false || strpos($im, "Bật tất") !== false) {
-            $sql = "UPDATE db_iot set trangthai = 1";
+            $sql = "UPDATE thietbi set trangthai = 1";
             mysqli_query($conn, $sql);
         }
         if (strpos($im, "tắt hết") !== false || strpos($im, "Tắt hết") !== false || strpos($im, "tắt tất") !== false || strpos($im, "Tắt tết") !== false) {
-            $sql = "UPDATE db_iot set trangthai = 0";
+            $sql = "UPDATE thietbi set trangthai = 0";
             mysqli_query($conn, $sql);
         }
     }
-    $sql = "UPDATE db_iot set trangthai = '$congtac' WHERE thietbi like '$gt'";
+    $sql = "UPDATE thietbi set trangthai = '$congtac' WHERE thietbi like '$gt'";
     mysqli_query($conn, $sql);
     header("location:dashboard.php");
 }
@@ -109,7 +109,7 @@ if (isset($_POST['btnClick'])) {
 //button bật tắt
 
 if (isset($_POST['btnKhach'])) {
-    $sql = "SELECT trangthai FROM db_iot where thietbi='0100'";
+    $sql = "SELECT trangthai FROM thietbi where thietbi='0100'";
     $resul = $conn->query($sql)->fetch_assoc();
     $dem = implode($resul);
     echo "dem", $dem;
@@ -121,7 +121,7 @@ if (isset($_POST['btnKhach'])) {
 
     if ($dem == 1) {
         $hanhdong = "tắt";
-        $sql = "UPDATE db_iot set trangthai = 0 WHERE thietbi='0100'";
+        $sql = "UPDATE thietbi set trangthai = 0 WHERE thietbi='0100'";
         if (mysqli_query($conn, $sql)) {
             echo "tắt đèn phòng khách ";
         } else {
@@ -130,7 +130,7 @@ if (isset($_POST['btnKhach'])) {
     }
     if ($dem == 0) {
         $hanhdong = "bật";
-        $sql = "UPDATE db_iot set trangthai = 1 WHERE thietbi='0100'";
+        $sql = "UPDATE thietbi set trangthai = 1 WHERE thietbi='0100'";
         if (mysqli_query($conn, $sql)) {
             echo "bật đèn phòng khách ";
         } else {
@@ -149,7 +149,7 @@ if (isset($_POST['btnKhach'])) {
 
 
 if (isset($_POST['btnSan'])) {
-    $sql = "SELECT trangthai FROM db_iot where thietbi='0010'";
+    $sql = "SELECT trangthai FROM thietbi where thietbi='0010'";
     $resul = $conn->query($sql)->fetch_assoc();
     $dem = implode($resul);
     echo "dem", $dem;
@@ -160,7 +160,7 @@ if (isset($_POST['btnSan'])) {
     $congtac = "đèn sân";
     if ($dem == 1) {
         $hanhdong = "tắt";
-        $sql = "UPDATE db_iot set trangthai = 0 WHERE thietbi='0010'";
+        $sql = "UPDATE thietbi set trangthai = 0 WHERE thietbi='0010'";
         if (mysqli_query($conn, $sql)) {
             echo "tắt đèn phòng khách ";
         } else {
@@ -169,7 +169,7 @@ if (isset($_POST['btnSan'])) {
     }
     if ($dem == 0) {
         $hanhdong = "bật";
-        $sql = "UPDATE db_iot set trangthai = 1 WHERE thietbi='0010'";
+        $sql = "UPDATE thietbi set trangthai = 1 WHERE thietbi='0010'";
         if (mysqli_query($conn, $sql)) {
             echo "bật đèn phòng khách ";
         } else {
@@ -187,7 +187,7 @@ if (isset($_POST['btnSan'])) {
 }
 
 if (isset($_POST['btnQuat'])) {
-    $sql = "SELECT trangthai FROM db_iot where thietbi='1000'";
+    $sql = "SELECT trangthai FROM thietbi where thietbi='1000'";
     $resul = $conn->query($sql)->fetch_assoc();
     $dem = implode($resul);
     echo "dem", $dem;
@@ -198,7 +198,7 @@ if (isset($_POST['btnQuat'])) {
     $congtac = "quạt trần";
     if ($dem == 1) {
         $hanhdong = "tắt";
-        $sql = "UPDATE db_iot set trangthai = 0 WHERE thietbi='1000'";
+        $sql = "UPDATE thietbi set trangthai = 0 WHERE thietbi='1000'";
         if (mysqli_query($conn, $sql)) {
             echo "tắt đèn phòng khách ";
         } else {
@@ -207,7 +207,7 @@ if (isset($_POST['btnQuat'])) {
     }
     if ($dem == 0) {
         $hanhdong = "bật";
-        $sql = "UPDATE db_iot set trangthai = 1 WHERE thietbi='1000'";
+        $sql = "UPDATE thietbi set trangthai = 1 WHERE thietbi='1000'";
         if (mysqli_query($conn, $sql)) {
             echo "bật đèn phòng khách ";
         } else {
@@ -225,7 +225,7 @@ if (isset($_POST['btnQuat'])) {
 }
 
 if (isset($_POST['btnBep'])) {
-    $sql = "SELECT trangthai FROM db_iot where thietbi='0110'";
+    $sql = "SELECT trangthai FROM thietbi where thietbi='0110'";
     $resul = $conn->query($sql)->fetch_assoc();
     $dem = implode($resul);
     echo "dem", $dem;
@@ -236,7 +236,7 @@ if (isset($_POST['btnBep'])) {
     $congtac = "đèn bếp";
     if ($dem == 1) {
         $hanhdong = "tắt";
-        $sql = "UPDATE db_iot set trangthai = 0 WHERE thietbi='0110'";
+        $sql = "UPDATE thietbi set trangthai = 0 WHERE thietbi='0110'";
         if (mysqli_query($conn, $sql)) {
             echo "tắt đèn phòng khách ";
         } else {
@@ -245,7 +245,7 @@ if (isset($_POST['btnBep'])) {
     }
     if ($dem == 0) {
         $hanhdong = "bật";
-        $sql = "UPDATE db_iot set trangthai = 1 WHERE thietbi='0110'";
+        $sql = "UPDATE thietbi set trangthai = 1 WHERE thietbi='0110'";
         if (mysqli_query($conn, $sql)) {
             echo "bật đèn phòng khách ";
         } else {
@@ -263,7 +263,7 @@ if (isset($_POST['btnBep'])) {
 }
 
 if (isset($_POST['btnVeSinh'])) {
-    $sql = "SELECT trangthai FROM db_iot where thietbi='1010'";
+    $sql = "SELECT trangthai FROM thietbi where thietbi='1010'";
     $resul = $conn->query($sql)->fetch_assoc();
     $dem = implode($resul);
     echo "dem", $dem;
@@ -274,7 +274,7 @@ if (isset($_POST['btnVeSinh'])) {
     $congtac = "đèn vệ sinh";
     if ($dem == 1) {
         $hanhdong = "tắt";
-        $sql = "UPDATE db_iot set trangthai = 0 WHERE thietbi='1010'";
+        $sql = "UPDATE thietbi set trangthai = 0 WHERE thietbi='1010'";
         if (mysqli_query($conn, $sql)) {
             echo "tắt đèn phòng khách ";
         } else {
@@ -283,7 +283,7 @@ if (isset($_POST['btnVeSinh'])) {
     }
     if ($dem == 0) {
         $hanhdong = "bật";
-        $sql = "UPDATE db_iot set trangthai = 1 WHERE thietbi='1010'";
+        $sql = "UPDATE thietbi set trangthai = 1 WHERE thietbi='1010'";
         if (mysqli_query($conn, $sql)) {
             echo "bật đèn phòng khách ";
         } else {
@@ -301,7 +301,7 @@ if (isset($_POST['btnVeSinh'])) {
 }
 
 if (isset($_POST['btnNgu'])) {
-    $sql = "SELECT trangthai FROM db_iot where thietbi='1100'";
+    $sql = "SELECT trangthai FROM thietbi where thietbi='1100'";
     $resul = $conn->query($sql)->fetch_assoc();
     $dem = implode($resul);
     echo "dem", $dem;
@@ -312,7 +312,7 @@ if (isset($_POST['btnNgu'])) {
     $congtac = "đèn phòng ngủ";
     if ($dem == 1) {
         $hanhdong = "tắt";
-        $sql = "UPDATE db_iot set trangthai = 0 WHERE thietbi='1100'";
+        $sql = "UPDATE thietbi set trangthai = 0 WHERE thietbi='1100'";
         if (mysqli_query($conn, $sql)) {
             echo "tắt đèn phòng khách ";
         } else {
@@ -321,7 +321,7 @@ if (isset($_POST['btnNgu'])) {
     }
     if ($dem == 0) {
         $hanhdong = "bật";
-        $sql = "UPDATE db_iot set trangthai = 1 WHERE thietbi='1100'";
+        $sql = "UPDATE thietbi set trangthai = 1 WHERE thietbi='1100'";
         if (mysqli_query($conn, $sql)) {
             echo "bật đèn phòng khách ";
         } else {
@@ -339,7 +339,7 @@ if (isset($_POST['btnNgu'])) {
 }
 
 if (isset($_POST['btnDieuHoa'])) {
-    $sql = "SELECT trangthai FROM db_iot where thietbi='1110'";
+    $sql = "SELECT trangthai FROM thietbi where thietbi='1110'";
     $resul = $conn->query($sql)->fetch_assoc();
     $dem = implode($resul);
     echo "dem", $dem;
@@ -350,7 +350,7 @@ if (isset($_POST['btnDieuHoa'])) {
     $congtac = "điều hòa";
     if ($dem == 1) {
         $hanhdong = "tắt";
-        $sql = "UPDATE db_iot set trangthai = 0 WHERE thietbi='1110'";
+        $sql = "UPDATE thietbi set trangthai = 0 WHERE thietbi='1110'";
         if (mysqli_query($conn, $sql)) {
             echo "tắt đèn phòng khách ";
         } else {
@@ -359,7 +359,7 @@ if (isset($_POST['btnDieuHoa'])) {
     }
     if ($dem == 0) {
         $hanhdong = "bật";
-        $sql = "UPDATE db_iot set trangthai = 1 WHERE thietbi='1110'";
+        $sql = "UPDATE thietbi set trangthai = 1 WHERE thietbi='1110'";
         if (mysqli_query($conn, $sql)) {
             echo "bật đèn phòng khách ";
         } else {
@@ -377,7 +377,7 @@ if (isset($_POST['btnDieuHoa'])) {
 }
 
 if (isset($_POST['btnNha'])) {
-    $sql = "SELECT count(*) FROM db_iot where trangthai = 1";
+    $sql = "SELECT count(*) FROM thietbi where trangthai = 1";
     $resul = $conn->query($sql)->fetch_assoc();
     $dem = implode($resul);
     echo "dem", $dem;
@@ -388,7 +388,7 @@ if (isset($_POST['btnNha'])) {
     $congtac = "tất cả thiết bị";
     if ($dem == 7) {
         $hanhdong = "tắt";
-        $sql = "UPDATE db_iot set trangthai = 0 ";
+        $sql = "UPDATE thietbi set trangthai = 0 ";
         if (mysqli_query($conn, $sql)) {
             echo "tắt đèn phòng khách ";
         } else {
@@ -397,7 +397,7 @@ if (isset($_POST['btnNha'])) {
     }
     if ($dem < 7) {
         $hanhdong = "bật";
-        $sql = "UPDATE db_iot set trangthai = 1 ";
+        $sql = "UPDATE thietbi set trangthai = 1 ";
         if (mysqli_query($conn, $sql)) {
             echo "bật đèn phòng khách ";
         } else {

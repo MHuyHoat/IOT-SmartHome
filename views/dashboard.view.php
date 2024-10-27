@@ -15,28 +15,28 @@
     <title>Smart - Multi-purpose Landing Page Template</title>
 
     <!--====== Favicon Icon ======-->
-    <link rel="shortcut icon" href="assets/images/favicon.png" type="image/png">
+    <link rel="shortcut icon" href="resources/assets/images/favicon.png" type="image/png">
 
     <!--====== Bootstrap css ======-->
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="resources/assets/css/bootstrap.min.css">
 
     <!--====== Line Icons css ======-->
-    <link rel="stylesheet" href="assets/css/LineIcons.css">
+    <link rel="stylesheet" href="resources/assets/css/LineIcons.css">
 
     <!--====== Magnific Popup css ======-->
-    <link rel="stylesheet" href="assets/css/magnific-popup.css">
+    <link rel="stylesheet" href="resources/assets/css/magnific-popup.css">
 
     <!--====== Slick css ======-->
-    <link rel="stylesheet" href="assets/css/slick.css">
+    <link rel="stylesheet" href="resources/assets/css/slick.css">
 
     <!--====== Animate css ======-->
-    <link rel="stylesheet" href="assets/css/animate.css">
+    <link rel="stylesheet" href="resources/assets/css/animate.css">
 
     <!--====== Default css ======-->
-    <link rel="stylesheet" href="assets/css/default.css">
+    <link rel="stylesheet" href="resources/assets/css/default.css">
 
     <!--====== Style css ======-->
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="resources/assets/css/style.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
 
@@ -203,7 +203,7 @@
                     <div class="col-lg-12">
                         <nav class="navbar navbar-expand-lg">
                             <a class="navbar-brand" href="#">
-                                <img src="assets/images/logo.png" alt="Logo">
+                                <img src="resources/assets/images/logo.png" alt="Logo">
                             </a>
 
                             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarEight" aria-dashboards="navbarEight" aria-expanded="false" aria-label="Toggle navigation">
@@ -255,7 +255,7 @@
                     </ol>
 
                     <div class="carousel-inner">
-                        <div class="carousel-item bg_cover active" style="background-image: url(assets/images/slider-1.jpg)">
+                        <div class="carousel-item bg_cover active" style="background-image: url(resources/assets/images/slider-1.jpg)">
                             <div class="carousel-caption">
                                 <div class="container">
                                     <div class="row justify-content-center">
@@ -270,7 +270,7 @@
                             </div> <!-- carousel caption -->
                         </div> <!-- carousel-item -->
 
-                        <div class="carousel-item bg_cover" style="background-image: url(assets/images/slider-2.jpg)">
+                        <div class="carousel-item bg_cover" style="background-image: url(resources/assets/images/slider-2.jpg)">
                             <div class="carousel-caption">
                                 <div class="container">
                                     <div class="row justify-content-center">
@@ -285,7 +285,7 @@
                             </div> <!-- carousel caption -->
                         </div> <!-- carousel-item -->
 
-                        <div class="carousel-item bg_cover" style="background-image: url(assets/images/slider-3.jpg)">
+                        <div class="carousel-item bg_cover" style="background-image: url(resources/assets/images/slider-3.jpg)">
                             <div class="carousel-caption">
                                 <div class="container">
                                     <div class="row justify-content-center">
@@ -324,7 +324,7 @@
         </div>
         <div class="sidebar-content">
             <div class="sidebar-logo text-center">
-                <a href="#"><img src="assets/images/logo-alt.png" alt="Logo"></a>
+                <a href="#"><img src="resources/assets/images/logo-alt.png" alt="Logo"></a>
             </div> <!-- logo -->
             <div class="sidebar-menu">
                 <ul>
@@ -622,7 +622,7 @@
                     </div>
                     <div class="col-lg-2">
                         <div class="footer-logo text-center mt-10">
-                            <a href="dashboard.php"><img src="assets/images/logo-2.svg" alt="Logo"></a>
+                            <a href="dashboard.php"><img src="resources/assets/images/logo-2.svg" alt="Logo"></a>
                         </div> <!-- footer logo -->
                     </div>
                     <div class="col-lg-5">
@@ -661,34 +661,34 @@
 
 
     <!--====== jquery js ======-->
-    <script src="assets/js/vendor/modernizr-3.6.0.min.js"></script>
-    <script src="assets/js/vendor/jquery-1.12.4.min.js"></script>
+    <script src="resources/assets/js/vendor/modernizr-3.6.0.min.js"></script>
+    <script src="resources/assets/js/vendor/jquery-1.12.4.min.js"></script>
 
     <!--====== Bootstrap js ======-->
-    <script src="assets/js/bootstrap.min.js"></script>
-    <script src="assets/js/popper.min.js"></script>
+    <script src="resources/assets/js/bootstrap.min.js"></script>
+    <script src="resources/assets/js/popper.min.js"></script>
 
     <!--====== Slick js ======-->
-    <script src="assets/js/slick.min.js"></script>
+    <script src="resources/assets/js/slick.min.js"></script>
 
     <!--====== Isotope js ======-->
-    <script src="assets/js/isotope.pkgd.min.js"></script>
+    <script src="resources/assets/js/isotope.pkgd.min.js"></script>
 
     <!--====== Images Loaded js ======-->
-    <script src="assets/js/imagesloaded.pkgd.min.js"></script>
+    <script src="resources/assets/js/imagesloaded.pkgd.min.js"></script>
 
     <!--====== Magnific Popup js ======-->
-    <script src="assets/js/jquery.magnific-popup.min.js"></script>
+    <script src="resources/assets/js/jquery.magnific-popup.min.js"></script>
 
     <!--====== Scrolling js ======-->
-    <script src="assets/js/scrolling-nav.js"></script>
-    <script src="assets/js/jquery.easing.min.js"></script>
+    <script src="resources/assets/js/scrolling-nav.js"></script>
+    <script src="resources/assets/js/jquery.easing.min.js"></script>
 
     <!--====== wow js ======-->
-    <script src="assets/js/wow.min.js"></script>
+    <script src="resources/assets/js/wow.min.js"></script>
 
     <!--====== Main js ======-->
-    <script src="assets/js/main.js"></script>
+    <script src="resources/assets/js/main.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function() {

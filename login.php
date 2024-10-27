@@ -1,30 +1,32 @@
 <?php   
  session_start();  
- require_once($_SERVER['DOCUMENT_ROOT'].'/models/User.php');
+ require_once(__DIR__.'/models/User.php');
 
  $msg="";  
  if (isset($_POST['submit'])) {  
      try {
           $userModel= new User();
-          $email=$_POST['email'];  
+          $userName=$_POST['userName'];  
           $password=$_POST['password'];  
           
           $user= $userModel->find([
-              'username'=>$email,
-              'password'=>$password
+              'username ='=>$userName,
+              'password ='=>$password
           ]) ;  
           if (!empty($user)) {  
                //echo "found";  
                $_SESSION['USER_NAME']=$user['username'];  
-               header("location:dashboard.php");  
+               header("location:home.php");  
           }else{  
-               $msg="Thông tin sai!";  
+                $_SESSION['error']="Thông tin sai!";  
+
+               header("location:login.php"); 
           } 
      } catch (\Throwable $th) {
           //throw $th;
           echo $th;
      } 
  }  else{
-     include($_SERVER['DOCUMENT_ROOT'].'/views/login.view.php');
+     include('views/login.view.php');
  }
  ?>  

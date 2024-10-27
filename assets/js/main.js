@@ -1,320 +1,187 @@
 $(function() {
-    
-    "use strict";
-    
-    //===== Prealoder
-    
-    $(window).on('load', function(event) {
-        $('.preloader').delay(500).fadeOut(500);
-    });
-    
-    
-    //===== Sticky
-    
-    $(window).on('scroll', function(event) {    
-        var scroll = $(window).scrollTop();
-        if (scroll < 10) {
-            $(".navbar-area").removeClass("sticky");
-        } else{
-            $(".navbar-area").addClass("sticky");
-        }
-    });
-    
-     //===== close navbar-collapse when a  clicked
-    
-    $(".navbar-nav a").on('click', function () {
-        $(".navbar-collapse").removeClass("show");
-    });
-    
-    //===== Mobile Menu
-    
-    $(".navbar-toggler").on('click', function(){
-        $(this).toggleClass("active");
-    });
-    
-    $(".navbar-nav a").on('click', function() {
-        $(".navbar-toggler").removeClass('active');
-    });
-    
-    
-    //===== Section Menu Active
 
-    var scrollLink = $('.page-scroll');
-        // Active link switching
-        $(window).scroll(function() {
-        var scrollbarLocation = $(this).scrollTop();
 
-        scrollLink.each(function() {
 
-          var sectionOffset = $(this.hash).offset().top - 73;
+  $(function() {
+		$("#menu").metisMenu()
+	})
 
-          if ( sectionOffset <= scrollbarLocation ) {
-            $(this).parent().addClass('active');
-            $(this).parent().siblings().removeClass('active');
-          }
-        });
-    });    
-    
-    
-    //===== Sidebar
 
-    $('[href="#side-menu-right"], .overlay-right').on('click', function (event) {
-        $('.sidebar-right, .overlay-right').addClass('open');
-    });
+  $(".nav-toggle-icon").on("click", function() {
+		$(".wrapper").toggleClass("toggled")
+	})
 
-    $('[href="#close"], .overlay-right').on('click', function (event) {
-        $('.sidebar-right, .overlay-right').removeClass('open');
-    });
-    
-    
-    
-    //===== Isotope Project 3
+    $(".mobile-menu-button").on("click", function() {
+		$(".wrapper").addClass("toggled")
+	})
 
-    $('.container').imagesLoaded(function () {
-        var $grid = $('.grid').isotope({
-            // options
-            transitionDuration: '1s'
-        });
+	$(function() {
+		for (var e = window.location, o = $(".metismenu li a").filter(function() {
+				return this.href == e
+			}).addClass("").parent().addClass("mm-active"); o.is("li");) o = o.parent("").addClass("mm-show").parent("").addClass("mm-active")
+	})
 
-        // filter items on button click
-        $('.portfolio-menu ul').on('click', 'li', function () {
-            var filterValue = $(this).attr('data-filter');
-            $grid.isotope({
-                filter: filterValue
-            });
-        });
 
-        //for menu active class
-        $('.portfolio-menu ul li').on('click', function (event) {
-            $(this).siblings('.active').removeClass('active');
-            $(this).addClass('active');
-            event.preventDefault();
-        });
-    });
-    
-    
-    //  Magnific Popup
+	$(".toggle-icon").click(function() {
+		$(".wrapper").hasClass("toggled") ? ($(".wrapper").removeClass("toggled"), $(".sidebar-wrapper").unbind("hover")) : ($(".wrapper").addClass("toggled"), $(".sidebar-wrapper").hover(function() {
+			$(".wrapper").addClass("sidebar-hovered")
+		}, function() {
+			$(".wrapper").removeClass("sidebar-hovered")
+		}))
+	})
 
-    $('.image-popup').magnificPopup({
-        type: 'image',
-        gallery: {
-            enabled: true
-        }
-    });
-    
-    //====== Magnific Popup
 
-    $('.video-popup').magnificPopup({
-        type: 'iframe'
-        // other options
-    });
-    
-    
-    //===== Slick
 
-    $('.testimonial-active').slick({
-        infinite: true,
-        slidesToShow: 3,
-        slidesToScroll: 1,
-        speed: 800,
-        arrows: false,
-        dots: true,
-        autoplay: true,
-        autoplaySpeed: 5000,
-        responsive: [
-            {
-                breakpoint: 1200,
-                settings: {
-                    slidesToShow: 3,
-                }
-            },
-            {
-                breakpoint: 992,
-                settings: {
-                    slidesToShow: 2,
-                }
-            },
-            {
-                breakpoint: 768,
-                settings: {
-                    slidesToShow: 1,
-                }
-            },
-            {
-                breakpoint: 576,
-                settings: {
-                    slidesToShow: 1,
-                    arrows: false,
-                }
-            }
-        ]
-    });
-    
-    
-    //===== Slick
+  $(".btn-mobile-filter").on("click", function() {
+		$(".filter-sidebar").removeClass("d-none");
+	}),
+  
+    $(".btn-mobile-filter-close").on("click", function() {
+		$(".filter-sidebar").addClass("d-none");
+	}),
 
-    $('.testimonial-active-2').slick({
-        infinite: true,
-        slidesToShow: 2,
-        slidesToScroll: 1,
-        speed: 800,
-        arrows: false,
-        dots: true,
-        autoplay: true,
-        autoplaySpeed: 5000,
-        responsive: [
-            {
-                breakpoint: 1200,
-                settings: {
-                    slidesToShow: 2,
-                }
-            },
-            {
-                breakpoint: 992,
-                settings: {
-                    slidesToShow: 1,
-                }
-            },
-            {
-                breakpoint: 768,
-                settings: {
-                    slidesToShow: 1,
-                }
-            },
-            {
-                breakpoint: 576,
-                settings: {
-                    slidesToShow: 1,
-                    arrows: false,
-                }
-            }
-        ]
-    });
-    
-    
-    //===== Slick
 
-    $('.client-active').slick({
-        infinite: true,
-        slidesToShow: 6,
-        slidesToScroll: 1,
-        speed: 800,
-        arrows: false,
-        dots: false,
-        autoplay: true,
-        responsive: [
-            {
-                breakpoint: 1200,
-                settings: {
-                    slidesToShow: 6,
-                }
-            },
-            {
-                breakpoint: 992,
-                settings: {
-                    slidesToShow: 5,
-                }
-            },
-            {
-                breakpoint: 768,
-                settings: {
-                    slidesToShow: 3,
-                }
-            },
-            {
-                breakpoint: 576,
-                settings: {
-                    slidesToShow: 2,
-                    arrows: false,
-                }
-            }
-        ]
-    });
-    
-    
-    //===== Slick
 
-    $('.testimonial-active-4').slick({
-        infinite: true,
-        slidesToShow: 2,
-        slidesToScroll: 1,
-        speed: 800,
-        arrows: false,
-        dots: true,
-        autoplay: true,
-        autoplaySpeed: 5000,
-        responsive: [
-            {
-                breakpoint: 1200,
-                settings: {
-                    slidesToShow: 2,
-                }
-            },
-            {
-                breakpoint: 992,
-                settings: {
-                    slidesToShow: 2,
-                }
-            },
-            {
-                breakpoint: 768,
-                settings: {
-                    slidesToShow: 1,
-                }
-            },
-            {
-                breakpoint: 576,
-                settings: {
-                    slidesToShow: 1,
-                    arrows: false,
-                }
-            }
-        ]
-    });
 
-        
-    //===== Back to top
-    
-    // Show or hide the sticky footer button
-    $(window).on('scroll', function(event) {
-        if($(this).scrollTop() > 600){
-            $('.back-to-top').fadeIn(200)
-        } else{
-            $('.back-to-top').fadeOut(200)
-        }
-    });
-    
-    
-    //Animate the scroll to yop
-    $('.back-to-top').on('click', function(event) {
-        event.preventDefault();
-        
-        $('html, body').animate({
-            scrollTop: 0,
-        }, 1500);
-    });
-    
-    
-    //=====  AOS
-    
-    new WOW().init();
-    
-    
-    //===== 
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+  $(".mobile-search-button").on("click", function() {
+
+    $(".searchbar").addClass("full-search-bar")
+
+  }),
+
+  $(".search-close-icon").on("click", function() {
+
+    $(".searchbar").removeClass("full-search-bar")
+
+  }),
+
+  
+
+
+  $(document).ready(function() {
+		$(window).on("scroll", function() {
+			$(this).scrollTop() > 300 ? $(".back-to-top").fadeIn() : $(".back-to-top").fadeOut()
+		}), $(".back-to-top").on("click", function() {
+			return $("html, body").animate({
+				scrollTop: 0
+			}, 600), !1
+		})
+	})
+
+
+
+
+  $(".dark-mode-icon").on("click", function() {
+
+    if($(".mode-icon ion-icon").attr("name") == 'sunny-outline') {
+        $(".mode-icon ion-icon").attr("name", "moon-outline");
+        $("html").attr("class", "light-theme")
+    } else {
+        $(".mode-icon ion-icon").attr("name", "sunny-outline");
+        $("html").attr("class", "dark-theme")
+    }
+
+  }), 
+
+
+
+
+
+// Theme switcher 
+
+$("#LightTheme").on("click", function() {
+  $("html").attr("class", "light-theme")
+}),
+
+$("#DarkTheme").on("click", function() {
+  $("html").attr("class", "dark-theme")
+}),
+
+$("#SemiDark").on("click", function() {
+  $("html").attr("class", "semi-dark")
+}),
+
+
+// headercolor colors 
+
+$("#headercolor1").on("click", function() {
+  $("html").addClass("color-header headercolor1"), $("html").removeClass("headercolor2 headercolor3 headercolor4 headercolor5 headercolor6 headercolor7 headercolor8")
+}), $("#headercolor2").on("click", function() {
+  $("html").addClass("color-header headercolor2"), $("html").removeClass("headercolor1 headercolor3 headercolor4 headercolor5 headercolor6 headercolor7 headercolor8")
+}), $("#headercolor3").on("click", function() {
+  $("html").addClass("color-header headercolor3"), $("html").removeClass("headercolor1 headercolor2 headercolor4 headercolor5 headercolor6 headercolor7 headercolor8")
+}), $("#headercolor4").on("click", function() {
+  $("html").addClass("color-header headercolor4"), $("html").removeClass("headercolor1 headercolor2 headercolor3 headercolor5 headercolor6 headercolor7 headercolor8")
+}), $("#headercolor5").on("click", function() {
+  $("html").addClass("color-header headercolor5"), $("html").removeClass("headercolor1 headercolor2 headercolor4 headercolor3 headercolor6 headercolor7 headercolor8")
+}), $("#headercolor6").on("click", function() {
+  $("html").addClass("color-header headercolor6"), $("html").removeClass("headercolor1 headercolor2 headercolor4 headercolor5 headercolor3 headercolor7 headercolor8")
+}), $("#headercolor7").on("click", function() {
+  $("html").addClass("color-header headercolor7"), $("html").removeClass("headercolor1 headercolor2 headercolor4 headercolor5 headercolor6 headercolor3 headercolor8")
+}), $("#headercolor8").on("click", function() {
+  $("html").addClass("color-header headercolor8"), $("html").removeClass("headercolor1 headercolor2 headercolor4 headercolor5 headercolor6 headercolor7 headercolor3")
+})
+
+
+// sidebar colors 
+$('#sidebarcolor1').click(theme1);
+$('#sidebarcolor2').click(theme2);
+$('#sidebarcolor3').click(theme3);
+$('#sidebarcolor4').click(theme4);
+$('#sidebarcolor5').click(theme5);
+$('#sidebarcolor6').click(theme6);
+$('#sidebarcolor7').click(theme7);
+$('#sidebarcolor8').click(theme8);
+
+function theme1() {
+  $('html').attr('class', 'color-sidebar sidebarcolor1');
+}
+
+function theme2() {
+  $('html').attr('class', 'color-sidebar sidebarcolor2');
+}
+
+function theme3() {
+  $('html').attr('class', 'color-sidebar sidebarcolor3');
+}
+
+function theme4() {
+  $('html').attr('class', 'color-sidebar sidebarcolor4');
+}
+
+function theme5() {
+  $('html').attr('class', 'color-sidebar sidebarcolor5');
+}
+
+function theme6() {
+  $('html').attr('class', 'color-sidebar sidebarcolor6');
+}
+
+function theme7() {
+  $('html').attr('class', 'color-sidebar sidebarcolor7');
+}
+
+function theme8() {
+  $('html').attr('class', 'color-sidebar sidebarcolor8');
+}
+
+
+
+
+
+
+
+  new PerfectScrollbar(".header-notifications-list")
+
+
+    // Tooltops
+    $(function () {
+      $('[data-bs-toggle="tooltip"]').tooltip();
+    })
+
+
+  
+
+  
     
 });
