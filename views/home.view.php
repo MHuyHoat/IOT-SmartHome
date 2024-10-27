@@ -130,75 +130,11 @@
 
                 <!--====== portfolio PART START ======-->
 
-                <section id="dashboard-voice" class="portfolio-area mt-2">
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col-lg-6">
-                                <div class="section-title text-center pb-20">
-                                    <h3 class="title">Điều khiển giọng nói</h3>
-
-                                    <form method="post">
-                                        <p style="margin-top:14px;margin-bottom:14px;text-align: center;"><button class="cck btn btn-primary" type="button" onclick="speech()"><span>Click vào để nói</span></button> &nbsp; <span id="action"></span></p>
-                                        <input class="text-xuly" type="text" id="textt" name="import" value="" style="display:none" />
-                                        <input class="button-xuly btn btn-sm btn-info" type="submit" name="btnClick" value="Xử lý"></button>
-                                    </form>
-                                    <div id="output" class="hide"></div>
-
-                                </div> <!-- row -->
-                            </div>
-                        </div> <!-- row -->
-                    </div> <!-- container -->
-                </section>
+                
 
                 <!--====== portfolio PART ENDS ======-->
 
-                <!--====== PRINICNG STYLE EIGHT START ======-->
-
-                <section id="parameter" class="pricing-area">
-
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col-lg-6">
-                                <div class="section-title text-center pb-20">
-                                    <h3 class="title">PARAMETER </h3>
-                                    <button id="button">Cập nhật dữ liệu</button>
-                                </div> <!-- section title -->
-                            </div>
-                        </div> <!-- row -->
-                        <div class="row justify-content-center">
-
-                            <div class="col-lg-4 col-md-7 col-sm-9">
-                                <div class="pricing-style-one mt-40 wow fadeIn" data-wow-duration="1.5s" data-wow-delay="0.5s">
-                                    <div class="pricing-icon text-center">
-                                        <img src="img/nhietdo.png" alt="" style="width: 120px;">
-                                    </div>
-                                    <div class="pricing-header text-center">
-                                        <h2 class="sub-title">Nhiệt độ: <div id="data1" style="display:inline"> 20</div>
-                                        </h2>
-                                    </div>
-                                    <div class="pricing-btn rounded-buttons text-center">
-                                        <img class="<?php echo "$hieuung" ?> " src="img/<?php echo "$img" ?>.png" alt="" style="width: 140px;">
-                                    </div>
-                                </div> <!-- pricing style one -->
-                            </div>
-
-                            <div class="col-lg-4 col-md-7 col-sm-9">
-                                <div class="pricing-style-one mt-40 wow fadeIn" data-wow-duration="1.5s" data-wow-delay="0.8s">
-                                    <div class="pricing-icon text-center">
-                                        <img src="img/doam.png" alt="" style="width: 120px;">
-                                    </div>
-                                    <div class="pricing-header text-center">
-                                        <h2 class="sub-title">Độ ẩm: <div id="data2" style="display:inline"> <?php echo "$doam"; ?></div>
-                                        </h2>
-                                    </div>
-                                    <div class="pricing-btn rounded-buttons text-center">
-                                        <img class="<?php echo "$hieuung" ?>" src="img/<?php echo "$img2" ?>.png" alt="" style="width: 140px;">
-                                    </div>
-                                </div> <!-- pricing style one -->
-                            </div>
-                        </div> <!-- row -->
-                    </div> <!-- container -->
-                </section>
+            
             </div>
             <!-- end page content-->
         </div>
