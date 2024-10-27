@@ -1,68 +1,113 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en" class="light-theme">
+
+
+<!-- Mirrored from codervent.com/fobia/demo/ltr/authentication-sign-in-cover.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 26 Oct 2024 14:07:13 GMT -->
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="css/style.css">
-    <title>Login</title>
-    <link rel="stylesheet" href="login.css">
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- loader-->
+  <link href="assets/css/pace.min.css" rel="stylesheet" />
+  <script src="assets/js/pace.min.js"></script>
+
+  <!--plugins-->
+  <link href="assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet" />
+
+  <!-- CSS Files -->
+  <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/css/bootstrap-extended.css" rel="stylesheet">
+  <link href="assets/css/style.css" rel="stylesheet">
+  <link href="assets/css/icons.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&amp;display=swap" rel="stylesheet">
+
+  <title>Fobia - Bootstrap5 Admin Template</title>
 </head>
 
-<body>
-    <div class="main">
-        <div class="page">
-            <div class="container">
-                <div class="left">
-                    <div class="login">Login</div>
-                    <div class="eula">Để sử dụng website điều khiển các thiết bị điện trong nhà,bạn phải đăng nhập</div>
+<body class="bg-white">
+
+  <!--start wrapper-->
+  <div class="wrapper">
+    <div class="">
+      <div class="row g-0 m-0">
+        <div class="col-xl-6 col-lg-12">
+          <div class="login-cover-wrapper">
+            <div class="card shadow-none">
+              <div class="card-body">
+                <div class="text-center">
+                  <h4>Đăng nhập</h4>
+                  <p>Hệ thống quản lý nhà thông minh</p>
                 </div>
-                <div class="right">
-                    <svg viewBox="0 0 320 300">
-                        <defs>
-                            <linearGradient
-                                inkscape:collect="always"
-                                id="linearGradient"
-                                x1="13"
-                                y1="193.49992"
-                                x2="307"
-                                y2="193.49992"
-                                gradientUnits="userSpaceOnUse">
-                                <stop
-                                    style="stop-color:#ff00ff;"
-                                    offset="0"
-                                    id="stop876" />
-                                <stop
-                                    style="stop-color:#ff0000;"
-                                    offset="1"
-                                    id="stop878" />
-                            </linearGradient>
-                        </defs>
-                        <path d="m 40,120.00016 239.99984,-3.2e-4 c 0,0 24.99263,0.79932 25.00016,35.00016 0.008,34.20084 -25.00016,35 -25.00016,35 h -239.99984 c 0,-0.0205 -25,4.01348 -25,38.5 0,34.48652 25,38.5 25,38.5 h 215 c 0,0 20,-0.99604 20,-25 0,-24.00396 -20,-25 -20,-25 h -190 c 0,0 -20,1.71033 -20,25 0,24.00396 20,25 20,25 h 168.57143" />
-                    </svg>
-                    <div class="form">
-                        <form method="post" action="">
-                            <label for="username">Username</label>
-                            <div class="box">
-                                <input type="text" name="email" placeholder="Username" class="form-dashboard" required>
-                            </div>
-                            <label for="password">Password</label>
-                            <div class="box">
-                                <input type="password" name="password" placeholder="Password" class="form-dashboard" required>
-                            </div>
-                            <div class="btn-box">
-                                <input id="submit" type="submit" name="submit" value="Login" class="btn submit-btn">
-                            </div>
-                            <div style="text-align: center;margin-top:10px" class="error">
-                                <?php echo $msg ?>
-                            </div>
-                        </form>
+                <form action="" method="post" class="form-body row g-3">
+                  <div class="col-12">
+                    <label for="inputEmail" class="form-label">Tên đăng nhập</label>
+                    <input type="text" class="form-control" id="inputEmail" name="userName">
+                  </div>
+                  <div class="col-12">
+                    <label for="inputPassword" class="form-label">Mật khẩu</label>
+                    <input type="password" class="form-control" name="password" id="inputPassword">
+                  </div>
+                  <div class="col-12 col-lg-6">
+                    <div class="form-check form-switch">
+                      <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckRemember">
+                      <label class="form-check-label" for="flexSwitchCheckRemember">Remember Me</label>
                     </div>
-                </div>
+                  </div>
+                  <div class="col-12 col-lg-6 text-end">
+                    <a href="authentication-reset-password-cover.html">Forgot Password?</a>
+                  </div>
+                  <div class="col-12
+                  <?php  if(!isset($_SESSION['error'])){  echo 'd-none'; }?> ">
+                    <div class="alert alert-danger" role="alert">
+                      <?php 
+                         if(isset($_SESSION['error'])){
+                          echo $_SESSION['error'];
+                          unset($_SESSION['error']);
+                         }
+                      ?>
+                    </div>
+                  </div>
+                  <div class="col-12 col-lg-12">
+                    <div class="d-grid">
+                      <button type="submit" name="submit" class="btn btn-primary">Đăng nhập</button>
+                    </div>
+                  </div>
+                  <div class="col-12 col-lg-12">
+                    <div class="position-relative border-bottom my-3">
+                      <div class="position-absolute seperator translate-middle-y">or continue with</div>
+                    </div>
+                  </div>
+                  <div class="col-12 col-lg-12">
+                    <div class="social-login d-flex flex-row align-items-center justify-content-center gap-2 my-2">
+                      <a href="javascript:;" class=""><img src="assets/images/icons/facebook.png" alt=""></a>
+                      <a href="javascript:;" class=""><img src="assets/images/icons/apple-black-logo.png" alt=""></a>
+                      <a href="javascript:;" class=""><img src="assets/images/icons/google.png" alt=""></a>
+                    </div>
+                  </div>
+                  <div class="col-12 col-lg-12 text-center">
+                    <p class="mb-0">Don't have an account? <a href="authentication-sign-up-cover.html">Sign up</a></p>
+                  </div>
+                </form>
+              </div>
             </div>
+          </div>
         </div>
+        <div class="col-xl-6 col-lg-12">
+          <div class="position-fixed top-0 h-100 d-xl-block d-none login-cover-img">
+          </div>
+        </div>
+      </div>
+      <!--end row-->
     </div>
-    <script src="js.js"></script>
+  </div>
+  <!--end wrapper-->
+
+
 </body>
+
+
+<!-- Mirrored from codervent.com/fobia/demo/ltr/authentication-sign-in-cover.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 26 Oct 2024 14:07:14 GMT -->
 
 </html>

@@ -1,0 +1,119 @@
+.backgr2 {
+    background-image: url(https://www.w3schools.com/js/pic_bulbon.gif);
+    height: 85px;
+    width: 45px;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    margin-top: 10px;
+    border: none;
+}
+.backgr {
+    background-image: url(https://www.w3schools.com/js/pic_bulboff.gif);
+    height: 85px;
+    width: 45px;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    margin-top: 10px;
+    border: none;
+}
+.microphone-md{
+    position: fixed;
+    right: 0px;
+    top: 46%;
+    width: 40px;
+    height: 40px;
+}
+@media (min-width: 490px) {
+    .area{
+        width: 50%;
+    }   
+    
+   
+    
+}
+
+@media (max-width: 490px) {
+  
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

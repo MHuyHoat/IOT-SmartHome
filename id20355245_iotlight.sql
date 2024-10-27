@@ -24,20 +24,20 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `db_iot`
+-- Cấu trúc bảng cho bảng `thietbi`
 --
 
-CREATE TABLE `db_iot` (
+CREATE TABLE `thietbi` (
   `id` int(2) NOT NULL,
   `thietbi` varchar(4) NOT NULL,
   `trangthai` int(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `db_iot`
+-- Đang đổ dữ liệu cho bảng `thietbi`
 --
 
-INSERT INTO `db_iot` (`id`, `thietbi`, `trangthai`) VALUES
+INSERT INTO `thietbi` (`id`, `thietbi`, `trangthai`) VALUES
 (1, '0010', 0),
 (2, '0100', 0),
 (3, '1000', 0),
