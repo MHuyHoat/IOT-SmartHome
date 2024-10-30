@@ -1,32 +1,24 @@
-<?php   
- session_start();  
- require_once(__DIR__.'/models/User.php');
+<?php
+ob_start();
+session_start();
+require_once(__DIR__ . '/models/ThietBi.php');
+require_once(__DIR__ . '/models/User.php');
+if (!isset($_SESSION['USER_NAME'])) {
+     header("location:login.php");
+     die();
+}
 
- $msg="";  
- if (isset($_POST['submit'])) {  
+if ($_SERVER['REQUEST_METHOD'] = 'get') {
      try {
-          $userModel= new User();
-          $userName=$_POST['userName'];  
-          $password=$_POST['password'];  
-          
-          $user= $userModel->find([
-              'username ='=>$userName,
-              'password ='=>$password
-          ]) ;  
-          if (!empty($user)) {  
-               //echo "found";  
-               $_SESSION['USER_NAME']=$user['username'];  
-               header("location:home.php");  
-          }else{  
-                $_SESSION['error']="Thông tin sai!";  
-
-               header("location:login.php"); 
-          } 
+          $userModel = new User();
+          $listUser = $userModel->getAll(['parent_id =' => $_SESSION['USER_ID']]);
+   
      } catch (\Throwable $th) {
           //throw $th;
           echo $th;
-     } 
- }  else{
-     include('views/login.view.php');
- }
- ?>  
+          die();
+     }
+} else {
+}
+include('views/managerChildAccount.view.php');
+ob_end_flush();

@@ -25,7 +25,7 @@
         <div class="menu-title">Quản lý</div>
       </a>
       <ul>
-        <li><a href="ecommerce-shop-grid-view.html">
+        <li><a href="managerChildAccount.php">
             <ion-icon name="ellipse-outline"></ion-icon>Các tài khoản con
           </a>
         </li>
@@ -40,7 +40,7 @@
     <li class="menu-label">Khác</li>
 
     <li>
-      <a href="pages-user-profile.html">
+      <a href="userProfile.php">
         <div class="parent-icon">
           <ion-icon name="person-circle-outline"></ion-icon>
         </div>
