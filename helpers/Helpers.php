@@ -44,6 +44,26 @@ class Helpers
             return $data;
         }
     }
+    public  function strInsert($query = "", $data = [])
+    {
+        try {
+            $query.="(";
+            foreach ($data as $k => $v) {
+                $query.="`$k`".",";
+            }
+            $query=substr($query,0,-1);
+            $query.=") VALUES (";
+            foreach ($data as $k => $v) {
+                $query.="'$v'".",";
+            }
+            $query=substr($query,0,-1);
+            $query.=');';
+     
+            return $query;
+        } catch (Exception $e) {
+            return $data;
+        }
+    }
     public function generateJWT($payload){
         try {
             

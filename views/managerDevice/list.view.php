@@ -34,6 +34,7 @@
 
         <!-- start page content wrapper-->
         <div class="page-content-wrapper">
+            
             <!-- start page content-->
             <div class="page-content">
 
@@ -52,7 +53,7 @@
                     <div class="ms-auto">
                         <div class="btn-group">
                             <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal"
-                                data-bs-target="#modalAddChildAccount">Thêm tài thiết bị </button>
+                                data-bs-target="#modalAddChildAccount">Thêm thiết bị </button>
                             <!-- Button trigger modal -->
 
 
@@ -67,10 +68,10 @@
                                 <div
                                     class="modal-dialog "
                                     role="document">
-                                    <div class="modal-content">
+                                    <form class="modal-content" action="?action=them-moi" method="post">
                                         <div class="modal-header">
                                             <h5 class="modal-title" id="modalTitleId">
-                                                Thêm thiết bị 
+                                                Thêm thiết bị
                                             </h5>
                                             <button
                                                 type="button"
@@ -82,16 +83,85 @@
 
 
                                             <div class="col-12 mt-2">
-                                                <label for="inputEmail" class="form-label">Họ tên</label>
-                                                <input type="text" class="form-control" name="hoten" placeholder="Họ tên người dùng ">
+                                                <label for="inputEmail" class="form-label">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-codesandbox">
+                                                        <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                                                        <polyline points="7.5 4.21 12 6.81 16.5 4.21"></polyline>
+                                                        <polyline points="7.5 19.79 7.5 14.6 3 12"></polyline>
+                                                        <polyline points="21 12 16.5 14.6 16.5 19.79"></polyline>
+                                                        <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                                                        <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                                                    </svg>
+                                                    Tên thiết bị </label>
+                                                <input type="text" class="form-control" name="ten" placeholder="Nhập tên thiết bị ">
                                             </div>
                                             <div class="col-12 mt-2">
-                                                <label for="inputEmail" class="form-label">Tên đăng nhập </label>
-                                                <input type="text" class="form-control" name="username" placeholder="Tên đăng nhập">
+                                                <label for="inputEmail" class="form-label">
+                                                    <i class="lni lni-arrow-down-circle"></i>
+                                                    Loại thiết bị
+                                                </label>
+                                                <div class="mb-3">
+
+                                                    <select
+                                                        class="form-select "
+                                                        name="loai_id"
+                                                        id="">
+                                                        <option value="">Chọn loại thiết bị</option>
+                                                        <?php
+                                                        for ($j = 0; $j < count($listLoaiThietBi); $j++) {
+                                                        ?>
+
+                                                            <option value="<?= $listLoaiThietBi[$j]['id'] ?>">
+
+                                                                <?= $listLoaiThietBi[$j]['ten'] ?> </option>
+
+                                                        <?php
+                                                        }
+                                                        ?>
+
+                                                    </select>
+                                                </div>
+
                                             </div>
                                             <div class="col-12 mt-2">
-                                                <label for="inputPassword" class="form-label">Mật khẩu </label>
-                                                <input type="password" name="password" class="form-control" id="inputPassword" placeholder="Mật khẩu ">
+                                                <label for="inputEmail" class="form-label">
+                                                    <i class="lni lni-apartment"></i>
+                                                    Chọn nơi đặt thiết bị
+                                                </label>
+                                                <div class="mb-3">
+
+                                                    <select
+                                                        class="form-select "
+                                                        name="khuvuc_id"
+                                                        id="">
+                                                        <option value="">Chọn khu vực</option>
+                                                        <?php
+                                                        for ($j = 0; $j < count($listKhuVuc); $j++) {
+                                                        ?>
+
+                                                            <option value="<?= $listKhuVuc[$j]['id'] ?>">
+
+                                                                <?= $listKhuVuc[$j]['ten'] ?> </option>
+
+                                                        <?php
+                                                        }
+                                                        ?>
+
+                                                    </select>
+                                                </div>
+
+                                            </div>
+                                            <div class="col-12 mt-2">
+                                                <label for="inputPassword" class="form-label"> <i class="lni lni-amazon"></i> Miêu tả</label>
+                                                <input type="text" name="mieu_ta" class="form-control" id="inputPassword" placeholder="Miêu tả thiết bị">
+                                            </div>
+                                            <div class="col-12 mt-2 d-none">
+                                                <label for="inputPassword" class="form-label"> <i class="lni lni-amazon"></i> Nhà </label>
+                                                <input type="text" name="nha_id" class="form-control" value="<?= $user['nha_id'] ?>" placeholder="Miêu tả thiết bị">
+                                            </div>
+                                            <div class="col-12 mt-2 d-none">
+                                                <label for="inputPassword" class="form-label"> <i class="lni lni-amazon"></i> Thiết bị Điều khiển </label>
+                                                <input type="text" name="parent_id" class="form-control" value="<?= $chipConnect['id'] ?>" placeholder="Miêu tả thiết bị">
                                             </div>
                                         </div>
                                         <div class="modal-footer">
@@ -101,9 +171,9 @@
                                                 data-bs-dismiss="modal">
                                                 Hủy
                                             </button>
-                                            <button type="button" class="btn btn-primary">Thêm</button>
+                                            <button type="submit" class="btn btn-primary">Thêm</button>
                                         </div>
-                                    </div>
+                                    </form>
                                 </div>
                             </div>
 
@@ -126,8 +196,8 @@
                                     <thead class="table-light">
                                         <tr>
                                             <th>#ID</th>
-                                            <th>Tên thiết bị  </th>
-                                          
+                                            <th>Tên thiết bị </th>
+
                                             <th>Thuộc nhà </th>
                                             <th>Thuộc khu vực</th>
                                             <th>Trạng thái</th>
@@ -135,33 +205,33 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        
+
                                         <?php
                                         for ($j = 0; $j < count($listThietBi); $j++) {
                                         ?>
-                                        
-                                            <tr class=" <?php if ($listThietBi[$j]['permission_type'] == 'view') echo 'd-none';   ?>" >
-                                                <td># <?= $j+1?> </td>
+
+                                            <tr class=" <?php if ($listThietBi[$j]['permission_type'] == 'view') echo 'd-none';   ?>">
+                                                <td># <?= $j + 1 ?> </td>
                                                 <td>
                                                     <div class="d-flex align-items-center gap-3">
                                                         <div class="product-box border">
-                                                        <?= $listThietBi[$j]['image']?? "Trống" ?>
+                                                            <?= $listThietBi[$j]['image'] ?? "Trống" ?>
                                                         </div>
                                                         <div class="product-info">
-                                                            <h6 class="product-name mb-1"> <?= $listThietBi[$j]['ten_thiet_bi']?? "Trống" ?> </h6>
+                                                            <h6 class="product-name mb-1"> <?= $listThietBi[$j]['ten_thiet_bi'] ?? "Trống" ?> </h6>
                                                         </div>
                                                     </div>
                                                 </td>
-                                                <td> <?= $listThietBi[$j]['ten_nha']?> </td>
-                                                <td> <?= $listThietBi[$j]['ten_khu_vuc']?? "Trống" ?> </td>
-                                                <td><span class="badge bg-<?= $listThietBi[$j]['trangthai']==1? "success":'danger' ?>"> <?= $listThietBi[$j]['trangthai']==1? "Bật ":'Tắt' ?>" </span></td>
-                                               
+                                                <td> <?= $listThietBi[$j]['ten_nha'] ?> </td>
+                                                <td> <?= $listThietBi[$j]['ten_khu_vuc'] ?? "Trống" ?> </td>
+                                                <td><span class="badge bg-<?= $listThietBi[$j]['trangthai'] == 1 ? "success" : 'danger' ?>"> <?= $listThietBi[$j]['trangthai'] == 1 ? "Bật " : 'Tắt' ?>" </span></td>
+
                                                 <td>
                                                     <div class="d-flex align-items-center gap-3 fs-6">
                                                         <a href="javascript:;" class="text-primary" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="View detail" aria-label="Views">
                                                             <ion-icon name="eye-outline" role="img" class="md hydrated" aria-label="eye outline"></ion-icon>
                                                         </a>
-                                                        <a href="javascript:;" class="text-warning" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Edit info" aria-label="Edit">
+                                                        <a href="managerDevice.php?action=chinh-sua && id=<?= $listThietBi[$j]['id'] ?> " class="text-warning" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Edit info" aria-label="Edit">
                                                             <ion-icon name="pencil-outline" role="img" class="md hydrated" aria-label="pencil outline"></ion-icon>
                                                         </a>
                                                         <a href="javascript:;" class="text-danger" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Delete" aria-label="Delete">
@@ -174,8 +244,6 @@
                                         <?php
                                         }
                                         ?>
-
-
                                     </tbody>
                                 </table>
                             </div>

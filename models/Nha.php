@@ -2,12 +2,12 @@
 
 require_once(__DIR__ . '/../config/DBConn.php');
 require_once(__DIR__ . '/../helpers/Helpers.php');
-class User
+class Nha
 {
     public $conn;
-    public $table = "users";
+    public $table = "nha";
     public $helper;
-    public $alias = 'u';
+    public $alias = 'n';
     public function __construct()
     {
 
@@ -18,12 +18,8 @@ class User
     {
         try {
             //code...            
-            $query = "SELECT $this->alias.*,
-             r.ten as ten_role,
-             n.ten as ten_nha
+            $query = "SELECT $this->alias.*
             FROM $this->table as $this->alias
-             INNER JOIN role as r ON u.role_id= r.id
-             INNER JOIN nha as n ON u.nha_id= n.id
               where 1=1 ";
             // generate chuỗi string đầu vào 
             $query = $this->helper->strQuery($query, $data);
@@ -45,17 +41,13 @@ class User
     {
         try {
             //code...            
-            $query = "SELECT $this->alias.*,
-            r.ten as ten_role,
-            n.ten as ten_nha
-           from $this->table as $this->alias
-            INNER JOIN role as r ON u.role_id= r.id
-            INNER JOIN nha as n ON u.nha_id= n.id
-             where 1=1 ";
+            $query = "SELECT $this->alias.*
+            FROM $this->table as $this->alias
+              where 1=1 ";
 
             // generate chuỗi string đầu vào 
             $query = $this->helper->strQuery($query, $data);
-           
+
             $stmt = $this->conn->prepare($query);
 
             //Thiết lập kiểu dữ liệu trả về
