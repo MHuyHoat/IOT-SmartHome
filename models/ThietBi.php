@@ -22,15 +22,18 @@ class ThietBi
             $this->alias.id, $this->alias.ten as ten_thiet_bi,  $this->alias.trangthai ,
              ltb.ten as ten_loai_thietbi , ltb.id as id_loai_thietbi,
              ltb.default_image as image , 
-              kv.ten as ten_khu_vuc, kv.id as id_khuvuc
-              
-               from $this->table AS  $this->alias
+              kv.ten as ten_khu_vuc, kv.id as id_khuvuc,
+              p.permission_type ,
+              n.ten as ten_nha
+            from $this->table AS  $this->alias
+            INNER JOIN permissions AS p on $this->alias.id= p.thietbi_id
+            INNER JOIN users  AS u on u.id= p.user_id
             INNER JOIN loai_thietbi AS ltb ON $this->alias.loai_id=ltb.id 
             INNER JOIN khuvuc AS kv ON $this->alias.khuvuc_id = kv.id
-            
+            INNER JOIN nha as n ON $this->alias.nha_id= n.id
              where 1=1 ";
             $stmt = $this->conn->prepare($query);
-
+           
             //Thiết lập kiểu dữ liệu trả về
             $stmt->setFetchMode(PDO::FETCH_ASSOC);
 

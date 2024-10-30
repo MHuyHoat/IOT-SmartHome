@@ -1,5 +1,6 @@
 
 <?php
+header('Content-Type: application/json');
 $data=[
     ["id"=> 1,"ten"=> "Đèn phòng khách","thong_tin"=> null,"trang_thai"=> 1,"parent_id"=> null,"nha_id"=> 1,"khuvuc_id"=> 1,"loai_id"=> 1],
     ["id"=> 2,"ten"=> "Đèn phòng ngủ","thong_tin"=> null,"trang_thai"=> 1,"parent_id"=> null,"nha_id"=> 1,"khuvuc_id"=> 1,"loai_id"=> 1],

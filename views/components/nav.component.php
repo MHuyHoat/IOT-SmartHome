@@ -29,7 +29,7 @@
             <ion-icon name="ellipse-outline"></ion-icon>Các tài khoản con
           </a>
         </li>
-        <li><a href="ecommerce-shop-list-view.html">
+        <li><a href="managerDevice.php">
             <ion-icon name="ellipse-outline"></ion-icon>Danh sách thiết bị
           </a>
         </li>

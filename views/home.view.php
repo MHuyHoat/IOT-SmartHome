@@ -203,6 +203,7 @@
 
                                                                     onchange="setTrangThaiThietBi(<?= $v[$j]['id'] ?>)"
                                                                     <?php if ($v[$j]['trangthai'] == 1) echo 'checked';   ?>
+                                                                    <?php if ($v[$j]['permission_type'] == 'view') echo 'disabled';   ?>
                                                                     type="checkbox" id="statusTrangThai<?= $v[$j]['id'] ?>">
 
                                                             </div>
@@ -227,6 +228,7 @@
                                                                 <input class="form-check-input"
                                                                     onchange="setTrangThaiThietBi(<?= $v[$j]['id'] ?>)"
                                                                     <?php if ($v[$j]['trangthai'] == 1) echo 'checked';   ?>
+                                                                    <?php if ($v[$j]['permission_type'] == 'view') echo 'disabled';   ?>
                                                                     type="checkbox" id="statusTrangThai<?= $v[$j]['id'] ?>">
 
                                                             </div>
