@@ -52,7 +52,7 @@
                     <div class="ms-auto">
                         <div class="btn-group">
                             <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal"
-                                data-bs-target="#modalAddChildAccount">Thêm tài khoản con </button>
+                                data-bs-target="#modalAddChildAccount">Thêm tài thiết bị </button>
                             <!-- Button trigger modal -->
 
 
@@ -140,7 +140,7 @@
                                         for ($j = 0; $j < count($listThietBi); $j++) {
                                         ?>
                                         
-                                            <tr>
+                                            <tr class=" <?php if ($listThietBi[$j]['permission_type'] == 'view') echo 'd-none';   ?>" >
                                                 <td># <?= $j+1?> </td>
                                                 <td>
                                                     <div class="d-flex align-items-center gap-3">
@@ -154,7 +154,7 @@
                                                 </td>
                                                 <td> <?= $listThietBi[$j]['ten_nha']?> </td>
                                                 <td> <?= $listThietBi[$j]['ten_khu_vuc']?? "Trống" ?> </td>
-                                                <td><span class="badge bg-<?= $listThietBi[$j]['ten_role']=='admin'? "danger":'success' ?>"> <?= $listThietBi[$j]['ten_role']?? "Trống" ?> </span></td>
+                                                <td><span class="badge bg-<?= $listThietBi[$j]['trangthai']==1? "success":'danger' ?>"> <?= $listThietBi[$j]['trangthai']==1? "Bật ":'Tắt' ?>" </span></td>
                                                
                                                 <td>
                                                     <div class="d-flex align-items-center gap-3 fs-6">
