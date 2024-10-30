@@ -12,9 +12,10 @@
                     $password = $_POST['password'];
 
                     $user = $userModel->find([
-                         'username =' => $userName,
-                         'password =' => $password
+                         'u.username =' => $userName,
+                         'u.password =' => $password
                     ]);
+                      
                     if (!empty($user)) {
                          //echo "found";  
                          $_SESSION['USER_NAME'] = $user['username'];

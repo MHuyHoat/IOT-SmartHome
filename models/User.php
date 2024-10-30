@@ -19,17 +19,15 @@ class User
         try {
             //code...            
             $query = "SELECT $this->alias.*,
-             r.ten as ten_role
-            from $this->table as $this->alias
+             r.ten as ten_role,
+             n.ten as ten_nha
+            FROM $this->table as $this->alias
              INNER JOIN role as r ON u.role_id= r.id
-            
+             INNER JOIN nha as n ON u.nha_id= n.id
               where 1=1 ";
             // generate chuỗi string đầu vào 
             $query = $this->helper->strQuery($query, $data);
             $stmt = $this->conn->prepare($query);
-
-
-
             //Thiết lập kiểu dữ liệu trả về
             $stmt->setFetchMode(PDO::FETCH_ASSOC);
 
@@ -47,11 +45,17 @@ class User
     {
         try {
             //code...            
-            $query = "SELECT * from $this->table where 1=1 ";
+            $query = "SELECT $this->alias.*,
+            r.ten as ten_role,
+            n.ten as ten_nha
+           from $this->table as $this->alias
+            INNER JOIN role as r ON u.role_id= r.id
+            INNER JOIN nha as n ON u.nha_id= n.id
+             where 1=1 ";
 
             // generate chuỗi string đầu vào 
             $query = $this->helper->strQuery($query, $data);
-
+           
             $stmt = $this->conn->prepare($query);
 
             //Thiết lập kiểu dữ liệu trả về
@@ -67,14 +71,15 @@ class User
             die();
         }
     }
-    public function update($data = [])
+    public function update($id, $data = [])
     {
         try {
             //code...
-            $query = "SELECT * from $this->table where 1=1 ";
+            $query = $query = " UPDATE $this->table SET id=$id  ";
 
             // generate chuỗi string đầu vào 
-            $query = $this->helper->strQuery($query, $data);
+            $query = $this->helper->strUpdate($query, $data);
+            $query .= " WHERE id = $id ";
             $stmt = $this->conn->prepare($query);
 
             //Thiết lập kiểu dữ liệu trả về

@@ -1,10 +1,9 @@
 <?php
 require_once(__DIR__."/../vendor/php-jwt/src/JWT.php");
 require_once(__DIR__."/../vendor/php-jwt/src/Key.php");
+require_once(__DIR__.'/../config/config.php');
 use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
-
-require_once(__DIR__.'/../config/config.php');
 class Helpers
 {
     public function __construct() {}
