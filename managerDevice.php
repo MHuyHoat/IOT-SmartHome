@@ -36,6 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] = 'get') {
      }
 } else {
 }
-include('/views/home.view.php');
-ob_end_flush();
 
+     include('views/managerDevice.view.php');
+ 
+ ?>  

@@ -6,6 +6,7 @@
  if (isset($_POST['submit'])) {  
      try {
           $userModel= new User();
+         
           $userName=$_POST['userName'];  
           $password=$_POST['password'];  
           

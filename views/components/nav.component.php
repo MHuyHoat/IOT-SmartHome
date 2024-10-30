@@ -25,11 +25,11 @@
         <div class="menu-title">Quản lý</div>
       </a>
       <ul>
-        <li><a href="ecommerce-shop-grid-view.html">
+        <li><a href="managerChildAccount.php">
             <ion-icon name="ellipse-outline"></ion-icon>Các tài khoản con
           </a>
         </li>
-        <li><a href="ecommerce-shop-list-view.html">
+        <li><a href="managerDevice.php">
             <ion-icon name="ellipse-outline"></ion-icon>Danh sách thiết bị
           </a>
         </li>

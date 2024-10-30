@@ -2,8 +2,8 @@
 class DBConn
 {
     public $dsn = 'mysql:host=localhost;dbname=iotlight;charset=utf8';
-    public $username = 'admin';
-    public $password = '1223';
+    public $username = 'root';
+    public $password = '';
     public function __construct()
     {
        
