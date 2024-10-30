@@ -496,7 +496,7 @@ var options = {
       //lineCap: 'round',
       dashArray: 4
     },
-    labels: ['Weekly Status'],
+    labels: ['Độ ẩm '],
   
   }
   
