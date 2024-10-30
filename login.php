@@ -15,7 +15,8 @@
           ]) ;  
           if (!empty($user)) {  
                //echo "found";  
-               $_SESSION['USER_NAME']=$user['username'];  
+               $_SESSION['USER_NAME']=$user['username']; 
+               $_SESSION['USER_ID']=$user['id']; 
                header("location:home.php");  
           }else{  
                 $_SESSION['error']="Thông tin sai!";  

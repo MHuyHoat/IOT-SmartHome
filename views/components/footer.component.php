@@ -148,7 +148,7 @@
                         >
                              Nghe lại 
                         </button>
-                        <button type="button" class="btn btn-primary btn-sm" onclick="setTrangThaiThietBiBoiGiongNoi('<?=$user['id']?>')" >Thực thi</button>
+                        <button type="button" class="btn btn-primary btn-sm" onclick="setTrangThaiThietBiBoiGiongNoi('<?=$user['nha_id']?>')" >Thực thi</button>
                     </div>
                 </div>
             </div>

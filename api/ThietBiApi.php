@@ -31,7 +31,7 @@ try {
             echo json_encode($responseData);
         }else if($data['action']=="controlTrangThaiBySpeech"){
             $text = mb_strtolower($data['text'], 'UTF-8');
-            $dataThietBi = $thietBiModel->getAll(['user_id' => $data['userId']]);
+            $dataThietBi = $thietBiModel->getAll(['nha_id' => $data['nhaId']]);
             $thietBiThayDoi = null;
             
             foreach ($dataThietBi as $key => $value) {
