@@ -14,8 +14,10 @@ class DBConn
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             return $pdo;
         } catch (PDOException $e) {
-            return null;
             echo 'Connection failed: ' . $e->getMessage();
+            die();
+            return null;
+            
         }
     }
 }
