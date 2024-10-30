@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] = 'get') {
                //echo "found";  
                // lấy toàn bộ các thiết bị trong nhà 
                $thietBiModel = new ThietBi();
-               $dataThietBi = $thietBiModel->getAll(['user_id' => $user['id']]);
+               $dataThietBi = $thietBiModel->getAll(['p.user_id = ' => $user['id']]);
 
                $dataThietBiKhuVuc = [];
                foreach ($dataThietBi ?? [] as $k => $v) {
