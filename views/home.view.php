@@ -121,7 +121,7 @@
                                                             </div>
                                                         </div>
                                                         <div class="">
-                                                            <h3 class="mb-2">Hiện tại : 20 Độ C</h3>
+                                                            <h3 class="mb-2">Hiện tại :  <?=  $thietBiNhietDo['thong_tin'] ?></h3>
                                                             <div class="d-flex align-items-center gap-2">
                                                                 <div class="widget-icon-small bg-light-danger text-danger">
                                                                     <ion-icon name="arrow-down-outline" role="img" class="md hydrated" aria-label="arrow down outline"></ion-icon>
@@ -153,7 +153,7 @@
                                                             </div>
                                                             <div class="d-flex align-items-center mt-3">
                                                                 <div>
-                                                                    <h4 class="mb-0">10 thiết bị </h4>
+                                                                    <h4 class="mb-0"> <?= count($dataThietBi)?> thiết bị </h4>
                                                                 </div>
                                                            
                                                             </div>

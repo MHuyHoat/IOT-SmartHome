@@ -1,24 +1,34 @@
 <?php
 
-require_once(__DIR__.'/../config/DBConn.php');
-require_once(__DIR__.'/../helpers/Helpers.php');
+require_once(__DIR__ . '/../config/DBConn.php');
+require_once(__DIR__ . '/../helpers/Helpers.php');
 class User
 {
     public $conn;
     public $table = "users";
     public $helper;
+    public $alias = 'u';
     public function __construct()
     {
-        
+
         $this->conn = (new DBConn())->Connect();
-        $this->helper= new Helpers();
+        $this->helper = new Helpers();
     }
-    public function getAll($data=[])
+    public function getAll($data = [])
     {
         try {
             //code...            
-            $query= "SELECT * from $this->table where 1=1 ";
+            $query = "SELECT $this->alias.*,
+             r.ten as ten_role
+            from $this->table as $this->alias
+             INNER JOIN role as r ON u.role_id= r.id
+            
+              where 1=1 ";
+            // generate chuỗi string đầu vào 
+            $query = $this->helper->strQuery($query, $data);
             $stmt = $this->conn->prepare($query);
+
+
 
             //Thiết lập kiểu dữ liệu trả về
             $stmt->setFetchMode(PDO::FETCH_ASSOC);
@@ -29,18 +39,19 @@ class User
             //Hiển thị kết quả, vòng lặp sau đây sẽ dừng lại khi đã duyệt qua toàn bộ kết quả
             return $stmt->fetchAll();
         } catch (\Throwable $th) {
-           echo  $th;
-           die();
+            echo  $th;
+            die();
         }
     }
-    public function find($data=[]){
+    public function find($data = [])
+    {
         try {
             //code...            
-            $query= "SELECT * from $this->table where 1=1 ";
+            $query = "SELECT * from $this->table where 1=1 ";
 
             // generate chuỗi string đầu vào 
-            $query=$this->helper->strQuery($query,$data);
-          
+            $query = $this->helper->strQuery($query, $data);
+
             $stmt = $this->conn->prepare($query);
 
             //Thiết lập kiểu dữ liệu trả về
@@ -52,17 +63,18 @@ class User
             //Hiển thị kết quả, vòng lặp sau đây sẽ dừng lại khi đã duyệt qua toàn bộ kết quả
             return $stmt->fetch();
         } catch (\Throwable $th) {
-           echo  $th;
-           die();
+            echo  $th;
+            die();
         }
     }
-    public function update($data=[]){
+    public function update($data = [])
+    {
         try {
             //code...
-            $query= "SELECT * from $this->table where 1=1 ";
+            $query = "SELECT * from $this->table where 1=1 ";
 
             // generate chuỗi string đầu vào 
-            $query=$this->helper->strQuery($query,$data);
+            $query = $this->helper->strQuery($query, $data);
             $stmt = $this->conn->prepare($query);
 
             //Thiết lập kiểu dữ liệu trả về
@@ -77,5 +89,3 @@ class User
         }
     }
 }
-
-?>

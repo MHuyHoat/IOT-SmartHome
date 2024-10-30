@@ -48,7 +48,7 @@ class ThietBi
         try {
             //code...            
             $query= "SELECT  
-            $this->alias.id, $this->alias.ten as ten_thiet_bi,  $this->alias.trangthai ,
+            $this->alias.id, $this->alias.ten as ten_thiet_bi,  $this->alias.trangthai , $this->alias.thong_tin ,
              ltb.ten as ten_loai_thietbi , ltb.id as id_loai_thietbi,
              ltb.default_image as image , 
               kv.ten as ten_khu_vuc, kv.id as id_khuvuc

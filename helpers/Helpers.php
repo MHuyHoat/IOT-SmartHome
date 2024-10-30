@@ -11,6 +11,8 @@ class Helpers
                 if (strstr($k, '=') || strstr($k, '>') || strstr($k, '<')) {
                     // Thêm điều kiện vào truy vấn
                     $query .= " and $k '$v' ";
+                }else {
+                    $query.='and '.$k.$v;
                 }
             }
      
@@ -27,6 +29,9 @@ class Helpers
                 if (strstr($k, '=') || strstr($k, '>') || strstr($k, '<')) {
                     // Thêm điều kiện vào truy vấn
                     $query .= " , $k '$v' ";
+                }
+                else {
+                    $query.=', '.$k.$v;
                 }
             }
      

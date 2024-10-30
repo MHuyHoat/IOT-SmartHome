@@ -14,10 +14,11 @@ if ($_SERVER['REQUEST_METHOD'] = 'get') {
           $userName =  $_SESSION['USER_NAME'];
 
           $user = $userModel->find([
-               'username' => $userName,
+               'username =' => $userName,
           ]);
           if (!empty($user)) {
                //echo "found";  
+               // lấy toàn bộ các thiết bị trong nhà 
                $thietBiModel = new ThietBi();
                $dataThietBi = $thietBiModel->getAll(['user_id' => $user['id']]);
 
@@ -26,8 +27,14 @@ if ($_SERVER['REQUEST_METHOD'] = 'get') {
 
                     $dataThietBiKhuVuc[$v['id_khuvuc']][] = $v;
                }
+               // 
+               $thietBiDoAm= $thietBiModel->find(['ltb.ten = '=>'Đo độ ẩm']);
+               $thietBiNhietDo= $thietBiModel->find(['ltb.ten = ' => 'Đo nhiệt độ ']);
+          
           } else {
-               $msg = "Thông tin sai!";
+               $_SESSION['error']="Thông tin sai!";  
+
+               header("location:login.php"); 
           }
      } catch (\Throwable $th) {
           //throw $th;
@@ -36,6 +43,6 @@ if ($_SERVER['REQUEST_METHOD'] = 'get') {
      }
 } else {
 }
-include($_SERVER['DOCUMENT_ROOT'] . '/views/home.view.php');
+include( 'views/home.view.php');
 ob_end_flush();
 
