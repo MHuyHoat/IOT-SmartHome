@@ -31,12 +31,12 @@ try {
             echo json_encode($responseData);
         } else if ($data['action'] == "controlTrangThaiBySpeech") {
             $text = mb_strtolower($data['text'], 'UTF-8');
-            $dataThietBi = $thietBiModel->getAll(['nha_id' => $data['nhaId']]);
+            $dataThietBi = $thietBiModel->getAll(['tb.nha_id' => $data['nhaId']]);
             $thietBiThayDoi = null;
 
             foreach ($dataThietBi as $key => $value) {
                 // Chuyển đổi tên thiết bị sang chữ thường
-                $tenThietBi = mb_strtolower(trim($value['ten_thiet_bi']), 'UTF-8');
+                $tenThietBi = mb_strtolower(trim($value['ten']), 'UTF-8');
 
                 // Kiểm tra xem $text có chứa $tenThietBi không
                 if (strstr($text, $tenThietBi)) {

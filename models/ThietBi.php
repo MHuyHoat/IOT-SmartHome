@@ -36,7 +36,7 @@ class ThietBi
             INNER JOIN users  AS u on u.id= p.user_id
             INNER JOIN loai_thietbi AS ltb ON $this->alias.loai_id=ltb.id 
             INNER JOIN khuvuc AS kv ON $this->alias.khuvuc_id = kv.id
-            INNER JOIN nha as n ON $this->alias.nha_id= n.id
+            INNER JOIN nha as n ON $this->alias.nha_id = n.id
              where 1=1 ";
             // generate chuỗi string đầu vào 
             $query = $this->helper->strQuery($query, $data);
@@ -132,6 +132,7 @@ class ThietBi
             $query = $this->helper->strUpdate($query, $data);
             $query .= " WHERE id = $id ";
             $stmt = $this->conn->prepare($query);
+        
             //Gán giá trị và thực thi
             $stmt->execute();
 
