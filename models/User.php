@@ -113,13 +113,12 @@ class User
             die();
         }
     }
-    public function delete($id)
+    public function delete($data)
     {
         try {
             //code...            
-            $query =  " DELETE FROM $this->table ";
-
-            $query .= " WHERE id = $id ";
+            $query =  " DELETE FROM $this->table  WHERE 1=1 ";
+            $query = $this->helper->strDelete($query, $data);
             $stmt = $this->conn->prepare($query);
             //Gán giá trị và thực thi
             $stmt->execute();

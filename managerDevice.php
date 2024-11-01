@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] = 'get' && $_REQUEST['action']=='danh-sach') {
                     $thietBiModel = new ThietBi();
                     $listThietBi = $thietBiModel->getAll(['p.user_id =' =>$_SESSION['USER_ID'],"ltb.ten!="=>'Chip Connect']);
                     $loaiThietBiModel= new LoaiThietBi();
-                    $listLoaiThietBi= $loaiThietBiModel->getAll([]);
+                    $listLoaiThietBi= $loaiThietBiModel->getAll(['ten !='=>'Chip Connect']);
                     $khuVucModel= new KhuVuc();
                     $listKhuVuc= $khuVucModel->getAll(['kv.nha_id ='=>$user['nha_id']]);
 

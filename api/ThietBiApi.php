@@ -5,7 +5,10 @@
 try {
     //code...
     require_once(__DIR__ . '/../models/ThietBi.php');
+    require_once(__DIR__.'/../models/Permission.php');
+
     $thietBiModel = new ThietBi();
+    $permissionModel= new Permission();
     // Thiết lập tiêu đề HTTP
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -82,6 +85,16 @@ try {
                     echo json_encode($responseData);
                 }
             }
+        }
+        else if($data['action'] == "deleteThietBi"){
+            $thietbi = $thietBiModel->find(['tb.id = ' => $data['id']]);
+            $permissionModel->delete(['thietbi_id = '=>$thietbi['id']]);
+            $thietBiModel->delete(['id ='=>$thietbi['id']]);
+            $responseData = [
+                'status' => 'success',
+                'message' => "Đã xóa thành công trạng thái thiết bị ",
+            ];
+            echo json_encode($responseData);
         }
     } else {
         echo json_encode([
