@@ -218,7 +218,7 @@
                                                             <?= $listThietBi[$j]['image'] ?? "Trống" ?>
                                                         </div>
                                                         <div class="product-info">
-                                                            <h6 class="product-name mb-1"> <?= $listThietBi[$j]['ten_thiet_bi'] ?? "Trống" ?> </h6>
+                                                            <h6 class="product-name mb-1"> <?= $listThietBi[$j]['ten'] ?? "Trống" ?> </h6>
                                                         </div>
                                                     </div>
                                                 </td>

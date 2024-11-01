@@ -7,7 +7,6 @@ try {
     header('Content-Type: application/json');
     $payload = [
         "nha_id" => $_REQUEST['nha_id'],
-        "thietbi_id" => $_REQUEST['thietbi_id']
     ];
     $token = $helper->generateJWT($payload);
     $data = [

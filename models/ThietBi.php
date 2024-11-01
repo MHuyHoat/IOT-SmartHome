@@ -2,17 +2,23 @@
 
 require_once(__DIR__ . '/../config/DBConn.php');
 require_once(__DIR__ . '/../helpers/Helpers.php');
+require_once(__DIR__ . '/User.php');
+require_once(__DIR__ . '/Permission.php');
 class ThietBi
 {
     public $conn;
     public $table = "thietbi";
     public $alias = 'tb';
     public $helper;
+    public $userModel;
+    public $permissionsModel;
     public function __construct()
     {
 
         $this->conn = (new DBConn())->Connect();
         $this->helper = new Helpers();
+        $this->userModel= new User();
+        $this->permissionsModel = new Permission();
     }
     public function getAll($data = [])
     {
@@ -97,6 +103,17 @@ class ThietBi
             //Gán giá trị và thực thi
             
             $stmt->execute();
+            $lastId = $this->conn->lastInsertId();
+            // gan quyen permission cho cac tai khoan trong nha
+            $listUser= $this->userModel->getAll(['nha_id ='=> $data['nha_id']]);
+            foreach ($listUser as $key => $value) {
+                # code...
+                $this->permissionsModel->create([
+                    'permission_type'=>'control',
+                    'user_id'=>$value['id'],
+                    'thietbi_id'=>$lastId
+                ]);
+            }
 
             //Hiển thị kết quả, vòng lặp sau đây sẽ dừng lại khi đã duyệt qua toàn bộ kết quả
             return true;
