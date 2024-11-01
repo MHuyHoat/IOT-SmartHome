@@ -18,7 +18,7 @@ class ChanPin
     {
         try {
             //code...            
-            $query = "SELECT $this->alias.*
+            $query = "SELECT $this->alias.*  FROM $this->table as $this->alias
               where 1=1 ";
             // generate chuỗi string đầu vào 
             
@@ -43,7 +43,7 @@ class ChanPin
     {
         try {
             //code...            
-            $query = "SELECT $this->alias.*
+            $query = "SELECT $this->alias.*  FROM $this->table as $this->alias
              where 1=1 ";
 
             // generate chuỗi string đầu vào 

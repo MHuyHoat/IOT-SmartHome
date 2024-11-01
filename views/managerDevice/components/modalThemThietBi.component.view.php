@@ -10,7 +10,7 @@
                                 <div
                                     class="modal-dialog "
                                     role="document">
-                                    <form class="modal-content" action="?action=them-moi" method="post">
+                                    <form class="modal-content" action="managerDevice.php?action=them-moi" method="POST">
                                         <div class="modal-header">
                                             <h5 class="modal-title" id="modalTitleId">
                                                 Thêm thiết bị
@@ -35,7 +35,7 @@
                                                         <line x1="12" y1="22.08" x2="12" y2="12"></line>
                                                     </svg>
                                                     Tên thiết bị </label>
-                                                <input type="text" class="form-control" name="ten" placeholder="Nhập tên thiết bị ">
+                                                <input type="text" class="form-control" name="ten" placeholder="Nhập tên thiết bị " required >
                                             </div>
                                             <div class="col-12 mt-2">
                                                 <label for="inputEmail" class="form-label">
@@ -45,6 +45,7 @@
                                                 <div class="mb-3">
 
                                                     <select
+                                                    required
                                                         class="form-select "
                                                         name="loai_id"
                                                         id="">
@@ -67,12 +68,42 @@
                                             </div>
                                             <div class="col-12 mt-2">
                                                 <label for="inputEmail" class="form-label">
+                                                <i class="lni lni-chrome"></i>
+                                                    Chân pin ESP32
+                                                </label>
+                                                <div class="mb-3">
+
+                                                    <select
+                                                    required
+                                                        class="form-select "
+                                                        name="chanpin_id"
+                                                        id="">
+                                                        <option value="">Chọn chân pin cắm thiết bị</option>
+                                                        <?php
+                                                        for ($j = 0; $j < count($listChanPin); $j++) {
+                                                        ?>
+
+                                                            <option value="<?= $listChanPin[$j]['id'] ?>">
+
+                                                                <?= $listChanPin[$j]['ten'] ?>  </option>
+
+                                                        <?php
+                                                        }
+                                                        ?>
+
+                                                    </select>
+                                                </div>
+
+                                            </div>
+                                            <div class="col-12 mt-2">
+                                                <label for="inputEmail" class="form-label">
                                                     <i class="lni lni-apartment"></i>
                                                     Chọn nơi đặt thiết bị
                                                 </label>
                                                 <div class="mb-3">
 
                                                     <select
+                                                    required
                                                         class="form-select "
                                                         name="khuvuc_id"
                                                         id="">

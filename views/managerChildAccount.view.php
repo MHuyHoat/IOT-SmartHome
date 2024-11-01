@@ -128,7 +128,7 @@
                                             <th>#ID</th>
                                             <th>Họ và tên </th>
                                             <th>Tên đăng nhập </th>
-                                            <th>Mật khẩu </th>
+                                            <th>Email</th>
                                             <th>Loại tài khoản</th>
                                             <th>Thao tác </th>
                                         </tr>
@@ -144,7 +144,7 @@
                                                 <td>
                                                     <div class="d-flex align-items-center gap-3">
                                                         <div class="product-box border">
-                                                            <img src="assets/images/avatars/0<?= $j+1?>.png" alt="">
+                                                            <img src="assets/images/avatars/0<?= ((int) $listUser[$j]['id'])%10?>.png" alt="">
                                                         </div>
                                                         <div class="product-info">
                                                             <h6 class="product-name mb-1"> <?= $listUser[$j]['hoten']?? "Trống" ?> </h6>

@@ -30,13 +30,9 @@ class Helpers
         try {
             foreach ($data as $k => $v) {
                 
-                if (strstr($k, '=') || strstr($k, '>') || strstr($k, '<')) {
-                    // Thêm điều kiện vào truy vấn
-                    $query .= " , $k '$v' ";
-                }
-                else {
-                    $query.=', '.$k.$v;
-                }
+                
+                    $query.=', '."`".$k."`"."="."'$v'";
+                
             }
      
             return $query;

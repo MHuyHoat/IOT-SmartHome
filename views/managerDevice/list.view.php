@@ -79,7 +79,7 @@
                                         <tr>
                                             <th>#ID</th>
                                             <th>Tên thiết bị </th>
-
+                                            <th> Chân pin </th>
                                             <th>Thuộc nhà </th>
                                             <th>Thuộc khu vực</th>
                                             <th>Trạng thái</th>
@@ -104,6 +104,7 @@
                                                         </div>
                                                     </div>
                                                 </td>
+                                                <td> <?= $listThietBi[$j]['ten_chanpin']??'...' ?> </td>
                                                 <td> <?= $listThietBi[$j]['ten_nha'] ?> </td>
                                                 <td> <?= $listThietBi[$j]['ten_khu_vuc'] ?? "Trống" ?> </td>
                                                 <td><span class="badge bg-<?= $listThietBi[$j]['trangthai'] == 1 ? "success" : 'danger' ?>"> <?= $listThietBi[$j]['trangthai'] == 1 ? "Bật " : 'Tắt' ?>" </span></td>
@@ -134,7 +135,7 @@
                                                             </div>
                                                         </div>
 
-                                                        <a href="managerDevice.php?action=chinh-sua && id=<?= $listThietBi[$j]['id'] ?> " class="text-warning" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Edit info" aria-label="Edit">
+                                                        <a href="managerDevice.php?action=chinh-sua&id=<?= $listThietBi[$j]['id'] ?> " class="text-warning" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Edit info" aria-label="Edit">
                                                             <ion-icon name="pencil-outline" role="img" class="md hydrated" aria-label="pencil outline"></ion-icon>
                                                         </a>
                                                         <a href="javascript:;" onclick="deleteThietBi(`<?=$listThietBi[$j]['ten']?>`,<?=$listThietBi[$j]['id']?>)" class="text-danger" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Delete" aria-label="Delete">

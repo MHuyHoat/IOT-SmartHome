@@ -21,9 +21,9 @@ try {
             $thietbi = $thietBiModel->find(['tb.id = ' => $data['id']]);
             $trangThaiThietBi = $thietbi['trangthai'];
             if ($trangThaiThietBi == 1) {
-                $thietBiModel->update($data['id'], ['trangthai = ' => 0]);
+                $thietBiModel->update($data['id'], ['trangthai' => 0]);
             } else {
-                $thietBiModel->update($data['id'], ['trangthai = ' => 1]);
+                $thietBiModel->update($data['id'], ['trangthai' => 1]);
             }
             $responseData = [
                 'status' => 'success',
@@ -58,7 +58,7 @@ try {
                 echo json_encode($responseData);
             } else {
                 if (strstr($text, 'bật')) {
-                    $thietBiModel->update($thietBiThayDoi['id'], ['trangthai = ' => 1]);
+                    $thietBiModel->update($thietBiThayDoi['id'], ['trangthai' => 1]);
                     $responseData = [
                         'status' => 'success',
                         'message' => "Đã thay đổi thành công trạng thái thiết bị ",
@@ -67,7 +67,7 @@ try {
                     // Chuyển đổi dữ liệu thành JSON và trả về
                     echo json_encode($responseData);
                 } else if (strstr($text, 'tắt')) {
-                    $thietBiModel->update($thietBiThayDoi['id'], ['trangthai = ' => 0]);
+                    $thietBiModel->update($thietBiThayDoi['id'], ['trangthai' => 0]);
                     $responseData = [
                         'status' => 'success',
                         'message' => "Đã thay đổi thành công trạng thái thiết bị ",
