@@ -29,6 +29,8 @@ class ThietBi
             INNER JOIN khuvuc AS kv ON $this->alias.khuvuc_id = kv.id
             
              where 1=1 ";
+                         // generate chuỗi string đầu vào 
+            $query=$this->helper->strQuery($query,$data);
             $stmt = $this->conn->prepare($query);
 
             //Thiết lập kiểu dữ liệu trả về

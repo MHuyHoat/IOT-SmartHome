@@ -43,6 +43,6 @@ if ($_SERVER['REQUEST_METHOD'] = 'get') {
      }
 } else {
 }
-include( 'views/home.view.php');
+include('/views/home.view.php');
 ob_end_flush();
 
