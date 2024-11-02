@@ -11,7 +11,7 @@ if (!isset($_SESSION['USER_NAME'])) {
 if ($_SERVER['REQUEST_METHOD'] = 'get') {
      try {
           $userModel = new User();
-          $listUser = $userModel->getAll(['parent_id =' => $_SESSION['USER_ID']]);
+          $listUser = $userModel->getAll(data: ['parent_id =' => $_SESSION['USER_ID']]);
    
      } catch (\Throwable $th) {
           //throw $th;
