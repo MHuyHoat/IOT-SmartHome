@@ -69,15 +69,15 @@ class Permission
             die();
         }
     }
-    public function update($id, $data = [])
+    public function update($user_id,$thietbi_id ,$data = [])
     {
         try {
             //code...            
-            $query =  " UPDATE $this->table SET id=$id  ";
+            $query =  " UPDATE $this->table SET user_id=$user_id, thietbi_id=$thietbi_id ";
 
             // generate chuỗi string đầu vào 
             $query = $this->helper->strUpdate($query, $data);
-            $query .= " WHERE id = $id ";
+             $query .= " WHERE user_id = $user_id and thietbi_id=$thietbi_id ";
             $last=$this->conn->executeUpdate($query);
 
             //Hiển thị kết quả, vòng lặp sau đây sẽ dừng lại khi đã duyệt qua toàn bộ kết quả
@@ -87,6 +87,7 @@ class Permission
             die();
         }
     }
+  
     public function delete($data)
     {
         try {

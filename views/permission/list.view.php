@@ -83,8 +83,6 @@
                                                 <td>No Data</td>
                                                 <td>No Data</td>
                                                 <td>No Data</td>
-                                                <td>No Data</td>
-                                                <td>No Data</td>
                                             </tr>
                                         <?php
                                         } else { ?>
@@ -92,7 +90,7 @@
                                             for ($j = 0; $j < count($listThietBi); $j++) {
                                             ?>
 
-                                                <tr class=" <?php if ($listThietBi[$j]['permission_type'] == 'view') echo 'd-none';   ?>">
+                                                <tr >
                                                     <td># <?= $j + 1 ?> </td>
                                                     <td>
                                                         <div class="d-flex align-items-center gap-3">
@@ -107,23 +105,23 @@
 
                                                     <td> <?= $listThietBi[$j]['ten_khu_vuc'] ?? "Trống" ?> </td>
                                                     <td>
-                                                    <div class="form-check">
-                                                            <div class="form-check form-switch">
+                                                        <div class="form-check">
+                                                            <div class="form-check ">
                                                                 <input class="form-check-input"
-                                                                    onchange=""
+                                                                    onchange="changePermission(<?= $user['id'] ?>,<?= $listThietBi[$j]['id'] ?>,'control')"
                                                                     <?php if ($listThietBi[$j]['permission_type'] == 'control') echo 'checked';   ?>
-                                                                    type="checkbox" id="permissionView<?= $listThietBi[$j]['id'] ?>">
+                                                                    type="checkbox" id="permissionc<?= $listThietBi[$j]['id']  ?>">
 
                                                             </div>
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="form-check">
-                                                            <div class="form-check form-switch">
+                                                            <div class="form-check ">
                                                                 <input class="form-check-input"
-                                                                    onchange=""
+                                                                    onchange="changePermission(<?= $user['id'] ?>,<?= $listThietBi[$j]['id'] ?>,'view')"
                                                                     <?php if ($listThietBi[$j]['permission_type'] == 'view') echo 'checked';   ?>
-                                                                    type="checkbox" id="permissionControl<?= $listThietBi[$j]['id'] ?>">
+                                                                    type="checkbox" id="permissionv<?= $listThietBi[$j]['id']  ?>">
 
                                                             </div>
                                                         </div>
@@ -154,7 +152,7 @@
 
         <?php include('views/components/footer.component.php'); ?>
 
-
+        <script src="assets/js/permission.js"></script>
 </body>
 
 

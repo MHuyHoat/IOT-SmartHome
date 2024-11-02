@@ -177,6 +177,7 @@
 
         <?php include('views/managerDevice/components/modalThemThietBi.component.view.php'); ?>
         <?php include('views/components/footer.component.php'); ?>
+        <script src="assets/js/managerDevice.js"></script>
 </body>
 
 

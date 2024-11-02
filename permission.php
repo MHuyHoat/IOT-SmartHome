@@ -26,10 +26,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && $_REQUEST['action'] == 'danh-sach') {
                     $userModel = new User();
                     $user = $userModel->find(['u.id =' => $_REQUEST['user_id']]);
                     $thietBiModel = new ThietBi();
-                    $listThietBi = $thietBiModel->getAll(['tb.nha_id =' => $user['nha_id'],"p.user_id ="=>$_SESSION['USER_ID'] , "ltb.ten!=" => 'Chip Connect']);
-                   
+                    $listThietBi = $thietBiModel->getAll(['tb.nha_id =' => $user['nha_id'], "p.user_id =" => $user['id'], "ltb.ten!=" => 'Chip Connect']);
+                    
                } else {
-            
+
 
                     header("location:managerChildAccount.php?action=danh-sach");
                }
@@ -45,4 +45,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && $_REQUEST['action'] == 'danh-sach') {
           echo $th;
           die();
      }
-} 
+}

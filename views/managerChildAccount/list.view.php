@@ -119,7 +119,7 @@
                                                     <td><span class="badge bg-<?= $listUser[$j]['ten_role'] == 'admin' ? "danger" : 'success' ?>"> <?= $listUser[$j]['ten_role'] ?? "Trống" ?> </span></td>
 
                                                     <td>
-                                                        <div class="  gap-3 fs-6 <?=$listUser[$j]['role_id']==$user['role_id']?'d-none':'d-flex'?> align-items-center">
+                                                        <div class="  gap-3 fs-6 <?=$listUser[$j]['role_id']<=$user['role_id']?'d-none':'d-flex'?> align-items-center">
 
                                                             <a href="?action=chinh-sua&id=<?= $listUser[$j]['id'] ?>" class="text-warning" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Edit info" aria-label="Edit">
                                                                 <ion-icon name="pencil-outline" role="img" class="md hydrated" aria-label="pencil outline"></ion-icon>
@@ -156,8 +156,9 @@
         </div>
         <!--end page content wrapper-->
 
-      
+        <?php include('views/managerChildAccount/components/modalThemTaiKhoanCon.component.view.php'); ?>
         <?php include('views/components/footer.component.php'); ?>
+        <script src="assets/js/managerChildAccount.js"></script>
 </body>
 
 

@@ -39,7 +39,7 @@ class ThietBi
              ltb.ten as ten_loai_thietbi , ltb.id as id_loai_thietbi,
              ltb.default_image as image , 
               kv.ten as ten_khu_vuc, kv.id as id_khuvuc,
-              p.permission_type ,
+              p.permission_type , p.id as permission_id ,
               n.ten as ten_nha,
               cp.ten as ten_chanpin
             from $this->table AS  $this->alias
@@ -52,6 +52,7 @@ class ThietBi
              where 1=1 ";
             // generate chuỗi string đầu vào 
             $query = $this->helper->strQuery($query, $data);
+     
             $stmt = $this->conn->executeQuery($query);
 
             //Hiển thị kết quả, vòng lặp sau đây sẽ dừng lại khi đã duyệt qua toàn bộ kết quả
@@ -65,12 +66,12 @@ class ThietBi
     {
         try {
             //code...            
-            $query = "SELECT  
+            $query = "SELECT 
             $this->alias.* ,
              ltb.ten as ten_loai_thietbi , ltb.id as id_loai_thietbi,
              ltb.default_image as image , 
               kv.ten as ten_khu_vuc, kv.id as id_khuvuc,
-              p.permission_type ,
+              p.permission_type , p.id as permission_id,
               n.ten as ten_nha,
               cp.ten as ten_chanpin
             from $this->table AS  $this->alias
@@ -105,7 +106,7 @@ class ThietBi
             $lastId = $this->conn->executeInsert($query);
             // gan quyen permission cho cac tai khoan trong nha
             $this->setUserModel();
-            $listUser = $this->userModel->getAll(['nha_id =' => $data['nha_id']]);
+            $listUser =    $this->conn->executeQuery("SELECT * FROM users as u WHERE u.nha_id=".$data['nha_id']."")->fetchAll();
             $this->setPermissionModel();
             foreach ($listUser as $key => $value) {
                 # code...

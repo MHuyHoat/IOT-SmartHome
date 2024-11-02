@@ -82,7 +82,7 @@ class User
 
             $lastId= $this->conn->executeInsert($query);
             $this->setThietBiModel();
-            $listThietBi = $this->thietBiModel->getAll(['tb.nha_id =' => $data['nha_id']]);
+            $listThietBi = $this->conn->executeQuery("SELECT * FROM thietbi as tb WHERE tb.nha_id=".$data['nha_id']."")->fetchAll();
             $this->setPermissionModel();
             foreach ($listThietBi as $key => $value) {
                 # code...
@@ -92,6 +92,7 @@ class User
                     'thietbi_id' => $value['id']
                 ]);
             }
+         
             //Hiển thị kết quả, vòng lặp sau đây sẽ dừng lại khi đã duyệt qua toàn bộ kết quả
             return $lastId;
         } catch (\Throwable $th) {
