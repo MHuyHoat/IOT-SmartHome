@@ -96,6 +96,7 @@
                 <div class="">
                   <p class="mb-0">Thomas Hardy</p>
                 </div>
+<<<<<<< HEAD
              </div>
            </td>
            <td>89 Chicago UK</td>
@@ -117,6 +118,79 @@
                 <img src="assets/images/avatars/02.png" class="rounded-circle" width="44" height="44" alt="">
                 <div class="">
                   <p class="mb-0">Victoria Hardy</p>
+=======
+                <!--end breadcrumb-->
+
+
+                <div class="row">
+                    <div class="col-xl-12 mx-auto">
+
+                        <div class="card-body">
+                            <div class="d-flex align-items-center">
+                                <h6 class="mb-0">Danh sách các tài khoản con </h6>
+
+                            </div>
+                            <div class="table-responsive mt-2">
+                                <table class="table align-middle mb-0">
+                                    <thead class="table-light">
+                                        <tr>
+                                            <th>#ID</th>
+                                            <th>Họ và tên </th>
+                                            <th>Tên đăng nhập </th>
+                                            <th>Email</th>
+                                            <th>Loại tài khoản</th>
+                                            <th>Thao tác </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        
+                                        <?php
+                                        for ($j = 0; $j < count($listUser); $j++) {
+                                        ?>
+                                        
+                                            <tr>
+                                                <td># <?= $j+1?> </td>
+                                                <td>
+                                                    <div class="d-flex align-items-center gap-3">
+                                                        <div class="product-box border">
+                                                            <img src="assets/images/avatars/0<?= ((int) $listUser[$j]['id'])%10?>.png" alt="">
+                                                        </div>
+                                                        <div class="product-info">
+                                                            <h6 class="product-name mb-1"> <?= $listUser[$j]['hoten']?? "Trống" ?> </h6>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td> <?= $listUser[$j]['username']?> </td>
+                                                <td> <?= $listUser[$j]['email']?? "Trống" ?> </td>
+                                                <td><span class="badge bg-<?= $listUser[$j]['ten_role']=='admin'? "danger":'success' ?>"> <?= $listUser[$j]['ten_role']?? "Trống" ?> </span></td>
+                                               
+                                                <td>
+                                                    <div class="d-flex align-items-center gap-3 fs-6">
+                                                        <a href="javascript:;" class="text-primary" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="View detail" aria-label="Views">
+                                                            <ion-icon name="eye-outline" role="img" class="md hydrated" aria-label="eye outline"></ion-icon>
+                                                        </a>
+                                                        <a href="javascript:;" class="text-warning" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Edit info" aria-label="Edit">
+                                                            <ion-icon name="pencil-outline" role="img" class="md hydrated" aria-label="pencil outline"></ion-icon>
+                                                        </a>
+                                                        <a href="javascript:;" class="text-danger" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Delete" aria-label="Delete">
+                                                            <ion-icon name="trash-outline" role="img" class="md hydrated" aria-label="trash outline"></ion-icon>
+                                                        </a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+
+                                        <?php
+                                        }
+                                        ?>
+
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                    </div>
+>>>>>>> d3f358d2341ca478ccfdf9a5b650d59646d2a6a7
                 </div>
              </div>
            </td>

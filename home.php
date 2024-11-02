@@ -10,17 +10,12 @@ if (!isset($_SESSION['USER_NAME'])) {
 
 if ($_SERVER['REQUEST_METHOD'] = 'get') {
      try {
-          $userModel = new User();
-          $userName =  $_SESSION['USER_NAME'];
-
-          $user = $userModel->find([
-               'username =' => $userName,
-          ]);
-          if (!empty($user)) {
+         
+          if (!empty($_SESSION['USER_ID'])) {
                //echo "found";  
                // lấy toàn bộ các thiết bị trong nhà 
                $thietBiModel = new ThietBi();
-               $dataThietBi = $thietBiModel->getAll(['user_id' => $user['id']]);
+               $dataThietBi = $thietBiModel->getAll(['p.user_id = ' => $_SESSION['USER_ID'],"ltb.ten!="=>'Chip Connect']);
 
                $dataThietBiKhuVuc = [];
                foreach ($dataThietBi ?? [] as $k => $v) {

@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] = 'get') {
           $userName =  $_SESSION['USER_NAME'];
 
           $user = $userModel->find([
-               'id =' => $_SESSION['USER_ID'],
+               'u.id =' => $_SESSION['USER_ID'],
           ]);
           if (!empty($user)) {
             include('views/userProfile.view.php');

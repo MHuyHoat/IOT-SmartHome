@@ -20,17 +20,17 @@ class User
         try {
             //code...            
             $query = "SELECT $this->alias.*,
-             r.ten as ten_role
-            from $this->table as $this->alias
+             r.ten as ten_role,
+             n.ten as ten_nha
+            FROM $this->table as $this->alias
              INNER JOIN role as r ON u.role_id= r.id
-            
+             INNER JOIN nha as n ON u.nha_id= n.id
               where 1=1 ";
             // generate chuỗi string đầu vào 
+            
             $query = $this->helper->strQuery($query, $data);
+          
             $stmt = $this->conn->prepare($query);
-
-
-
             //Thiết lập kiểu dữ liệu trả về
             $stmt->setFetchMode(PDO::FETCH_ASSOC);
 
@@ -40,6 +40,7 @@ class User
             //Hiển thị kết quả, vòng lặp sau đây sẽ dừng lại khi đã duyệt qua toàn bộ kết quả
             return $stmt->fetchAll();
         } catch (\Throwable $th) {
+            echo $query . "\n";
             echo  $th;
             die();
         }
@@ -48,11 +49,17 @@ class User
     {
         try {
             //code...            
-            $query = "SELECT * from $this->table where 1=1 ";
+            $query = "SELECT $this->alias.*,
+            r.ten as ten_role,
+            n.ten as ten_nha
+           from $this->table as $this->alias
+            INNER JOIN role as r ON u.role_id= r.id
+            INNER JOIN nha as n ON u.nha_id= n.id
+             where 1=1 ";
 
             // generate chuỗi string đầu vào 
             $query = $this->helper->strQuery($query, $data);
-
+           
             $stmt = $this->conn->prepare($query);
            
 
@@ -69,23 +76,58 @@ class User
             die();
         }
     }
-    public function update($data = [])
+    public function create($data = [])
     {
         try {
-            //code...
-            $query = "SELECT * from $this->table where 1=1 ";
+            //code...            
+            $query =  " INSERT INTO $this->table ";
+            $query = $this->helper->strInsert($query,$data);
+         
+            $stmt = $this->conn->prepare($query);
+            //Gán giá trị và thực thi
+            
+            $stmt->execute();
+
+            //Hiển thị kết quả, vòng lặp sau đây sẽ dừng lại khi đã duyệt qua toàn bộ kết quả
+            return true;
+        } catch (\Throwable $th) {
+            echo  $th;
+            die();
+        }
+    }
+    public function update($id, $data = [])
+    {
+        try {
+            //code...            
+            $query =  " UPDATE $this->table SET id=$id  ";
 
             // generate chuỗi string đầu vào 
-            $query = $this->helper->strQuery($query, $data);
+            $query = $this->helper->strUpdate($query, $data);
+            $query .= " WHERE id = $id ";
             $stmt = $this->conn->prepare($query);
-
-            //Thiết lập kiểu dữ liệu trả về
-            $stmt->setFetchMode(PDO::FETCH_ASSOC);
-
             //Gán giá trị và thực thi
             $stmt->execute();
+
+            //Hiển thị kết quả, vòng lặp sau đây sẽ dừng lại khi đã duyệt qua toàn bộ kết quả
+            return true;
         } catch (\Throwable $th) {
-            //throw $th;
+            echo  $th;
+            die();
+        }
+    }
+    public function delete($data)
+    {
+        try {
+            //code...            
+            $query =  " DELETE FROM $this->table  WHERE 1=1 ";
+            $query = $this->helper->strDelete($query, $data);
+            $stmt = $this->conn->prepare($query);
+            //Gán giá trị và thực thi
+            $stmt->execute();
+
+            //Hiển thị kết quả, vòng lặp sau đây sẽ dừng lại khi đã duyệt qua toàn bộ kết quả
+            return true;
+        } catch (\Throwable $th) {
             echo  $th;
             die();
         }

@@ -155,11 +155,12 @@
         </div>
 
         <!-- Optional: Place to the bottom of scripts -->
-        <script>
+        <script type="text/javascript">
             const myModal = new bootstrap.Modal(
                 document.getElementById("speechId"),
                 options,
             );
+     
         </script>
 <!-- JS Files-->
 <script src="assets/js/jquery.min.js"></script>
