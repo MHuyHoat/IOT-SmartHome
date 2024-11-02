@@ -11,8 +11,7 @@ try {
   // lấy toàn bộ các thiết bị trong nhà 
   $thietBiModel = new ThietBi();
   $data = $thietBiModel->getAll([
-    'tb.nha_id =' => $decodeJWT['nha_id'],
-     'tb.id =' => $decodeJWT['thietbi_id']
+    'tb.parent_id =' => $decodeJWT['id'],
   ]);
 
   $jsonString = json_encode($data);

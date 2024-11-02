@@ -30,13 +30,9 @@ class Helpers
         try {
             foreach ($data as $k => $v) {
                 
-                if (strstr($k, '=') || strstr($k, '>') || strstr($k, '<')) {
-                    // Thêm điều kiện vào truy vấn
-                    $query .= " , $k '$v' ";
-                }
-                else {
-                    $query.=', '.$k.$v;
-                }
+                
+                    $query.=', '."`".$k."`"."="."'$v'";
+                
             }
      
             return $query;
@@ -58,6 +54,24 @@ class Helpers
             }
             $query=substr($query,0,-1);
             $query.=');';
+     
+            return $query;
+        } catch (Exception $e) {
+            return $data;
+        }
+    }
+    public  function strDelete($query = "", $data = [])
+    {
+        try {
+            foreach ($data as $k => $v) {
+                
+                if (strstr($k, '=') || strstr($k, '>') || strstr($k, '<')) {
+                    // Thêm điều kiện vào truy vấn
+                    $query .= " and $k '$v' ";
+                }else {
+                    $query.='and '.$k.$v;
+                }
+            }
      
             return $query;
         } catch (Exception $e) {

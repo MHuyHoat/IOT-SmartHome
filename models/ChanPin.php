@@ -2,12 +2,12 @@
 
 require_once(__DIR__ . '/../config/DBConn.php');
 require_once(__DIR__ . '/../helpers/Helpers.php');
-class LoaiThietBi
+class ChanPin
 {
     public $conn;
-    public $table = "loai_thietbi";
+    public $table = "chanpin";
     public $helper;
-    public $alias = 'ltb';
+    public $alias = 'cp';
     public function __construct()
     {
 
@@ -18,11 +18,12 @@ class LoaiThietBi
     {
         try {
             //code...            
-            $query = "SELECT $this->alias.*
-            FROM $this->table as $this->alias
+            $query = "SELECT $this->alias.*  FROM $this->table as $this->alias
               where 1=1 ";
             // generate chuỗi string đầu vào 
+            
             $query = $this->helper->strQuery($query, $data);
+          
             $stmt = $this->conn->prepare($query);
             //Thiết lập kiểu dữ liệu trả về
             $stmt->setFetchMode(PDO::FETCH_ASSOC);
@@ -33,6 +34,7 @@ class LoaiThietBi
             //Hiển thị kết quả, vòng lặp sau đây sẽ dừng lại khi đã duyệt qua toàn bộ kết quả
             return $stmt->fetchAll();
         } catch (\Throwable $th) {
+            echo $query . "\n";
             echo  $th;
             die();
         }
@@ -41,13 +43,12 @@ class LoaiThietBi
     {
         try {
             //code...            
-            $query = "SELECT $this->alias.*
-            FROM $this->table as $this->alias
-              where 1=1 ";
+            $query = "SELECT $this->alias.*  FROM $this->table as $this->alias
+             where 1=1 ";
 
             // generate chuỗi string đầu vào 
             $query = $this->helper->strQuery($query, $data);
-
+           
             $stmt = $this->conn->prepare($query);
 
             //Thiết lập kiểu dữ liệu trả về

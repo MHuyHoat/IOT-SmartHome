@@ -121,7 +121,7 @@
                                                             </div>
                                                         </div>
                                                         <div class="">
-                                                            <h3 class="mb-2">Hiện tại :  <?=  $thietBiNhietDo['thong_tin'] ?></h3>
+                                                            <h3 class="mb-2">Hiện tại :  <?=  $thietBiNhietDo['du_lieu'] ?></h3>
                                                             <div class="d-flex align-items-center gap-2">
                                                                 <div class="widget-icon-small bg-light-danger text-danger">
                                                                     <ion-icon name="arrow-down-outline" role="img" class="md hydrated" aria-label="arrow down outline"></ion-icon>
@@ -195,7 +195,7 @@
                                                         <div class="   d-flex mb-2 align-items-center justify-content-between theme-icons shadow-sm p-2 cursor-pointer rounded">
                                                             <div class="font-22 d-flex align-items-center">
                                                                 <?= $v[$j]['image'] ?>
-                                                                <span style="font-size: 15px;" class="ms-1"> <?= $v[$j]['ten_thiet_bi'] ?></span>
+                                                                <span style="font-size: 15px;" class="ms-1"> <?= $v[$j]['ten'] ?></span>
                                                             </div>
 
                                                             <div class="form-check form-switch">
@@ -221,7 +221,7 @@
                                                         <div class="   d-flex mb-2 align-items-center justify-content-between theme-icons shadow-sm p-2 cursor-pointer rounded">
                                                             <div class="font-22 d-flex align-items-center">
                                                                 <?= $v[$j]['image'] ?>
-                                                                <span style="font-size: 15px;" class="ms-1"> <?= $v[$j]['ten_thiet_bi'] ?></span>
+                                                                <span style="font-size: 15px;" class="ms-1"> <?= $v[$j]['ten'] ?></span>
                                                             </div>
 
                                                             <div class="form-check form-switch">

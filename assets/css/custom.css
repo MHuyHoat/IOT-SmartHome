@@ -23,6 +23,7 @@
     width: 40px;
     height: 40px;
 }
+
 @media (min-width: 490px) {
     .area{
         width: 50%;

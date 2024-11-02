@@ -5,7 +5,10 @@
 try {
     //code...
     require_once(__DIR__ . '/../models/ThietBi.php');
+    require_once(__DIR__.'/../models/Permission.php');
+
     $thietBiModel = new ThietBi();
+    $permissionModel= new Permission();
     // Thiết lập tiêu đề HTTP
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -18,9 +21,9 @@ try {
             $thietbi = $thietBiModel->find(['tb.id = ' => $data['id']]);
             $trangThaiThietBi = $thietbi['trangthai'];
             if ($trangThaiThietBi == 1) {
-                $thietBiModel->update($data['id'], ['trangthai = ' => 0]);
+                $thietBiModel->update($data['id'], ['trangthai' => 0]);
             } else {
-                $thietBiModel->update($data['id'], ['trangthai = ' => 1]);
+                $thietBiModel->update($data['id'], ['trangthai' => 1]);
             }
             $responseData = [
                 'status' => 'success',
@@ -31,12 +34,12 @@ try {
             echo json_encode($responseData);
         } else if ($data['action'] == "controlTrangThaiBySpeech") {
             $text = mb_strtolower($data['text'], 'UTF-8');
-            $dataThietBi = $thietBiModel->getAll(['nha_id' => $data['nhaId']]);
+            $dataThietBi = $thietBiModel->getAll(['tb.nha_id' => $data['nhaId']]);
             $thietBiThayDoi = null;
 
             foreach ($dataThietBi as $key => $value) {
                 // Chuyển đổi tên thiết bị sang chữ thường
-                $tenThietBi = mb_strtolower(trim($value['ten_thiet_bi']), 'UTF-8');
+                $tenThietBi = mb_strtolower(trim($value['ten']), 'UTF-8');
 
                 // Kiểm tra xem $text có chứa $tenThietBi không
                 if (strstr($text, $tenThietBi)) {
@@ -55,7 +58,7 @@ try {
                 echo json_encode($responseData);
             } else {
                 if (strstr($text, 'bật')) {
-                    $thietBiModel->update($thietBiThayDoi['id'], ['trangthai = ' => 1]);
+                    $thietBiModel->update($thietBiThayDoi['id'], ['trangthai' => 1]);
                     $responseData = [
                         'status' => 'success',
                         'message' => "Đã thay đổi thành công trạng thái thiết bị ",
@@ -64,7 +67,7 @@ try {
                     // Chuyển đổi dữ liệu thành JSON và trả về
                     echo json_encode($responseData);
                 } else if (strstr($text, 'tắt')) {
-                    $thietBiModel->update($thietBiThayDoi['id'], ['trangthai = ' => 0]);
+                    $thietBiModel->update($thietBiThayDoi['id'], ['trangthai' => 0]);
                     $responseData = [
                         'status' => 'success',
                         'message' => "Đã thay đổi thành công trạng thái thiết bị ",
@@ -82,6 +85,16 @@ try {
                     echo json_encode($responseData);
                 }
             }
+        }
+        else if($data['action'] == "deleteThietBi"){
+            $thietbi = $thietBiModel->find(['tb.id = ' => $data['id']]);
+            $permissionModel->delete(['thietbi_id = '=>$thietbi['id']]);
+            $thietBiModel->delete(['id ='=>$thietbi['id']]);
+            $responseData = [
+                'status' => 'success',
+                'message' => "Đã xóa thành công trạng thái thiết bị ",
+            ];
+            echo json_encode($responseData);
         }
     } else {
         echo json_encode([

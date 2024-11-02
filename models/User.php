@@ -26,7 +26,9 @@ class User
              INNER JOIN nha as n ON u.nha_id= n.id
               where 1=1 ";
             // generate chuỗi string đầu vào 
+            
             $query = $this->helper->strQuery($query, $data);
+          
             $stmt = $this->conn->prepare($query);
             //Thiết lập kiểu dữ liệu trả về
             $stmt->setFetchMode(PDO::FETCH_ASSOC);
@@ -37,6 +39,7 @@ class User
             //Hiển thị kết quả, vòng lặp sau đây sẽ dừng lại khi đã duyệt qua toàn bộ kết quả
             return $stmt->fetchAll();
         } catch (\Throwable $th) {
+            echo $query . "\n";
             echo  $th;
             die();
         }
@@ -110,13 +113,12 @@ class User
             die();
         }
     }
-    public function delete($id)
+    public function delete($data)
     {
         try {
             //code...            
-            $query =  " DELETE FROM $this->table ";
-
-            $query .= " WHERE id = $id ";
+            $query =  " DELETE FROM $this->table  WHERE 1=1 ";
+            $query = $this->helper->strDelete($query, $data);
             $stmt = $this->conn->prepare($query);
             //Gán giá trị và thực thi
             $stmt->execute();
