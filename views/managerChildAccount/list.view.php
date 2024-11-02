@@ -57,7 +57,7 @@
 
 
                             <!-- Modal -->
-                    
+
 
                         </div>
                     </div>
@@ -86,48 +86,60 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php
-                                        for ($j = 0; $j < count($listUser); $j++) {
-                                        ?>
-                                        
+                                        <?php if (count($listUser) == 0) { ?>
                                             <tr>
-                                                <td># <?= $j+1?> </td>
-                                                <td>
-                                                    <div class="d-flex align-items-center gap-3">
-                                                        <div class="product-box border">
-                                                            <img src="assets/images/avatars/0<?= ((int) $listUser[$j]['id'])%10?>.png" alt="">
-                                                        </div>
-                                                        <div class="product-info">
-                                                            <h6 class="product-name mb-1"> <?= $listUser[$j]['hoten']?? "Trống" ?> </h6>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td> <?= $listUser[$j]['username']?> </td>
-                                                <td> <?= $listUser[$j]['email']?? "Trống" ?> </td>
-                                                <td><span class="badge bg-<?= $listUser[$j]['ten_role']=='admin'? "danger":'success' ?>"> <?= $listUser[$j]['ten_role']?? "Trống" ?> </span></td>
-                                               
-                                                <td>
-                                                    <div class="d-flex align-items-center gap-3 fs-6">
-                                                        <a href="javascript:;" class="text-primary" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="View detail" aria-label="Views">
-                                                            <ion-icon name="eye-outline" role="img" class="md hydrated" aria-label="eye outline"></ion-icon>
-                                                        </a>
-                                                        <a href="javascript:;" class="text-warning" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Edit info" aria-label="Edit">
-                                                            <ion-icon name="pencil-outline" role="img" class="md hydrated" aria-label="pencil outline"></ion-icon>
-                                                        </a>
-                                                        <a href="javascript:;" class="text-info" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Delete" aria-label="Delete">
-                                                        <i class="lni lni-protection"></i>
-                                                        </a>
-                                                        <a href="javascript:;" class="text-danger" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Delete" aria-label="Delete">
-                                                            <ion-icon name="trash-outline" role="img" class="md hydrated" aria-label="trash outline"></ion-icon>
-                                                        </a>
-
-                                                    </div>
-                                                </td>
+                                                <td>No Data</td>
+                                                <td>No Data</td>
+                                                <td>No Data</td>
+                                                <td>No Data</td>
+                                                <td>No Data</td>
+                                                <td>No Data</td>
+                                              
                                             </tr>
-
                                         <?php
-                                        }
-                                        ?>
+                                        } else { ?>
+                                            <?php
+                                            for ($j = 0; $j < count($listUser); $j++) {
+                                            ?>
+
+                                                <tr>
+                                                    <td># <?= $j + 1 ?> </td>
+                                                    <td>
+                                                        <div class="d-flex align-items-center gap-3">
+                                                            <div class="product-box border">
+                                                                <img src="assets/images/avatars/0<?= ((int) $listUser[$j]['id'] ) % 10 ?>.png" alt="">
+                                                            </div>
+                                                            <div class="product-info">
+                                                                <h6 class="product-name mb-1"> <?= $listUser[$j]['hoten'] ?? "Trống" ?> </h6>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td> <?= $listUser[$j]['username'] ?> </td>
+                                                    <td> <?= $listUser[$j]['email'] ?? "Trống" ?> </td>
+                                                    <td><span class="badge bg-<?= $listUser[$j]['ten_role'] == 'admin' ? "danger" : 'success' ?>"> <?= $listUser[$j]['ten_role'] ?? "Trống" ?> </span></td>
+
+                                                    <td>
+                                                        <div class="d-flex align-items-center gap-3 fs-6">
+
+                                                            <a href="?action=chinh-sua&id=<?= $listUser[$j]['id'] ?>" class="text-warning" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Edit info" aria-label="Edit">
+                                                                <ion-icon name="pencil-outline" role="img" class="md hydrated" aria-label="pencil outline"></ion-icon>
+                                                            </a>
+                                                            <a href="javascript:;" class="text-info" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Delete" aria-label="Delete">
+                                                                <i class="lni lni-protection"></i>
+                                                            </a>
+                                                            <a href="javascript:;" onclick="deleteTaiKhoan(`<?= $listUser[$j]['ten'] ?>`,<?= $listUser[$j]['id'] ?>)" class="text-danger" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Delete" aria-label="Delete">
+                                                                <ion-icon name="trash-outline" role="img" class="md hydrated" aria-label="trash outline"></ion-icon>
+                                                            </a>
+
+                                                        </div>
+                                                    </td>
+                                                </tr>
+
+                                            <?php
+                                            }
+                                            ?>
+                                        <?php } ?>
+
 
 
                                     </tbody>

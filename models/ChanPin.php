@@ -11,7 +11,7 @@ class ChanPin
     public function __construct()
     {
 
-        $this->conn = (new DBConn())->Connect();
+        $this->conn = (new DBConn());
         $this->helper = new Helpers();
     }
     public function getAll($data = [])
@@ -24,12 +24,7 @@ class ChanPin
             
             $query = $this->helper->strQuery($query, $data);
           
-            $stmt = $this->conn->prepare($query);
-            //Thiết lập kiểu dữ liệu trả về
-            $stmt->setFetchMode(PDO::FETCH_ASSOC);
-
-            //Gán giá trị và thực thi
-            $stmt->execute();
+                  $stmt=$this->conn->executeQuery($query);
 
             //Hiển thị kết quả, vòng lặp sau đây sẽ dừng lại khi đã duyệt qua toàn bộ kết quả
             return $stmt->fetchAll();
@@ -49,13 +44,7 @@ class ChanPin
             // generate chuỗi string đầu vào 
             $query = $this->helper->strQuery($query, $data);
            
-            $stmt = $this->conn->prepare($query);
-
-            //Thiết lập kiểu dữ liệu trả về
-            $stmt->setFetchMode(PDO::FETCH_ASSOC);
-
-            //Gán giá trị và thực thi
-            $stmt->execute();
+                 $stmt=$this->conn->executeQuery($query);
 
             //Hiển thị kết quả, vòng lặp sau đây sẽ dừng lại khi đã duyệt qua toàn bộ kết quả
             return $stmt->fetch();
@@ -92,9 +81,7 @@ class ChanPin
             // generate chuỗi string đầu vào 
             $query = $this->helper->strUpdate($query, $data);
             $query .= " WHERE id = $id ";
-            $stmt = $this->conn->prepare($query);
-            //Gán giá trị và thực thi
-            $stmt->execute();
+            $last=$this->conn->executeUpdate($query);
 
             //Hiển thị kết quả, vòng lặp sau đây sẽ dừng lại khi đã duyệt qua toàn bộ kết quả
             return true;
@@ -109,9 +96,7 @@ class ChanPin
             //code...            
             $query =  " DELETE FROM $this->table  WHERE 1=1 ";
             $query = $this->helper->strDelete($query, $data);
-            $stmt = $this->conn->prepare($query);
-            //Gán giá trị và thực thi
-            $stmt->execute();
+            $last=$this->conn->executeUpdate($query);
 
             //Hiển thị kết quả, vòng lặp sau đây sẽ dừng lại khi đã duyệt qua toàn bộ kết quả
             return true;

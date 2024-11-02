@@ -15,9 +15,19 @@ class ThietBi
     public function __construct()
     {
 
-        $this->conn = (new DBConn())->Connect();
-        $this->helper = new Helpers();
-        $this->userModel= new User();
+        try {
+            $this->conn = (new DBConn());
+            $this->helper = new Helpers();
+        } catch (\Throwable $th) {
+            //throw $th;
+            echo $th;
+            die();
+        }
+    }
+    public function  setUserModel(){
+        $this->userModel = new User();
+    }
+    public function setPermissionModel(){
         $this->permissionsModel = new Permission();
     }
     public function getAll($data = [])
@@ -42,13 +52,7 @@ class ThietBi
              where 1=1 ";
             // generate chuỗi string đầu vào 
             $query = $this->helper->strQuery($query, $data);
-            $stmt = $this->conn->prepare($query);
-
-            //Thiết lập kiểu dữ liệu trả về
-            $stmt->setFetchMode(PDO::FETCH_ASSOC);
-
-            //Gán giá trị và thực thi
-            $stmt->execute();
+            $stmt = $this->conn->executeQuery($query);
 
             //Hiển thị kết quả, vòng lặp sau đây sẽ dừng lại khi đã duyệt qua toàn bộ kết quả
             return $stmt->fetchAll();
@@ -80,14 +84,8 @@ class ThietBi
 
             // generate chuỗi string đầu vào 
             $query = $this->helper->strQuery($query, $data);
-         
-            $stmt = $this->conn->prepare($query);
 
-            //Thiết lập kiểu dữ liệu trả về
-            $stmt->setFetchMode(PDO::FETCH_ASSOC);
-
-            //Gán giá trị và thực thi
-            $stmt->execute();
+            $stmt = $this->conn->executeQuery($query);
 
             //Hiển thị kết quả, vòng lặp sau đây sẽ dừng lại khi đã duyệt qua toàn bộ kết quả
             return $stmt->fetch();
@@ -101,21 +99,20 @@ class ThietBi
         try {
             //code...            
             $query =  " INSERT INTO $this->table ";
-            $query = $this->helper->strInsert($query,$data);
-         
-            $stmt = $this->conn->prepare($query);
-            //Gán giá trị và thực thi
-            
-            $stmt->execute();
-            $lastId = $this->conn->lastInsertId();
+            $query = $this->helper->strInsert($query, $data);
+
+
+            $lastId = $this->conn->executeInsert($query);
             // gan quyen permission cho cac tai khoan trong nha
-            $listUser= $this->userModel->getAll(['nha_id ='=> $data['nha_id']]);
+            $this->setUserModel();
+            $listUser = $this->userModel->getAll(['nha_id =' => $data['nha_id']]);
+            $this->setPermissionModel();
             foreach ($listUser as $key => $value) {
                 # code...
                 $this->permissionsModel->create([
-                    'permission_type'=>'control',
-                    'user_id'=>$value['id'],
-                    'thietbi_id'=>$lastId
+                    'permission_type' => 'control',
+                    'user_id' => $value['id'],
+                    'thietbi_id' => $lastId
                 ]);
             }
 
@@ -135,11 +132,7 @@ class ThietBi
             // generate chuỗi string đầu vào 
             $query = $this->helper->strUpdate($query, $data);
             $query .= " WHERE id = $id ";
-            $stmt = $this->conn->prepare($query);
-        
-            //Gán giá trị và thực thi
-            $stmt->execute();
-
+            $lastId = $this->conn->executeUpdate($query);
             //Hiển thị kết quả, vòng lặp sau đây sẽ dừng lại khi đã duyệt qua toàn bộ kết quả
             return true;
         } catch (\Throwable $th) {
@@ -153,9 +146,7 @@ class ThietBi
             //code...            
             $query =  " DELETE FROM $this->table  WHERE 1=1 ";
             $query = $this->helper->strDelete($query, $data);
-            $stmt = $this->conn->prepare($query);
-            //Gán giá trị và thực thi
-            $stmt->execute();
+            $last = $this->conn->executeUpdate($query);
 
             //Hiển thị kết quả, vòng lặp sau đây sẽ dừng lại khi đã duyệt qua toàn bộ kết quả
             return true;

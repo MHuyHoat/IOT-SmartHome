@@ -76,9 +76,9 @@
                         </select>
                     </div>
                     <div class="col-12 mt-2 d-none">
-                                                <label for="inputPassword" class="form-label"> <i class="lni lni-amazon"></i> Nhà </label>
-                                                <input type="text" name="nha_id" class="form-control" value="<?= $user['nha_id'] ?>" placeholder="Miêu tả thiết bị">
-                                            </div>
+                        <label for="inputPassword" class="form-label"> <i class="lni lni-amazon"></i> Nhà </label>
+                        <input type="text" name="nha_id" class="form-control" value="<?= $user['nha_id'] ?>" placeholder="Miêu tả thiết bị">
+                    </div>
 
                 </div>
             </div>

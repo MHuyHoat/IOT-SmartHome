@@ -14,7 +14,10 @@ if ($_SERVER['REQUEST_METHOD'] = 'get') {
           if (!empty($_SESSION['USER_ID'])) {
                //echo "found";  
                // lấy toàn bộ các thiết bị trong nhà 
+             
                $thietBiModel = new ThietBi();
+              
+               
                $dataThietBi = $thietBiModel->getAll(['p.user_id = ' => $_SESSION['USER_ID'],"ltb.ten!="=>'Chip Connect']);
 
                $dataThietBiKhuVuc = [];

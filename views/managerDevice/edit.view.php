@@ -54,14 +54,14 @@
         </div>
         <!--end breadcrumb-->
 
-        <form class="card p-3" action="?action=cap-nhat&id=<?=$detailThietBi['id']?>" method="POST">
+        <form class="card p-3" action="?action=cap-nhat&id=<?=$detail['id']?>" method="POST">
           <div class="title d-flex justify-content-center">
             <div class="d-flex align-items-center gap-3">
               <div class="product-box border">
-                <?= $detailThietBi['image'] ?? "Trống" ?>
+                <?= $detail['image'] ?? "Trống" ?>
               </div>
               <div class="product-info">
-                <h6 class="product-name mb-1"> <?= $detailThietBi['ten'] ?? "Trống" ?> </h6>
+                <h6 class="product-name mb-1"> <?= $detail['ten'] ?? "Trống" ?> </h6>
               </div>
             </div>
           </div>
@@ -76,7 +76,7 @@
                 <line x1="12" y1="22.08" x2="12" y2="12"></line>
               </svg>
               Tên thiết bị </label>
-            <input type="text" class="form-control" name="ten" value="<?= $detailThietBi['ten'] ?>" placeholder="Nhập tên thiết bị " required>
+            <input type="text" class="form-control" name="ten" value="<?= $detail['ten'] ?>" placeholder="Nhập tên thiết bị " required>
           </div>
           <div class="col-12 mt-3">
             <label for="inputEmail" class="form-label">
@@ -96,7 +96,7 @@
                 ?>
 
                   <option
-                    <?= $detailThietBi['loai_id'] == $listLoaiThietBi[$j]['id'] ? 'selected' : '' ?>
+                    <?= $detail['loai_id'] == $listLoaiThietBi[$j]['id'] ? 'selected' : '' ?>
                     value="<?= $listLoaiThietBi[$j]['id'] ?>">
 
                     <?= $listLoaiThietBi[$j]['ten'] ?> </option>
@@ -127,7 +127,7 @@
                 ?>
 
                   <option
-                    <?= $detailThietBi['chanpin_id'] == $listChanPin[$j]['id'] ? 'selected' : '' ?>
+                    <?= $detail['chanpin_id'] == $listChanPin[$j]['id'] ? 'selected' : '' ?>
                     value="<?= $listChanPin[$j]['id'] ?>">
 
                     <?= $listChanPin[$j]['ten'] ?> </option>
@@ -158,7 +158,7 @@
                 ?>
 
                   <option
-                    <?= $detailThietBi['khuvuc_id'] == $listKhuVuc[$j]['id'] ? 'selected' : '' ?>
+                    <?= $detail['khuvuc_id'] == $listKhuVuc[$j]['id'] ? 'selected' : '' ?>
                     value="<?= $listKhuVuc[$j]['id'] ?>">
 
                     <?= $listKhuVuc[$j]['ten'] ?> </option>
@@ -173,7 +173,9 @@
           </div>
           <div class="col-12 mt-2">
             <label for="inputPassword" class="form-label"> <i class="lni lni-amazon"></i> Miêu tả</label>
-            <textarea type="text" rows="4" value="<?= $detailThietBi['mieu_ta'] ?>" name="mieu_ta" class="form-control" id="inputPassword" placeholder="Miêu tả thiết bị"></textarea>
+            <textarea type="text" rows="4" name="mieu_ta" class="form-control"  placeholder="Miêu tả thiết bị">
+            <?= $detail['mieu_ta']??'' ?>
+            </textarea>
           </div>
           <div class="col-12 mt-2 d-none">
             <label for="inputPassword" class="form-label"> <i class="lni lni-amazon"></i> Nhà </label>

@@ -1,7 +1,6 @@
 <?php
 ob_start();
 session_start();
-require_once(__DIR__ . '/models/ThietBi.php');
 require_once(__DIR__ . '/models/User.php');
 require_once(__DIR__ . '/models/Role.php');
 if (!isset($_SESSION['USER_NAME'])) {
@@ -9,14 +8,16 @@ if (!isset($_SESSION['USER_NAME'])) {
      die();
 }
 
-if ($_SERVER['REQUEST_METHOD'] == 'GET' && $_REQUEST['action']=='danh-sach') {
+if ($_SERVER['REQUEST_METHOD'] == 'GET' && $_REQUEST['action'] == 'danh-sach') {
      try {
           $userModel = new User();
-          $user=$userModel->find(['u.id ='=>$_SESSION['USER_ID']]);
-          $listUser = $userModel->getAll(['u.nha_id =' => $user['nha_id'],'u.id !='=>$user['id']]);
+          $user = $userModel->find(['u.id =' => $_SESSION['USER_ID']]);
+          $listUser = $userModel->getAll(['u.nha_id =' => $user['nha_id'], 'u.id !=' => $user['id']]);
 
-          $roleModel= new Role();
-          $listRole = $roleModel->getAll(['r.ten !='=>'superadmin']);
+          $roleModel = new Role();
+          $listRole = $roleModel->getAll(['r.ten !=' => 'superadmin']);
+           
+       
           include('views/managerChildAccount/list.view.php');
           ob_end_flush();
      } catch (\Throwable $th) {
@@ -24,23 +25,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && $_REQUEST['action']=='danh-sach') {
           echo $th;
           die();
      }
-} 
-else if($_SERVER['REQUEST_METHOD'] == 'POST' && $_REQUEST['action']=='them-moi') {
-     
+} else if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_REQUEST['action'] == 'them-moi') {
+
      try {
           try {
                if (!empty($_SESSION['USER_ID'])) {
-                    //echo "found";  
-                    // lấy toàn bộ các thiết bị trong nhà 
+                 
                     unset($_REQUEST['action']);
-                
                     $userModel = new User();
-                    $listThietBi = $userModel->create($_REQUEST);
+                    $listUser = $userModel->create($_REQUEST);
+
+                  
                     $_SESSION['success'] = "Thêm dữ liệu thành công!";
-                    
+
                     header("location:managerChildAccount.php?action=danh-sach");
                     ob_end_flush();
-                   
                } else {
                     $_SESSION['error'] = "Bạn phải đăng nhập để sử dụng chức năng!";
 
@@ -51,8 +50,58 @@ else if($_SERVER['REQUEST_METHOD'] == 'POST' && $_REQUEST['action']=='them-moi')
                echo $th;
                die();
           }
-         
-      
+     } catch (\Throwable $th) {
+          //throw $th;
+          echo $th;
+          die();
+     }
+} else if (($_SERVER['REQUEST_METHOD'] == 'GET' && $_REQUEST['action'] == 'chinh-sua')) {
+
+     try {
+          $userModel = new User();
+          $detail = $userModel->find(['u.id =' => $_REQUEST['id']]);
+
+          $roleModel = new Role();
+          $listRole = $roleModel->getAll(['r.ten !=' => 'superadmin']);
+          include('views/managerChildAccount/edit.view.php');
+          ob_end_flush();
+     } catch (\Throwable $th) {
+          //throw $th;
+          echo $th;
+          die();
+     }
+} else if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_REQUEST['action'] == 'cap-nhat') {
+
+     try {
+          try {
+               if (!empty($_SESSION['USER_ID'])) {
+                    //echo "found";  
+                    // lấy toàn bộ các thiết bị trong nhà 
+                    unset($_REQUEST['action']);
+                    $id = $_REQUEST['id'];
+                    $userModel = new User();
+                    $userModel->update($id, $_REQUEST);
+                    if((int)$_REQUEST['role_id']==2){
+                         $permissionModel= new Permission();
+                         $permissionModel->update($id,[
+                              'permission_type'=>'control'
+                         ]);
+                    }
+                    $_SESSION['success'] = "Cập nhật dữ liệu thành công!";
+
+                    header("location:managerChildAccount.php?action=danh-sach");
+               } else {
+                    $_SESSION['error'] = "Bạn phải đăng nhập để sử dụng chức năng!";
+
+                    header("location:login.php");
+               }
+          } catch (\Throwable $th) {
+               //throw $th;
+               echo $th;
+               die();
+          }
+          include('views/managerDevice/edit.view.php');
+          ob_end_flush();
      } catch (\Throwable $th) {
           //throw $th;
           echo $th;
