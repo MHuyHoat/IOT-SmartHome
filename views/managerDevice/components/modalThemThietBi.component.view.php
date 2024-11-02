@@ -2,7 +2,7 @@
                             <!-- Modal -->
                             <div
                                 class="modal fade"
-                                id="modalAddChildAccount"
+                                id="modalAddThietBi"
                                 tabindex="-1"
                                 role="dialog"
                                 aria-labelledby="modalTitleId"

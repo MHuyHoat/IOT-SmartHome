@@ -57,55 +57,7 @@
 
 
                             <!-- Modal -->
-                            <div
-                                class="modal fade"
-                                id="modalAddChildAccount"
-                                tabindex="-1"
-                                role="dialog"
-                                aria-labelledby="modalTitleId"
-                                aria-hidden="true">
-                                <div
-                                    class="modal-dialog "
-                                    role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="modalTitleId">
-                                                Thêm tài khoản con
-                                            </h5>
-                                            <button
-                                                type="button"
-                                                class="btn-close"
-                                                data-bs-dismiss="modal"
-                                                aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-
-
-                                            <div class="col-12 mt-2">
-                                                <label for="inputEmail" class="form-label">Họ tên</label>
-                                                <input type="text" class="form-control" name="hoten" placeholder="Họ tên người dùng ">
-                                            </div>
-                                            <div class="col-12 mt-2">
-                                                <label for="inputEmail" class="form-label">Tên đăng nhập </label>
-                                                <input type="text" class="form-control" name="username" placeholder="Tên đăng nhập">
-                                            </div>
-                                            <div class="col-12 mt-2">
-                                                <label for="inputPassword" class="form-label">Mật khẩu </label>
-                                                <input type="password" name="password" class="form-control" id="inputPassword" placeholder="Mật khẩu ">
-                                            </div>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button
-                                                type="button"
-                                                class="btn btn-secondary"
-                                                data-bs-dismiss="modal">
-                                                Hủy
-                                            </button>
-                                            <button type="button" class="btn btn-primary">Thêm</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                    
 
                         </div>
                     </div>
@@ -134,7 +86,6 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        
                                         <?php
                                         for ($j = 0; $j < count($listUser); $j++) {
                                         ?>
@@ -163,9 +114,13 @@
                                                         <a href="javascript:;" class="text-warning" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Edit info" aria-label="Edit">
                                                             <ion-icon name="pencil-outline" role="img" class="md hydrated" aria-label="pencil outline"></ion-icon>
                                                         </a>
+                                                        <a href="javascript:;" class="text-info" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Delete" aria-label="Delete">
+                                                        <i class="lni lni-protection"></i>
+                                                        </a>
                                                         <a href="javascript:;" class="text-danger" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Delete" aria-label="Delete">
                                                             <ion-icon name="trash-outline" role="img" class="md hydrated" aria-label="trash outline"></ion-icon>
                                                         </a>
+
                                                     </div>
                                                 </td>
                                             </tr>
@@ -189,10 +144,10 @@
         </div>
         <!--end page content wrapper-->
 
-
+        <?php include('views/managerChildAccount/components/modalThemTaiKhoanCon.component.view.php'); ?>
         <?php include('views/components/footer.component.php'); ?>
 
-        <script src="assets/js/home.js"></script>
+        <script src="assets/js/managerChildAccount.js"></script>
 </body>
 
 

@@ -53,7 +53,7 @@
                     <div class="ms-auto">
                         <div class="btn-group">
                             <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal"
-                                data-bs-target="#modalAddChildAccount">Thêm thiết bị </button>
+                                data-bs-target="#modalAddThietBi">Thêm thiết bị </button>
                             <!-- Button trigger modal -->
                              
 

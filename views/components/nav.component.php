@@ -20,20 +20,20 @@
     <li>
       <a href="javascript:;" class="has-arrow">
         <div class="parent-icon">
-          <ion-icon name="bag-handle-outline"></ion-icon>
+        <i class="lni lni-atlassian"></i>
         </div>
         <div class="menu-title">Quản lý</div>
       </a>
       <ul>
-        <li><a href="managerChildAccount.php">
-            <ion-icon name="ellipse-outline"></ion-icon>Các tài khoản con
-          </a>
-        </li>
+        
         <li><a href="managerDevice.php?action=danh-sach">
             <ion-icon name="ellipse-outline"></ion-icon>Danh sách thiết bị
           </a>
         </li>
-
+        <li><a href="#">
+            <ion-icon name="ellipse-outline"></ion-icon>Khu vực
+          </a>
+        </li>
       </ul>
     </li>
 
@@ -48,11 +48,11 @@
       </a>
     </li>
     <li>
-      <a href="pages-edit-profile.html">
+      <a href="managerChildAccount.php?action=danh-sach">
         <div class="parent-icon">
-          <ion-icon name="create-outline"></ion-icon>
+        <i class="lni lni-mailchimp"></i>
         </div>
-        <div class="menu-title">Phân quyền </div>
+        <div class="menu-title">Quản lý tài khoản con</div>
       </a>
     </li>
   
