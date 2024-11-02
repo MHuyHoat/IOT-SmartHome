@@ -119,12 +119,12 @@
                                                     <td><span class="badge bg-<?= $listUser[$j]['ten_role'] == 'admin' ? "danger" : 'success' ?>"> <?= $listUser[$j]['ten_role'] ?? "Trống" ?> </span></td>
 
                                                     <td>
-                                                        <div class="d-flex align-items-center gap-3 fs-6">
+                                                        <div class="  gap-3 fs-6 <?=$listUser[$j]['role_id']==$user['role_id']?'d-none':'d-flex'?> align-items-center">
 
                                                             <a href="?action=chinh-sua&id=<?= $listUser[$j]['id'] ?>" class="text-warning" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Edit info" aria-label="Edit">
                                                                 <ion-icon name="pencil-outline" role="img" class="md hydrated" aria-label="pencil outline"></ion-icon>
                                                             </a>
-                                                            <a href="javascript:;" class="text-info" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Delete" aria-label="Delete">
+                                                            <a href="permission.php?action=danh-sach&user_id=<?= $listUser[$j]['id'] ?>" class="text-info" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Delete" aria-label="Delete">
                                                                 <i class="lni lni-protection"></i>
                                                             </a>
                                                             <a href="javascript:;" onclick="deleteTaiKhoan(`<?= $listUser[$j]['ten'] ?>`,<?= $listUser[$j]['id'] ?>)" class="text-danger" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Delete" aria-label="Delete">
@@ -156,10 +156,8 @@
         </div>
         <!--end page content wrapper-->
 
-        <?php include('views/managerChildAccount/components/modalThemTaiKhoanCon.component.view.php'); ?>
+      
         <?php include('views/components/footer.component.php'); ?>
-
-        <script src="assets/js/managerChildAccount.js"></script>
 </body>
 
 

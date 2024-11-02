@@ -60,8 +60,10 @@ class Permission
             $query = $this->helper->strInsert($query,$data);
          
             $lastId = $this->conn->executeInsert($query);
+            
+
             //Hiển thị kết quả, vòng lặp sau đây sẽ dừng lại khi đã duyệt qua toàn bộ kết quả
-            return true;
+            return $lastId;
         } catch (\Throwable $th) {
             echo  $th;
             die();

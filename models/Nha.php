@@ -59,13 +59,11 @@ class Nha
             $query =  " INSERT INTO $this->table ";
             $query = $this->helper->strInsert($query,$data);
          
-            $stmt = $this->conn->prepare($query);
-            //Gán giá trị và thực thi
+            $lastId = $this->conn->executeInsert($query);
             
-            $stmt->execute();
 
             //Hiển thị kết quả, vòng lặp sau đây sẽ dừng lại khi đã duyệt qua toàn bộ kết quả
-            return true;
+            return $lastId;
         } catch (\Throwable $th) {
             echo  $th;
             die();

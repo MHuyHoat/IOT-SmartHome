@@ -21,10 +21,10 @@ class ChanPin
             $query = "SELECT $this->alias.*  FROM $this->table as $this->alias
               where 1=1 ";
             // generate chuỗi string đầu vào 
-            
+
             $query = $this->helper->strQuery($query, $data);
-          
-                  $stmt=$this->conn->executeQuery($query);
+
+            $stmt = $this->conn->executeQuery($query);
 
             //Hiển thị kết quả, vòng lặp sau đây sẽ dừng lại khi đã duyệt qua toàn bộ kết quả
             return $stmt->fetchAll();
@@ -43,8 +43,8 @@ class ChanPin
 
             // generate chuỗi string đầu vào 
             $query = $this->helper->strQuery($query, $data);
-           
-                 $stmt=$this->conn->executeQuery($query);
+
+            $stmt = $this->conn->executeQuery($query);
 
             //Hiển thị kết quả, vòng lặp sau đây sẽ dừng lại khi đã duyệt qua toàn bộ kết quả
             return $stmt->fetch();
@@ -58,15 +58,13 @@ class ChanPin
         try {
             //code...            
             $query =  " INSERT INTO $this->table ";
-            $query = $this->helper->strInsert($query,$data);
-         
-            $stmt = $this->conn->prepare($query);
-            //Gán giá trị và thực thi
+            $query = $this->helper->strInsert($query, $data);
+
+            $lastId = $this->conn->executeInsert($query);
             
-            $stmt->execute();
 
             //Hiển thị kết quả, vòng lặp sau đây sẽ dừng lại khi đã duyệt qua toàn bộ kết quả
-            return true;
+            return $lastId;
         } catch (\Throwable $th) {
             echo  $th;
             die();
@@ -81,7 +79,7 @@ class ChanPin
             // generate chuỗi string đầu vào 
             $query = $this->helper->strUpdate($query, $data);
             $query .= " WHERE id = $id ";
-            $last=$this->conn->executeUpdate($query);
+            $last = $this->conn->executeUpdate($query);
 
             //Hiển thị kết quả, vòng lặp sau đây sẽ dừng lại khi đã duyệt qua toàn bộ kết quả
             return true;
@@ -96,7 +94,7 @@ class ChanPin
             //code...            
             $query =  " DELETE FROM $this->table  WHERE 1=1 ";
             $query = $this->helper->strDelete($query, $data);
-            $last=$this->conn->executeUpdate($query);
+            $last = $this->conn->executeUpdate($query);
 
             //Hiển thị kết quả, vòng lặp sau đây sẽ dừng lại khi đã duyệt qua toàn bộ kết quả
             return true;

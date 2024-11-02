@@ -117,7 +117,7 @@ class ThietBi
             }
 
             //Hiển thị kết quả, vòng lặp sau đây sẽ dừng lại khi đã duyệt qua toàn bộ kết quả
-            return true;
+            return $lastId;
         } catch (\Throwable $th) {
             echo  $th;
             die();
@@ -146,8 +146,11 @@ class ThietBi
             //code...            
             $query =  " DELETE FROM $this->table  WHERE 1=1 ";
             $query = $this->helper->strDelete($query, $data);
-            $last = $this->conn->executeUpdate($query);
-
+             $this->conn->executeUpdate($query);
+             $this->setPermissionModel();
+             $this->permissionsModel->delete([
+                'thietbi_id ='=>$data['id']
+             ]);
             //Hiển thị kết quả, vòng lặp sau đây sẽ dừng lại khi đã duyệt qua toàn bộ kết quả
             return true;
         } catch (\Throwable $th) {

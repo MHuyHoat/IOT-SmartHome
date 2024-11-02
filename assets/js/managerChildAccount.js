@@ -32,7 +32,7 @@ function deleteTaiKhoan(tenTaiKhoan, id) {
                 });
                 setTimeout(() => {
                   window.location.reload();
-                }, 2000);
+                }, 1000);
               } else {
                 toastr.error("Có lỗi xảy ra. Vui lòng thử lại sau");
   

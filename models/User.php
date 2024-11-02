@@ -80,8 +80,10 @@ class User
             $query =  " INSERT INTO $this->table ";
             $query = $this->helper->strInsert($query, $data);
 
-            $lastId= $this->conn->executeUpdate($query);
+            $lastId= $this->conn->executeInsert($query);
+            $this->setThietBiModel();
             $listThietBi = $this->thietBiModel->getAll(['tb.nha_id =' => $data['nha_id']]);
+            $this->setPermissionModel();
             foreach ($listThietBi as $key => $value) {
                 # code...
                 $this->permissionModel->create([
@@ -91,7 +93,7 @@ class User
                 ]);
             }
             //Hiển thị kết quả, vòng lặp sau đây sẽ dừng lại khi đã duyệt qua toàn bộ kết quả
-            return true;
+            return $lastId;
         } catch (\Throwable $th) {
             echo  $th;
             die();
@@ -106,7 +108,7 @@ class User
             // generate chuỗi string đầu vào 
             $query = $this->helper->strUpdate($query, $data);
             $query .= " WHERE id = $id ";
-            $lastId=$this->conn->executeUpdate($query);
+           $this->conn->executeUpdate($query);
 
             //Hiển thị kết quả, vòng lặp sau đây sẽ dừng lại khi đã duyệt qua toàn bộ kết quả
             return true;
@@ -121,8 +123,11 @@ class User
             //code...            
             $query =  " DELETE FROM $this->table  WHERE 1=1 ";
             $query = $this->helper->strDelete($query, $data);
-            $last=$this->conn->executeUpdate($query);
-
+            $this->conn->executeUpdate($query);
+            $this->setPermissionModel();
+            $this->permissionModel->delete([
+               'user_id ='=>$data['id']
+            ]);
             //Hiển thị kết quả, vòng lặp sau đây sẽ dừng lại khi đã duyệt qua toàn bộ kết quả
             return true;
         } catch (\Throwable $th) {

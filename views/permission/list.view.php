@@ -46,21 +46,11 @@
                             <ol class="breadcrumb mb-0 p-0 align-items-center">
                                 <li class="breadcrumb-item"><a href="javascript:;"><ion-icon name="home-outline" role="img" class="md hydrated" aria-label="home outline"></ion-icon></a>
                                 </li>
-                                <li class="breadcrumb-item active" aria-current="page">Danh sách các thiết bị trong nhà </li>
+                                <li class="breadcrumb-item active" aria-current="page">Phân quyền người dùng </li>
                             </ol>
                         </nav>
                     </div>
-                    <div class="ms-auto">
-                        <div class="btn-group">
-                            <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal"
-                                data-bs-target="#modalAddThietBi">Thêm thiết bị </button>
-                            <!-- Button trigger modal -->
 
-
-
-
-                        </div>
-                    </div>
                 </div>
                 <!--end breadcrumb-->
 
@@ -70,7 +60,7 @@
 
                         <div class="card-body">
                             <div class="d-flex align-items-center">
-                                <h6 class="mb-0">Danh sách các thiết bị </h6>
+                                <h6 class="mb-0">Quyền người dùng </h6>
 
                             </div>
                             <div class="table-responsive mt-2">
@@ -79,11 +69,10 @@
                                         <tr>
                                             <th>#ID</th>
                                             <th>Tên thiết bị </th>
-                                            <th> Chân pin </th>
-                                            <th>Thuộc nhà </th>
+
                                             <th>Thuộc khu vực</th>
-                                            <th>Trạng thái</th>
-                                            <th>Thao tác </th>
+                                            <th>Điều khiển</th>
+                                            <th>Chỉ xem </th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -115,44 +104,31 @@
                                                             </div>
                                                         </div>
                                                     </td>
-                                                    <td> <?= $listThietBi[$j]['ten_chanpin'] ?? '...' ?> </td>
-                                                    <td> <?= $listThietBi[$j]['ten_nha'] ?> </td>
+
                                                     <td> <?= $listThietBi[$j]['ten_khu_vuc'] ?? "Trống" ?> </td>
-                                                    <td><span class="badge bg-<?= $listThietBi[$j]['trangthai'] == 1 ? "success" : 'danger' ?>"> <?= $listThietBi[$j]['trangthai'] == 1 ? "Bật " : 'Tắt' ?>" </span></td>
-
                                                     <td>
-                                                        <div class="d-flex align-items-center gap-3 fs-6">
-                                                            <a href="javascript:;" class="text-primary" data-bs-toggle="modal" data-bs-target="#exampleModalDetailDevice<?= $listThietBi[$j]['id'] ?>">
-                                                                <ion-icon name="eye-outline" role="img" class="md hydrated" aria-label="eye outline"></ion-icon>
-                                                            </a>
-                                                            <!-- Modal -->
-                                                            <div class="modal fade" id="exampleModalDetailDevice<?= $listThietBi[$j]['id'] ?>" tabindex="-1" aria-labelledby="exampleModalDetailDevice<?= $listThietBi[$j]['id'] ?>Label" aria-hidden="true">
-                                                                <div class="modal-dialog">
-                                                                    <div class="modal-content">
-                                                                        <div class="modal-header">
-                                                                            <h5 class="modal-title" id="exampleModalLabel">Thông tin thiết bị : <?= $listThietBi[$j]['image'] ?>
-                                                                                <span style="font-size: 15px;" class="ms-1"> <?= $listThietBi[$j]['ten'] ?></span>
-                                                                            </h5>
-                                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                                        </div>
-                                                                        <div class="modal-body">
-                                                                            <?= empty($listThietBi[$j]['mieu_ta']) ? "..." : $listThietBi[$j]['mieu_ta'] ?>
-                                                                        </div>
-                                                                        <div class="modal-footer">
+                                                    <div class="form-check">
+                                                            <div class="form-check form-switch">
+                                                                <input class="form-check-input"
+                                                                    onchange=""
+                                                                    <?php if ($listThietBi[$j]['permission_type'] == 'control') echo 'checked';   ?>
+                                                                    type="checkbox" id="permissionView<?= $listThietBi[$j]['id'] ?>">
 
-                                                                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Đóng</button>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
                                                             </div>
-
-                                                            <a href="managerDevice.php?action=chinh-sua&id=<?= $listThietBi[$j]['id'] ?> " class="text-warning" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Edit info" aria-label="Edit">
-                                                                <ion-icon name="pencil-outline" role="img" class="md hydrated" aria-label="pencil outline"></ion-icon>
-                                                            </a>
-                                                            <a href="javascript:;" onclick="deleteThietBi(`<?= $listThietBi[$j]['ten'] ?>`,<?= $listThietBi[$j]['id'] ?>)" class="text-danger" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Delete" aria-label="Delete">
-                                                                <ion-icon name="trash-outline" role="img" class="md hydrated" aria-label="trash outline"></ion-icon>
-                                                            </a>
                                                         </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-check">
+                                                            <div class="form-check form-switch">
+                                                                <input class="form-check-input"
+                                                                    onchange=""
+                                                                    <?php if ($listThietBi[$j]['permission_type'] == 'view') echo 'checked';   ?>
+                                                                    type="checkbox" id="permissionControl<?= $listThietBi[$j]['id'] ?>">
+
+                                                            </div>
+                                                        </div>
+
+
                                                     </td>
                                                 </tr>
 
@@ -175,8 +151,10 @@
         <!--end page content wrapper-->
 
 
-        <?php include('views/managerDevice/components/modalThemThietBi.component.view.php'); ?>
+
         <?php include('views/components/footer.component.php'); ?>
+
+
 </body>
 
 
