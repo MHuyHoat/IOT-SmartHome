@@ -1,3 +1,5 @@
+
+
 function startSpeech() {
   // lấy tham chiếu output div
   var output = document.getElementById("speech-text");
@@ -78,52 +80,5 @@ function setTrangThaiThietBi(id) {
     })
     .catch((err) => console.log(err));
 }
-function deleteThietBi(tenThietBi, id) {
-  swal
-    .fire({
-      title: "Xác nhận",
-      html: `Bạn có chắc muốn xóa thiết bị <b>${tenThietBi}</b> !`,
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonText: "Có, xóa nó!",
-      cancelButtonText: "Không!",
-      reverseButtons: true,
-    })
-    .then((result) => {
-      if (result.isConfirmed) {
-        fetch("api/ThietBiApi.php", {
-          method: "post",
-          headers: {
-            "Content-type": "application/json",
-            Accept: "*",
-          },
-          body: JSON.stringify({
-            id: id,
-            action: "deleteThietBi",
-          }),
-        })
-          .then((res) => res.json())
-          .then((data) => {
-            if (data.status == "success") {
-              swal.fire({
-                title: "Đã xóa!",
-                text: "Bạn đã xóa thiết bị thành công.",
-                icon: "success",
-              });
-              setTimeout(() => {
-                window.location.reload();
-              }, 2000);
-            } else {
-              toastr.error("Có lỗi xảy ra. Vui lòng thử lại sau");
 
-              window.location.reload();
-            }
-          })
-          .catch((err) => console.log(err));
-      } else if (
-        /* Read more about handling dismissals below */
-        result.dismiss === Swal.DismissReason.cancel
-      ) {
-      }
-    });
-}
+       

@@ -15,9 +15,19 @@ class ThietBi
     public function __construct()
     {
 
-        $this->conn = (new DBConn())->Connect();
-        $this->helper = new Helpers();
-        $this->userModel= new User();
+        try {
+            $this->conn = (new DBConn());
+            $this->helper = new Helpers();
+        } catch (\Throwable $th) {
+            //throw $th;
+            echo $th;
+            die();
+        }
+    }
+    public function  setUserModel(){
+        $this->userModel = new User();
+    }
+    public function setPermissionModel(){
         $this->permissionsModel = new Permission();
     }
     public function getAll($data = [])
@@ -29,7 +39,7 @@ class ThietBi
              ltb.ten as ten_loai_thietbi , ltb.id as id_loai_thietbi,
              ltb.default_image as image , 
               kv.ten as ten_khu_vuc, kv.id as id_khuvuc,
-              p.permission_type ,
+              p.permission_type , p.id as permission_id ,
               n.ten as ten_nha,
               cp.ten as ten_chanpin
             from $this->table AS  $this->alias
@@ -42,13 +52,8 @@ class ThietBi
              where 1=1 ";
             // generate chuỗi string đầu vào 
             $query = $this->helper->strQuery($query, $data);
-            $stmt = $this->conn->prepare($query);
-
-            //Thiết lập kiểu dữ liệu trả về
-            $stmt->setFetchMode(PDO::FETCH_ASSOC);
-
-            //Gán giá trị và thực thi
-            $stmt->execute();
+     
+            $stmt = $this->conn->executeQuery($query);
 
             //Hiển thị kết quả, vòng lặp sau đây sẽ dừng lại khi đã duyệt qua toàn bộ kết quả
             return $stmt->fetchAll();
@@ -61,12 +66,12 @@ class ThietBi
     {
         try {
             //code...            
-            $query = "SELECT  
+            $query = "SELECT 
             $this->alias.* ,
              ltb.ten as ten_loai_thietbi , ltb.id as id_loai_thietbi,
              ltb.default_image as image , 
               kv.ten as ten_khu_vuc, kv.id as id_khuvuc,
-              p.permission_type ,
+              p.permission_type , p.id as permission_id,
               n.ten as ten_nha,
               cp.ten as ten_chanpin
             from $this->table AS  $this->alias
@@ -80,14 +85,8 @@ class ThietBi
 
             // generate chuỗi string đầu vào 
             $query = $this->helper->strQuery($query, $data);
-         
-            $stmt = $this->conn->prepare($query);
 
-            //Thiết lập kiểu dữ liệu trả về
-            $stmt->setFetchMode(PDO::FETCH_ASSOC);
-
-            //Gán giá trị và thực thi
-            $stmt->execute();
+            $stmt = $this->conn->executeQuery($query);
 
             //Hiển thị kết quả, vòng lặp sau đây sẽ dừng lại khi đã duyệt qua toàn bộ kết quả
             return $stmt->fetch();
@@ -101,26 +100,25 @@ class ThietBi
         try {
             //code...            
             $query =  " INSERT INTO $this->table ";
-            $query = $this->helper->strInsert($query,$data);
-         
-            $stmt = $this->conn->prepare($query);
-            //Gán giá trị và thực thi
-            
-            $stmt->execute();
-            $lastId = $this->conn->lastInsertId();
+            $query = $this->helper->strInsert($query, $data);
+
+
+            $lastId = $this->conn->executeInsert($query);
             // gan quyen permission cho cac tai khoan trong nha
-            $listUser= $this->userModel->getAll(['nha_id ='=> $data['nha_id']]);
+            $this->setUserModel();
+            $listUser =    $this->conn->executeQuery("SELECT * FROM users as u WHERE u.nha_id=".$data['nha_id']."")->fetchAll();
+            $this->setPermissionModel();
             foreach ($listUser as $key => $value) {
                 # code...
                 $this->permissionsModel->create([
-                    'permission_type'=>'control',
-                    'user_id'=>$value['id'],
-                    'thietbi_id'=>$lastId
+                    'permission_type' => 'control',
+                    'user_id' => $value['id'],
+                    'thietbi_id' => $lastId
                 ]);
             }
 
             //Hiển thị kết quả, vòng lặp sau đây sẽ dừng lại khi đã duyệt qua toàn bộ kết quả
-            return true;
+            return $lastId;
         } catch (\Throwable $th) {
             echo  $th;
             die();
@@ -135,11 +133,7 @@ class ThietBi
             // generate chuỗi string đầu vào 
             $query = $this->helper->strUpdate($query, $data);
             $query .= " WHERE id = $id ";
-            $stmt = $this->conn->prepare($query);
-        
-            //Gán giá trị và thực thi
-            $stmt->execute();
-
+            $lastId = $this->conn->executeUpdate($query);
             //Hiển thị kết quả, vòng lặp sau đây sẽ dừng lại khi đã duyệt qua toàn bộ kết quả
             return true;
         } catch (\Throwable $th) {
@@ -153,10 +147,11 @@ class ThietBi
             //code...            
             $query =  " DELETE FROM $this->table  WHERE 1=1 ";
             $query = $this->helper->strDelete($query, $data);
-            $stmt = $this->conn->prepare($query);
-            //Gán giá trị và thực thi
-            $stmt->execute();
-
+             $this->conn->executeUpdate($query);
+             $this->setPermissionModel();
+             $this->permissionsModel->delete([
+                'thietbi_id ='=>$data['id']
+             ]);
             //Hiển thị kết quả, vòng lặp sau đây sẽ dừng lại khi đã duyệt qua toàn bộ kết quả
             return true;
         } catch (\Throwable $th) {

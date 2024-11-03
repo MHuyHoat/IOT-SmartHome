@@ -11,7 +11,7 @@ class Permission
     public function __construct()
     {
 
-        $this->conn = (new DBConn())->Connect();
+        $this->conn = (new DBConn());
         $this->helper = new Helpers();
     }
     public function getAll($data = [])
@@ -23,12 +23,7 @@ class Permission
               where 1=1 ";
             // generate chuỗi string đầu vào 
             $query = $this->helper->strQuery($query, $data);
-            $stmt = $this->conn->prepare($query);
-            //Thiết lập kiểu dữ liệu trả về
-            $stmt->setFetchMode(PDO::FETCH_ASSOC);
-
-            //Gán giá trị và thực thi
-            $stmt->execute();
+                  $stmt=$this->conn->executeQuery($query);
 
             //Hiển thị kết quả, vòng lặp sau đây sẽ dừng lại khi đã duyệt qua toàn bộ kết quả
             return $stmt->fetchAll();
@@ -48,13 +43,7 @@ class Permission
             // generate chuỗi string đầu vào 
             $query = $this->helper->strQuery($query, $data);
 
-            $stmt = $this->conn->prepare($query);
-
-            //Thiết lập kiểu dữ liệu trả về
-            $stmt->setFetchMode(PDO::FETCH_ASSOC);
-
-            //Gán giá trị và thực thi
-            $stmt->execute();
+                 $stmt=$this->conn->executeQuery($query);
 
             //Hiển thị kết quả, vòng lặp sau đây sẽ dừng lại khi đã duyệt qua toàn bộ kết quả
             return $stmt->fetch();
@@ -70,30 +59,26 @@ class Permission
             $query =  " INSERT INTO $this->table ";
             $query = $this->helper->strInsert($query,$data);
          
-            $stmt = $this->conn->prepare($query);
-            //Gán giá trị và thực thi
+            $lastId = $this->conn->executeInsert($query);
             
-            $stmt->execute();
 
             //Hiển thị kết quả, vòng lặp sau đây sẽ dừng lại khi đã duyệt qua toàn bộ kết quả
-            return true;
+            return $lastId;
         } catch (\Throwable $th) {
             echo  $th;
             die();
         }
     }
-    public function update($id, $data = [])
+    public function update($user_id,$thietbi_id ,$data = [])
     {
         try {
             //code...            
-            $query =  " UPDATE $this->table SET id=$id  ";
+            $query =  " UPDATE $this->table SET user_id=$user_id, thietbi_id=$thietbi_id ";
 
             // generate chuỗi string đầu vào 
             $query = $this->helper->strUpdate($query, $data);
-            $query .= " WHERE id = $id ";
-            $stmt = $this->conn->prepare($query);
-            //Gán giá trị và thực thi
-            $stmt->execute();
+             $query .= " WHERE user_id = $user_id and thietbi_id=$thietbi_id ";
+            $last=$this->conn->executeUpdate($query);
 
             //Hiển thị kết quả, vòng lặp sau đây sẽ dừng lại khi đã duyệt qua toàn bộ kết quả
             return true;
@@ -102,15 +87,14 @@ class Permission
             die();
         }
     }
+  
     public function delete($data)
     {
         try {
             //code...            
             $query =  " DELETE FROM $this->table  WHERE 1=1 ";
             $query = $this->helper->strDelete($query, $data);
-            $stmt = $this->conn->prepare($query);
-            //Gán giá trị và thực thi
-            $stmt->execute();
+            $last=$this->conn->executeUpdate($query);
 
             //Hiển thị kết quả, vòng lặp sau đây sẽ dừng lại khi đã duyệt qua toàn bộ kết quả
             return true;

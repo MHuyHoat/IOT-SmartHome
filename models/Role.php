@@ -2,12 +2,12 @@
 
 require_once(__DIR__ . '/../config/DBConn.php');
 require_once(__DIR__ . '/../helpers/Helpers.php');
-class KhuVuc
+class Role
 {
     public $conn;
-    public $table = "khuvuc";
+    public $table = "role";
     public $helper;
-    public $alias = 'kv';
+    public $alias = 'r';
     public function __construct()
     {
 
