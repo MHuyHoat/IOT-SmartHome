@@ -20,12 +20,12 @@
     <li>
       <a href="javascript:;" class="has-arrow">
         <div class="parent-icon">
-        <i class="lni lni-atlassian"></i>
+          <i class="lni lni-atlassian"></i>
         </div>
         <div class="menu-title">Quản lý</div>
       </a>
       <ul>
-        
+
         <li><a href="managerDevice.php?action=danh-sach">
             <ion-icon name="ellipse-outline"></ion-icon>Danh sách thiết bị
           </a>
@@ -50,17 +50,30 @@
     <li>
       <a href="managerChildAccount.php?action=danh-sach">
         <div class="parent-icon">
-        <i class="lni lni-mailchimp"></i>
+          <i class="lni lni-slideshare"></i>
         </div>
         <div class="menu-title">Quản lý tài khoản con</div>
       </a>
     </li>
-  
+
+
+    <li>
+      <a href="newSetUp.php?action=danh-sach">
+        <div class="parent-icon">
+        <i class="lni lni-cogs"></i>  
+        </div>
+        <div class="menu-title">Thiết lập mới </div>
+      </a>
+    </li>
     <li>
       <a class="dropdown-item" href="logout.php" previewlistener="true">
         <div class="d-flex align-items-center">
           <div class="">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-log-out"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-log-out">
+              <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+              <polyline points="16 17 21 12 16 7"></polyline>
+              <line x1="21" y1="12" x2="9" y2="12"></line>
+            </svg>
           </div>
           <div class="ms-3"><span>Thoát</span></div>
         </div>

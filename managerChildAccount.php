@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && $_REQUEST['action'] == 'danh-sach') {
           $listRole = $roleModel->getAll(['r.ten !=' => 'superadmin']);
            
        
-          include('views/managerChildAccount/list.view.php');
+          include('views/managerChildAccount/index.view.php');
           ob_end_flush();
      } catch (\Throwable $th) {
           //throw $th;

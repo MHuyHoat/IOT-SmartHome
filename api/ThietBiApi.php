@@ -6,7 +6,7 @@ try {
     //code...
     require_once(__DIR__ . '/../models/ThietBi.php');
     require_once(__DIR__.'/../models/Permission.php');
-
+    require_once(__DIR__.'/../config/DBConn.php');
     $thietBiModel = new ThietBi();
     $permissionModel= new Permission();
     // Thiết lập tiêu đề HTTP
@@ -95,6 +95,25 @@ try {
                 'message' => "Đã xóa thành công trạng thái thiết bị ",
             ];
             echo json_encode($responseData);
+        }
+        else if($data['action']='checkChipKetNoi'){
+             $conn= new DBConn();
+             $query= "SELECT tb.* FROM `thietbi` AS tb
+              INNER JOIN `loai_thietbi`as ltb ON tb.loai_id=ltb.id 
+              WHERE tb.id= ? and ltb.ten='Chip Connect'  and tb.nha_id IS NULL and tb.khuvuc_id IS NULL ";
+             $params=[$data['maChip']];
+             $existedChip= $conn->executeQuery($query,$params)->fetch();
+             if(!empty($existedChip)){
+                echo json_encode([
+                    'status' => 'success',
+                    'message' => 'Chip kết nối đã sẵn sàng sàng sử  dụng '
+                ]);
+             }else{
+                echo json_encode([
+                    'status' => 'error',
+                    'message' => 'Chip kết nối đã được sử dụng hoặc mã không tồn tại '
+                ]);
+             }
         }
     } else {
         echo json_encode([
