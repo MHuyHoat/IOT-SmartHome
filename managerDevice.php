@@ -1,16 +1,45 @@
 <?php
 ob_start();
 session_start();
+<<<<<<< HEAD
+require_once(__DIR__.'/models/ThietBi.php');
+require_once(__DIR__.'/models/User.php');
+=======
 require_once(__DIR__ . '/models/ThietBi.php');
 require_once(__DIR__ . '/models/LoaiThietBi.php');
 require_once(__DIR__ . '/models/Nha.php');
 require_once(__DIR__ . '/models/KhuVuc.php');
 require_once(__DIR__ . '/models/User.php');
 require_once(__DIR__ . '/models/ChanPin.php');
+>>>>>>> d3f358d2341ca478ccfdf9a5b650d59646d2a6a7
 if (!isset($_SESSION['USER_NAME'])) {
      header("location:login.php");
      die();
 }
+<<<<<<< HEAD
+
+if ($_SERVER['REQUEST_METHOD'] = 'get') {
+     try {
+          $userModel = new User();
+          $userName =  $_SESSION['USER_NAME'];
+
+          $user = $userModel->find([
+               'username' => $userName,
+          ]);
+          if (!empty($user)) {
+               //echo "found";  
+               $thietBiModel = new ThietBi();
+               $dataThietBi = $thietBiModel->getAll(['user_id' => $user['id']]);
+
+               $dataThietBiKhuVuc = [];
+               foreach ($dataThietBi ?? [] as $k => $v) {
+
+                    $dataThietBiKhuVuc[$v['id_khuvuc']][] = $v;
+               }
+          } else {
+               $msg = "Thông tin sai!";
+          }
+=======
 // echo json_encode($_REQUEST);
 // echo $_SERVER['REQUEST_METHOD'];
 // die();
@@ -45,11 +74,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && $_REQUEST['action']=='danh-sach') {
           }
           include('views/managerDevice/list.view.php');
           ob_end_flush();
+>>>>>>> d3f358d2341ca478ccfdf9a5b650d59646d2a6a7
      } catch (\Throwable $th) {
           //throw $th;
           echo $th;
           die();
      }
+<<<<<<< HEAD
+} else {
+}
+
+     include('views/managerDevice.view.php');
+ 
+ ?>  
+=======
 }
 
 else if($_SERVER['REQUEST_METHOD'] == 'POST' && $_REQUEST['action']=='them-moi') {
@@ -143,3 +181,4 @@ else if($_SERVER['REQUEST_METHOD'] == 'POST' && $_REQUEST['action']=='cap-nhat')
           die();
      }
 }
+>>>>>>> d3f358d2341ca478ccfdf9a5b650d59646d2a6a7

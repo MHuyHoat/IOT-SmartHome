@@ -29,7 +29,11 @@
             <ion-icon name="ellipse-outline"></ion-icon>Các tài khoản con
           </a>
         </li>
+<<<<<<< HEAD
+        <li><a href="managerDevice.php">
+=======
         <li><a href="managerDevice.php?action=danh-sach">
+>>>>>>> d3f358d2341ca478ccfdf9a5b650d59646d2a6a7
             <ion-icon name="ellipse-outline"></ion-icon>Danh sách thiết bị
           </a>
         </li>

@@ -12,7 +12,8 @@ class User
     {
 
         $this->conn = (new DBConn())->Connect();
-        $this->helper = new Helpers();
+        
+        $this->helper= new Helpers();
     }
     public function getAll($data = [])
     {
@@ -60,6 +61,7 @@ class User
             $query = $this->helper->strQuery($query, $data);
           
             $stmt = $this->conn->prepare($query);
+           
 
             //Thiết lập kiểu dữ liệu trả về
             $stmt->setFetchMode(PDO::FETCH_ASSOC);
