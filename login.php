@@ -15,9 +15,10 @@
                          'u.username =' => $userName,
                          'u.password =' => $password
                     ]);
-                      
+               
                     if (!empty($user)) {
-                         //echo "found";  
+                         //echo "found"; 
+                       
                          $_SESSION['USER_NAME'] = $user['username'];
                          $_SESSION['USER_ID'] = $user['id'];
                          header("location:home.php");

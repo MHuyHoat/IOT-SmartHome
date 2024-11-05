@@ -55,10 +55,10 @@ class User
             INNER JOIN role as r ON u.role_id= r.id
             INNER JOIN nha as n ON u.nha_id= n.id
              where 1=1 ";
-
+          
             // generate chuỗi string đầu vào 
             $query = $this->helper->strQuery($query, $data);
-           
+          
             $stmt = $this->conn->prepare($query);
 
             //Thiết lập kiểu dữ liệu trả về
