@@ -32,7 +32,7 @@
                             name="role_id"
                             readonly
                             id="">
-                            <option value="2">Quản trị viên </option>
+                            <option value="2">admin </option>
                            
 
                         </select>

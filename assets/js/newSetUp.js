@@ -58,7 +58,7 @@ function checkChipKetNoi() {
     method: "post",
     headers: {
       "Content-type": "application/json",
-      "Accept": "*",
+      Accept: "*",
     },
     body: JSON.stringify({
       maChip: maChip,
@@ -69,10 +69,17 @@ function checkChipKetNoi() {
     .then((data) => {
       if (data.status == "success") {
         toastr.success(data.message);
-         $('#nextStep2').prop('disabled',false);
+        $("#nextStep2").prop("disabled", false);
       } else {
         toastr.error(data.message);
       }
     })
     .catch((err) => console.log(err));
+}
+function themKhuVuc() {
+  const elementKV = ` <div class="col-12 mt-2 ">
+            <label for="inputPassword" class="form-label"> <i class="lni lni-page-break"></i> Tên phòng (Khu vực lắp đặt ) </label>
+            <input type="text" name="ten_khuvuc[]" class="form-control" placeholder="Tên phòng">
+        </div>`;
+  $("#khuvuc").append(elementKV);
 }

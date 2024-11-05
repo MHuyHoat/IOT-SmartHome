@@ -34,7 +34,6 @@
 
         <!-- start page content wrapper-->
         <div class="page-content-wrapper">
-
             <!-- start page content-->
             <div class="page-content">
 
@@ -46,17 +45,18 @@
                             <ol class="breadcrumb mb-0 p-0 align-items-center">
                                 <li class="breadcrumb-item"><a href="javascript:;"><ion-icon name="home-outline" role="img" class="md hydrated" aria-label="home outline"></ion-icon></a>
                                 </li>
-                                <li class="breadcrumb-item active" aria-current="page">Danh sách các thiết bị trong nhà </li>
+                                <li class="breadcrumb-item active" aria-current="page">Danh sách các tài khoản có trong hệ thống </li>
                             </ol>
                         </nav>
                     </div>
                     <div class="ms-auto">
                         <div class="btn-group">
                             <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal"
-                                data-bs-target="#modalAddThietBi">Thêm thiết bị </button>
+                                data-bs-target="#modalAddChildAccount">Thêm tài khoản  </button>
                             <!-- Button trigger modal -->
 
 
+                            <!-- Modal -->
 
 
                         </div>
@@ -70,24 +70,24 @@
 
                         <div class="card-body">
                             <div class="d-flex align-items-center">
-                                <h6 class="mb-0">Danh sách các thiết bị </h6>
+                                <h6 class="mb-0">Danh sách các tài khoản hệ thống </h6>
 
                             </div>
                             <div class="table-responsive mt-2">
-                                <table class="table align-middle mb-0"  id="dataTable" >
+                                <table class="table align-middle mb-0" id="dataTable" >
                                     <thead class="table-light">
                                         <tr>
                                             <th>#ID</th>
-                                            <th>Tên thiết bị </th>
-                                            <th> Chân pin </th>
-                                            <th>Thuộc nhà </th>
-                                            <th>Thuộc khu vực</th>
-                                            <th>Trạng thái</th>
+                                            <th>Họ và tên </th>
+                                            <th>Tên đăng nhập </th>
+                                            <th>Email</th>
+                                            <th>Nhà</th>
+                                            <th>Loại tài khoản</th>
                                             <th>Thao tác </th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php if (count($listThietBi) == 0) { ?>
+                                        <?php if (count($listUser) == 0) { ?>
                                             <tr>
                                                 <td>No Data</td>
                                                 <td>No Data</td>
@@ -96,62 +96,44 @@
                                                 <td>No Data</td>
                                                 <td>No Data</td>
                                                 <td>No Data</td>
+
                                             </tr>
                                         <?php
                                         } else { ?>
                                             <?php
-                                            for ($j = 0; $j < count($listThietBi); $j++) {
+                                            for ($j = 0; $j < count($listUser); $j++) {
                                             ?>
 
-                                                <tr class=" <?php if ($listThietBi[$j]['permission_type'] == 'view') echo 'd-none';   ?>">
+                                                <tr>
                                                     <td># <?= $j + 1 ?> </td>
                                                     <td>
                                                         <div class="d-flex align-items-center gap-3">
                                                             <div class="product-box border">
-                                                                <?= $listThietBi[$j]['image'] ?? "Trống" ?>
+                                                                <img src="assets/images/avatars/0<?= ((int) $listUser[$j]['id']) % 10 ?>.png" alt="">
                                                             </div>
                                                             <div class="product-info">
-                                                                <h6 class="product-name mb-1"> <?= $listThietBi[$j]['ten'] ?? "Trống" ?> </h6>
+                                                                <h6 class="product-name mb-1"> <?= $listUser[$j]['hoten'] ?? "Trống" ?> </h6>
                                                             </div>
                                                         </div>
                                                     </td>
-                                                    <td> <?= $listThietBi[$j]['ten_chanpin'] ?? '...' ?> </td>
-                                                    <td> <?= $listThietBi[$j]['ten_nha'] ?> </td>
-                                                    <td> <?= $listThietBi[$j]['ten_khu_vuc'] ?? "Trống" ?> </td>
-                                                    <td><span class="badge bg-<?= $listThietBi[$j]['trangthai'] == 1 ? "success" : 'danger' ?>"> <?= $listThietBi[$j]['trangthai'] == 1 ? "Bật " : 'Tắt' ?>" </span></td>
+                                                    <td> <?= $listUser[$j]['username'] ?> </td>
+                                                    <td> <?= $listUser[$j]['email'] ?? "Trống" ?> </td>
+                                                    <td> <?= $listUser[$j]['ten_nha'] ?? "Trống" ?> </td>
+                                                    <td><span class="badge bg-<?= $listUser[$j]['ten_role'] == 'admin' ? "danger" : 'success' ?>"> <?= $listUser[$j]['ten_role'] ?? "Trống" ?> </span></td>
 
                                                     <td>
-                                                        <div class="d-flex align-items-center gap-3 fs-6">
-                                                            <a href="javascript:;" class="text-primary" data-bs-toggle="modal" data-bs-target="#exampleModalDetailDevice<?= $listThietBi[$j]['id'] ?>">
-                                                                <ion-icon name="eye-outline" role="img" class="md hydrated" aria-label="eye outline"></ion-icon>
-                                                            </a>
-                                                            <!-- Modal -->
-                                                            <div class="modal fade" id="exampleModalDetailDevice<?= $listThietBi[$j]['id'] ?>" tabindex="-1" aria-labelledby="exampleModalDetailDevice<?= $listThietBi[$j]['id'] ?>Label" aria-hidden="true">
-                                                                <div class="modal-dialog">
-                                                                    <div class="modal-content">
-                                                                        <div class="modal-header">
-                                                                            <h5 class="modal-title" id="exampleModalLabel">Thông tin thiết bị : <?= $listThietBi[$j]['image'] ?>
-                                                                                <span style="font-size: 15px;" class="ms-1"> <?= $listThietBi[$j]['ten'] ?></span>
-                                                                            </h5>
-                                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                                        </div>
-                                                                        <div class="modal-body">
-                                                                            <?= empty($listThietBi[$j]['mieu_ta']) ? "..." : $listThietBi[$j]['mieu_ta'] ?>
-                                                                        </div>
-                                                                        <div class="modal-footer">
+                                                        <div class="  gap-3 fs-6  align-items-center">
 
-                                                                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Đóng</button>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-
-                                                            <a href="managerDevice.php?action=chinh-sua&id=<?= $listThietBi[$j]['id'] ?> " class="text-warning" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Edit info" aria-label="Edit">
+                                                            <a href="?action=chinh-sua&id=<?= $listUser[$j]['id'] ?>" class="text-warning" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Edit info" aria-label="Edit">
                                                                 <ion-icon name="pencil-outline" role="img" class="md hydrated" aria-label="pencil outline"></ion-icon>
                                                             </a>
-                                                            <a href="javascript:;" onclick="deleteThietBi(`<?= $listThietBi[$j]['ten'] ?>`,<?= $listThietBi[$j]['id'] ?>)" class="text-danger" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Delete" aria-label="Delete">
+                                                            <a href="permission.php?action=danh-sach&user_id=<?= $listUser[$j]['id'] ?>" class="text-info" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Delete" aria-label="Delete">
+                                                                <i class="lni lni-protection"></i>
+                                                            </a>
+                                                            <a href="javascript:;" onclick="deleteTaiKhoan(`<?= $listUser[$j]['ten'] ?>`,<?= $listUser[$j]['id'] ?>)" class="text-danger" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Delete" aria-label="Delete">
                                                                 <ion-icon name="trash-outline" role="img" class="md hydrated" aria-label="trash outline"></ion-icon>
                                                             </a>
+
                                                         </div>
                                                     </td>
                                                 </tr>
@@ -160,6 +142,9 @@
                                             }
                                             ?>
                                         <?php } ?>
+
+
+
                                     </tbody>
                                 </table>
                             </div>
@@ -174,10 +159,10 @@
         </div>
         <!--end page content wrapper-->
 
-
-        <?php include('views/managerDevice/components/modalThemThietBi.component.view.php'); ?>
+        <?php include('views/managerChildAccount/components/modalThemTaiKhoan.component.view.php'); ?>
         <?php include('views/components/footer.component.php'); ?>
-        <script src="assets/js/managerDevice.js"></script>
+        <script src="assets/js/managerChildAccount.js"></script>
+     
 </body>
 
 

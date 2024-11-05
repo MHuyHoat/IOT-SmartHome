@@ -8,7 +8,7 @@ if (!isset($_SESSION['USER_NAME'])) {
      die();
 }
 
-if ($_SERVER['REQUEST_METHOD'] = 'get') {
+if ($_SERVER['REQUEST_METHOD'] == 'GET') {
      try {
           $userModel = new User();
           $userName =  $_SESSION['USER_NAME'];

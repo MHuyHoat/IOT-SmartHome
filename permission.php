@@ -12,10 +12,6 @@ if (!isset($_SESSION['USER_NAME'])) {
      header("location:login.php");
      die();
 }
-// echo json_encode($_REQUEST);
-// echo $_SERVER['REQUEST_METHOD'];
-// die();
-// trang danh sach thiet bi 
 if ($_SERVER['REQUEST_METHOD'] == 'GET' && $_REQUEST['action'] == 'danh-sach') {
 
      try {

@@ -74,7 +74,7 @@
 
                             </div>
                             <div class="table-responsive mt-2">
-                                <table class="table align-middle mb-0">
+                                <table class="table align-middle mb-0"  id="dataTable">
                                     <thead class="table-light">
                                         <tr>
                                             <th>#ID</th>
