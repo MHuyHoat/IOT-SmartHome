@@ -23,7 +23,7 @@
                                         </div>
                                         <div class="modal-body">
                                         <div class="col-12 mt-2">
-            <label for="inputPassword" class="form-label"> <i class="lni lni-amazon"></i> ID</label>
+            <label for="inputPassword" class="form-label"> <b>#</b></i>ID</label>
             <input type="text"  name="id" class="form-control" id="inputPassword" placeholder="ID thiết bị"></input>
           </div>
                                             <div class="col-12 mt-2">
