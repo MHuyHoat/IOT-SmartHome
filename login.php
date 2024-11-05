@@ -33,8 +33,6 @@
  }  else{
      include('views/login.view.php');
  }
-=======
-<?php   
  session_start();  
  require_once(__DIR__.'/models/User.php');
 
@@ -66,9 +64,7 @@
  }  else{
      include('views/login.view.php');
  }
->>>>>>> 5f606d80680e6e25062e06f58f2aa1a893b41967
  ?>  
-=======
      <?php
      try {
           session_start();
@@ -109,4 +105,3 @@
           echo $e;
      }
      ?>
->>>>>>> d3f358d2341ca478ccfdf9a5b650d59646d2a6a7

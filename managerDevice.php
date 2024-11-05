@@ -1,10 +1,6 @@
 <?php
 ob_start();
 session_start();
-<<<<<<< HEAD
-require_once(__DIR__.'/models/ThietBi.php');
-require_once(__DIR__.'/models/User.php');
-=======
 require_once(__DIR__ . '/models/ThietBi.php');
 require_once(__DIR__ . '/models/LoaiThietBi.php');
 require_once(__DIR__ . '/models/Nha.php');
@@ -38,7 +34,6 @@ if ($_SERVER['REQUEST_METHOD'] = 'get') {
           } else {
                $msg = "Thông tin sai!";
           }
-=======
 // echo json_encode($_REQUEST);
 // echo $_SERVER['REQUEST_METHOD'];
 // die();
@@ -73,7 +68,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && $_REQUEST['action'] == 'danh-sach') {
           }
           include('views/managerDevice/index.view.php');
           ob_end_flush();
->>>>>>> d3f358d2341ca478ccfdf9a5b650d59646d2a6a7
      } catch (\Throwable $th) {
           //throw $th;
           echo $th;
@@ -200,4 +194,4 @@ else if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_REQUEST['action'] == 'them-mo
           die();
      }
 }
->>>>>>> d3f358d2341ca478ccfdf9a5b650d59646d2a6a7
+     }}

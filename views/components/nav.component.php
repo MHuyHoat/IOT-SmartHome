@@ -27,9 +27,13 @@
       <ul>
 
         <li><a href="managerDevice.php?action=danh-sach">
->>>>>>> d3f358d2341ca478ccfdf9a5b650d59646d2a6a7
             <ion-icon name="ellipse-outline"></ion-icon>Danh sách thiết bị
           </a>
+        </li>
+        <li><a href="managerPin.php?action=danh-sach">
+          <ion-icon name="ellipse-outline"></ion-icon>Chân pin
+        </a>
+
         </li>
         <li><a href="#">
             <ion-icon name="ellipse-outline"></ion-icon>Khu vực
