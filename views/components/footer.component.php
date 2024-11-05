@@ -176,4 +176,4 @@
 <script src="assets/js/index.js"></script>
 <!-- Main JS-->
 <script src="assets/js/main.js"></script>
-<script src="assets/js/dataTable.js" ></script>
+<script src="assets/js/custom.js" ></script>

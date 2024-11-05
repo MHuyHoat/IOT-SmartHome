@@ -14,7 +14,7 @@
   include('views/components/head.component.php')
   ?>
 
-  <title>Fobia - Bootstrap5 Admin Template</title>
+  <title>HNMU - IOT SmartHome</title>
 </head>
 
 <body>
@@ -119,9 +119,29 @@
 
               </select>
             </div>
-            <div class="col-12 mt-2 d-none">
-              <label for="inputPassword" class="form-label"> <i class="lni lni-amazon"></i> Nhà </label>
-              <input type="text" name="nha_id" class="form-control" value="<?= $detail['nha_id'] ?>" placeholder="Miêu tả thiết bị">
+            <div class="col-12 mt-2 ">
+              <label for="inputPassword" class="form-label"> <i class="fa fa-home" aria-hidden="true"></i> Nhà </label>
+              <select
+                required
+                class="form-select select2"
+                name="nha_id"
+                id="">
+                <option value="">Chọn nhà </option>
+                <?php
+                for ($j = 0; $j < count($listNha ?? []); $j++) {
+                ?>
+
+                  <option
+                   <?= $listNha[$j]['id']==$detail['nha_id']?'selected':'' ?>
+                   value="<?= $listNha[$j]['id'] ?>">
+
+                   <?= $listNha[$j]['id'] ?> - <?= $listNha[$j]['ten'] ?> </option>
+
+                <?php
+                }
+                ?>
+
+              </select>
             </div>
 
           </div>

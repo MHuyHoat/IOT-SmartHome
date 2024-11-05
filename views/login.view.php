@@ -23,7 +23,7 @@
   <link href="assets/css/icons.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&amp;display=swap" rel="stylesheet">
 
-  <title>Fobia - Bootstrap5 Admin Template</title>
+  <title>HNMU - IOT SmartHome</title>
 </head>
 
 <body class="bg-white">

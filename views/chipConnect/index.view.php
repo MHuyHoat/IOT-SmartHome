@@ -104,7 +104,7 @@
                                             ?>
 
                                                 <tr class=" <?php if ($listThietBi[$j]['permission_type'] == 'view') echo 'd-none';   ?>">
-                                                    <td># <?= $j + 1 ?> </td>
+                                                    <td># <?= $listThietBi[$j]['id']  ?> </td>
                                                     <td>
                                                         <div class="d-flex align-items-center gap-3">
                                                             <div class="product-box border">
@@ -146,7 +146,7 @@
                                                                 </div>
                                                             </div>
 
-                                                            <a href="managerDevice.php?action=chinh-sua&id=<?= $listThietBi[$j]['id'] ?> " class="text-warning" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Edit info" aria-label="Edit">
+                                                            <a href="chipConnect.php?action=chinh-sua&id=<?= $listThietBi[$j]['id'] ?> " class="text-warning" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Edit info" aria-label="Edit">
                                                                 <ion-icon name="pencil-outline" role="img" class="md hydrated" aria-label="pencil outline"></ion-icon>
                                                             </a>
                                                             <a href="javascript:;" onclick="deleteThietBi(`<?= $listThietBi[$j]['ten'] ?>`,<?= $listThietBi[$j]['id'] ?>)" class="text-danger" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Delete" aria-label="Delete">
@@ -175,7 +175,7 @@
         <!--end page content wrapper-->
 
 
-        <?php include('views/managerDevice/components/modalThemThietBi.component.view.php'); ?>
+        <?php include('views/chipConnect/components/modalThemThietBi.component.view.php'); ?>
         <?php include('views/components/footer.component.php'); ?>
         <script src="assets/js/managerDevice.js"></script>
 </body>

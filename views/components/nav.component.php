@@ -74,7 +74,7 @@
       </a>
     </li>
     <li>
-      <a href="managerDevice.php?action=danh-sach-chip-connect">
+      <a href="chipConnect.php?action=danh-sach">
         <div class="parent-icon">
         <i class="lni lni-rss-feed" style="font-size: 15px;"></i>
         </div>

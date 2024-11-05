@@ -14,7 +14,7 @@
     include('views/components/head.component.php')
     ?>
 
-    <title>Fobia - Bootstrap5 Admin Template</title>
+    <title>HNMU - IOT SmartHome</title>
 </head>
 
 <body>
@@ -127,7 +127,7 @@
                                                             <a href="permission.php?action=danh-sach&user_id=<?= $listUser[$j]['id'] ?>" class="text-info" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Delete" aria-label="Delete">
                                                                 <i class="lni lni-protection"></i>
                                                             </a>
-                                                            <a href="javascript:;" onclick="deleteTaiKhoan(`<?= $listUser[$j]['ten'] ?>`,<?= $listUser[$j]['id'] ?>)" class="text-danger" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Delete" aria-label="Delete">
+                                                            <a href="javascript:;" onclick="deleteTaiKhoan(`<?= $listUser[$j]['hoten'] ?>`,<?= $listUser[$j]['id'] ?>)" class="text-danger" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Delete" aria-label="Delete">
                                                                 <ion-icon name="trash-outline" role="img" class="md hydrated" aria-label="trash outline"></ion-icon>
                                                             </a>
 

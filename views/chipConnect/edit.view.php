@@ -78,113 +78,15 @@
               Tên thiết bị </label>
             <input type="text" class="form-control" name="ten" value="<?= $detail['ten'] ?>" placeholder="Nhập tên thiết bị " required>
           </div>
-          <div class="col-12 mt-3">
-            <label for="inputEmail" class="form-label">
-              <i class="lni lni-arrow-down-circle"></i>
-              Loại thiết bị
-            </label>
-            <div class="mb-3">
-
-              <select
-                required
-                class="form-select "
-                name="loai_id"
-                id="">
-                <option value="">Chọn loại thiết bị</option>
-                <?php
-                for ($j = 0; $j < count($listLoaiThietBi); $j++) {
-                ?>
-
-                  <option
-                    <?= $detail['loai_id'] == $listLoaiThietBi[$j]['id'] ? 'selected' : '' ?>
-                    value="<?= $listLoaiThietBi[$j]['id'] ?>">
-
-                    <?= $listLoaiThietBi[$j]['ten'] ?> </option>
-
-                <?php
-                }
-                ?>
-
-              </select>
-            </div>
-
-          </div>
-          <div class="col-12 mt-2">
-            <label for="inputEmail" class="form-label">
-              <i class="lni lni-chrome"></i>
-              Chân pin ESP32
-            </label>
-            <div class="mb-3">
-
-              <select
-                required
-                class="form-select "
-                name="chanpin_id"
-                id="">
-                <option value="">Chọn chân pin cắm thiết bị</option>
-                <?php
-                for ($j = 0; $j < count($listChanPin); $j++) {
-                ?>
-
-                  <option
-                    <?= $detail['chanpin_id'] == $listChanPin[$j]['id'] ? 'selected' : '' ?>
-                    value="<?= $listChanPin[$j]['id'] ?>">
-
-                    <?= $listChanPin[$j]['ten'] ?> </option>
-
-                <?php
-                }
-                ?>
-
-              </select>
-            </div>
-
-          </div>
-          <div class="col-12 mt-2">
-            <label for="inputEmail" class="form-label">
-              <i class="lni lni-apartment"></i>
-              Chọn nơi đặt thiết bị
-            </label>
-            <div class="mb-3">
-
-              <select
-                required
-                class="form-select "
-                name="khuvuc_id"
-                id="">
-                <option value="">Chọn khu vực</option>
-                <?php
-                for ($j = 0; $j < count($listKhuVuc); $j++) {
-                ?>
-
-                  <option
-                    <?= $detail['khuvuc_id'] == $listKhuVuc[$j]['id'] ? 'selected' : '' ?>
-                    value="<?= $listKhuVuc[$j]['id'] ?>">
-
-                    <?= $listKhuVuc[$j]['ten'] ?> </option>
-
-                <?php
-                }
-                ?>
-
-              </select>
-            </div>
-
-          </div>
+         
+    
           <div class="col-12 mt-2">
             <label for="inputPassword" class="form-label"> <i class="lni lni-amazon"></i> Miêu tả</label>
             <textarea type="text" rows="4" name="mieu_ta" class="form-control"  placeholder="Miêu tả thiết bị">
             <?= $detail['mieu_ta']??'' ?>
             </textarea>
           </div>
-          <div class="col-12 mt-2 d-none">
-            <label for="inputPassword" class="form-label"> <i class="lni lni-amazon"></i> Nhà </label>
-            <input type="text" name="nha_id" class="form-control" value="<?= $user['nha_id'] ?>" placeholder="Miêu tả thiết bị">
-          </div>
-          <div class="col-12 mt-2 d-none">
-            <label for="inputPassword" class="form-label"> <i class="lni lni-amazon"></i> Thiết bị Điều khiển </label>
-            <input type="text" name="parent_id" class="form-control" value="<?= $chipConnect['id'] ?>" placeholder="Miêu tả thiết bị">
-          </div>
+          
           <div class="d-flex justify-content-center mt-4">
             <div>
               <button

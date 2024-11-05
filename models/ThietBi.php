@@ -62,6 +62,35 @@ class ThietBi
             die();
         }
     }
+    public function getAllByCategory($data = [])
+    {
+        try {
+            //code...            
+            $query = "SELECT  
+            $this->alias.* ,
+             ltb.ten as ten_loai_thietbi , ltb.id as id_loai_thietbi,
+             ltb.default_image as image , 
+              kv.ten as ten_khu_vuc, kv.id as id_khuvuc,
+              n.ten as ten_nha,
+              cp.ten as ten_chanpin
+            from $this->table AS  $this->alias
+            INNER JOIN loai_thietbi AS ltb ON $this->alias.loai_id=ltb.id 
+            LEFT JOIN khuvuc AS kv ON $this->alias.khuvuc_id = kv.id
+            LEFT JOIN nha as n ON $this->alias.nha_id= n.id
+            LEFT JOIN chanpin as cp ON $this->alias.chanpin_id=cp.id
+             where 1=1 ";
+            // generate chuỗi string đầu vào 
+            $query = $this->helper->strQuery($query, $data);
+     
+            $stmt = $this->conn->executeQuery($query);
+
+            //Hiển thị kết quả, vòng lặp sau đây sẽ dừng lại khi đã duyệt qua toàn bộ kết quả
+            return $stmt->fetchAll();
+        } catch (\Throwable $th) {
+            echo  $th;
+            die();
+        }
+    }
     public function find($data = [])
     {
         try {
@@ -85,7 +114,7 @@ class ThietBi
 
             // generate chuỗi string đầu vào 
             $query = $this->helper->strQuery($query, $data);
-
+            
             $stmt = $this->conn->executeQuery($query);
 
             //Hiển thị kết quả, vòng lặp sau đây sẽ dừng lại khi đã duyệt qua toàn bộ kết quả

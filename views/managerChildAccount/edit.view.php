@@ -14,7 +14,7 @@
   include('views/components/head.component.php')
   ?>
 
-  <title>Fobia - Bootstrap5 Admin Template</title>
+  <title>HNMU - IOT SmartHome</title>
 </head>
 
 <body>

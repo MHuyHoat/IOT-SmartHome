@@ -179,9 +179,4 @@ function theme8() {
       $('[data-bs-toggle="tooltip"]').tooltip();
     })
 
-
-  
-
-  
-    
 });

@@ -14,7 +14,7 @@
     include('views/components/head.component.php')
     ?>
 
-    <title>Fobia - Bootstrap5 Admin Template</title>
+    <title>HNMU - IOT SmartHome</title>
 </head>
 
 <body>
@@ -159,7 +159,7 @@
         </div>
         <!--end page content wrapper-->
 
-        <?php include('views/managerChildAccount/components/modalThemTaiKhoan.component.view.php'); ?>
+        <?php include('views/user/components/modalThemTaiKhoan.component.view.php'); ?>
         <?php include('views/components/footer.component.php'); ?>
         <script src="assets/js/managerChildAccount.js"></script>
      

@@ -21,6 +21,8 @@ const initDataTable = () => {
     });
 
 }
+
 $(document).ready(function(){
     initDataTable()
+    $(".select2").select2();
 })
