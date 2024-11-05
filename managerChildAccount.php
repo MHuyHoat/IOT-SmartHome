@@ -100,8 +100,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && $_REQUEST['action'] == 'danh-sach') {
                echo $th;
                die();
           }
-          include('views/managerDevice/edit.view.php');
-          ob_end_flush();
+  
      } catch (\Throwable $th) {
           //throw $th;
           echo $th;

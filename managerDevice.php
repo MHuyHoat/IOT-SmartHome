@@ -51,7 +51,43 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && $_REQUEST['action'] == 'danh-sach') {
           echo $th;
           die();
      }
-} else if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_REQUEST['action'] == 'them-moi') {
+} 
+if ($_SERVER['REQUEST_METHOD'] == 'GET' && $_REQUEST['action'] == 'danh-sach-chip-connect') {
+
+     try {
+          try {
+               if (!empty($_SESSION['USER_ID'])) {
+                    //echo "found";  
+                    // lấy toàn bộ các thiết bị trong nhà 
+                  
+                    $thietBiModel = new ThietBi();
+                    $listThietBi = $thietBiModel->getAll(['tb.nha_id =' => $user['nha_id'],"p.user_id ="=>$_SESSION['USER_ID'] , "ltb.ten!=" => 'Chip Connect']);
+                    $loaiThietBiModel = new LoaiThietBi();
+                    $listLoaiThietBi = $loaiThietBiModel->getAll(['ten !=' => 'Chip Connect']);
+                    $khuVucModel = new KhuVuc();
+                    $listKhuVuc = $khuVucModel->getAll(['kv.nha_id =' => $user['nha_id']]);
+                    $chipConnect = $thietBiModel->find(['p.user_id =' => $_SESSION['USER_ID'], "ltb.ten=" => 'Chip Connect']);
+                    $chanPinModel = new ChanPin();
+                    $listChanPin = $chanPinModel->getAll();
+               } else {
+                    $_SESSION['error'] = "Bạn phải đăng nhập để sử dụng chức năng!";
+
+                    header("location:login.php");
+               }
+          } catch (\Throwable $th) {
+               //throw $th;
+               echo $th;
+               die();
+          }
+          include('views/managerDevice/index.view.php');
+          ob_end_flush();
+     } catch (\Throwable $th) {
+          //throw $th;
+          echo $th;
+          die();
+     }
+} 
+else if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_REQUEST['action'] == 'them-moi') {
 
      try {
           try {

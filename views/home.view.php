@@ -184,11 +184,11 @@
                                             </div>
                                             <div class="row">
                                                 <?php
-                                                $midleArea = count($v) / 2;
+                                                $midleArea =  count($v)>2? ((int)( count($v) / 2)):count($v);
 
                                                 ?>
 
-                                                <div class="col-md-5 ">
+                                                <div class="col-md-5 <?=$midleArea?> ">
                                                     <?php
                                                     for ($j = 0; $j < $midleArea; $j++) {
                                                     ?>

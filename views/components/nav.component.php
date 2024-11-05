@@ -56,7 +56,7 @@
       </a>
     </li>
 
-
+    <li class="menu-label">Super Admin</li>
     <li>
       <a href="newSetUp.php?action=danh-sach">
         <div class="parent-icon">
@@ -65,6 +65,23 @@
         <div class="menu-title">Thiết lập mới </div>
       </a>
     </li>
+    <li>
+      <a href="user.php?action=danh-sach">
+        <div class="parent-icon">
+        <ion-icon name="person-circle-outline"></ion-icon>
+        </div>
+        <div class="menu-title">Các tài khoản hệ thống </div>
+      </a>
+    </li>
+    <li>
+      <a href="managerDevice.php?action=danh-sach-chip-connect">
+        <div class="parent-icon">
+        <i class="lni lni-rss-feed" style="font-size: 15px;"></i>
+        </div>
+        <div class="menu-title">Danh sách chip kết nối</div>
+      </a>
+    </li>
+
     <li>
       <a class="dropdown-item" href="logout.php" previewlistener="true">
         <div class="d-flex align-items-center">

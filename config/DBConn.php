@@ -32,7 +32,8 @@ class DBConn
                 $stmt->execute($params);
                 return $stmt; // Trả về statement để có thể xử lý thêm nếu cần
             } catch (PDOException $e) {
-                echo 'Query failed: ' . $e->getMessage();
+                echo 'Query failed: ' . $e->getMessage()."\n";
+                echo 'SQl: '.$query."\n";
                 return false;
             } finally {
                 // Đóng kết nối
@@ -52,7 +53,8 @@ class DBConn
                 $lastId= $pdo->lastInsertId();
                 return $lastId; // Trả về statement để có thể xử lý thêm nếu cần
             } catch (PDOException $e) {
-                echo 'Query failed: ' . $e->getMessage();
+                echo 'Query failed: ' . $e->getMessage()."\n";
+                echo 'SQl: '.$query."\n";
                 return false;
             } finally {
                 // Đóng kết nối
@@ -71,7 +73,8 @@ class DBConn
                 $stmt->execute();
                 return $stmt; // Trả về statement để có thể xử lý thêm nếu cần
             } catch (PDOException $e) {
-                echo 'Query failed: ' . $e->getMessage();
+                echo 'Query failed: ' . $e->getMessage()."\n";
+                echo 'SQl: '.$query."\n";
                 return false;
             } finally {
                 // Đóng kết nối
