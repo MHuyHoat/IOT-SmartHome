@@ -69,7 +69,7 @@
                 <div class="card overflow-hidden radius-10">
                   <div class="profile-cover bg-dark position-relative mb-4">
                     <div class="user-profile-avatar shadow position-absolute top-50 start-0 translate-middle-x">
-                      <img src="assets/images/avatars/06.png" alt="...">
+                      <img src="assets/images/avatars/0<?=(int)$_SESSION['USER_ID']%10?>.png" alt="...">
                     </div>
                   </div>
                   <div class="card-body">

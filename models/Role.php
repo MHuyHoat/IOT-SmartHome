@@ -2,12 +2,12 @@
 
 require_once(__DIR__ . '/../config/DBConn.php');
 require_once(__DIR__ . '/../helpers/Helpers.php');
-class ChanPin
+class Role
 {
     public $conn;
-    public $table = "chanpin";
+    public $table = "role";
     public $helper;
-    public $alias = 'cp';
+    public $alias = 'r';
     public function __construct()
     {
 
@@ -18,18 +18,16 @@ class ChanPin
     {
         try {
             //code...            
-            $query = "SELECT $this->alias.*  FROM $this->table as $this->alias
+            $query = "SELECT $this->alias.*
+            FROM $this->table as $this->alias
               where 1=1 ";
             // generate chuỗi string đầu vào 
-
             $query = $this->helper->strQuery($query, $data);
-
-            $stmt = $this->conn->executeQuery($query);
+                  $stmt=$this->conn->executeQuery($query);
 
             //Hiển thị kết quả, vòng lặp sau đây sẽ dừng lại khi đã duyệt qua toàn bộ kết quả
             return $stmt->fetchAll();
         } catch (\Throwable $th) {
-            echo $query . "\n";
             echo  $th;
             die();
         }
@@ -38,13 +36,14 @@ class ChanPin
     {
         try {
             //code...            
-            $query = "SELECT $this->alias.*  FROM $this->table as $this->alias
-             where 1=1 ";
+            $query = "SELECT $this->alias.*
+            FROM $this->table as $this->alias
+              where 1=1 ";
 
             // generate chuỗi string đầu vào 
             $query = $this->helper->strQuery($query, $data);
 
-            $stmt = $this->conn->executeQuery($query);
+                 $stmt=$this->conn->executeQuery($query);
 
             //Hiển thị kết quả, vòng lặp sau đây sẽ dừng lại khi đã duyệt qua toàn bộ kết quả
             return $stmt->fetch();
@@ -58,8 +57,8 @@ class ChanPin
         try {
             //code...            
             $query =  " INSERT INTO $this->table ";
-            $query = $this->helper->strInsert($query, $data);
-
+            $query = $this->helper->strInsert($query,$data);
+         
             $lastId = $this->conn->executeInsert($query);
             
 
@@ -79,7 +78,7 @@ class ChanPin
             // generate chuỗi string đầu vào 
             $query = $this->helper->strUpdate($query, $data);
             $query .= " WHERE id = $id ";
-            $last = $this->conn->executeUpdate($query);
+            $last=$this->conn->executeUpdate($query);
 
             //Hiển thị kết quả, vòng lặp sau đây sẽ dừng lại khi đã duyệt qua toàn bộ kết quả
             return true;
@@ -94,7 +93,7 @@ class ChanPin
             //code...            
             $query =  " DELETE FROM $this->table  WHERE 1=1 ";
             $query = $this->helper->strDelete($query, $data);
-            $last = $this->conn->executeUpdate($query);
+            $last=$this->conn->executeUpdate($query);
 
             //Hiển thị kết quả, vòng lặp sau đây sẽ dừng lại khi đã duyệt qua toàn bộ kết quả
             return true;

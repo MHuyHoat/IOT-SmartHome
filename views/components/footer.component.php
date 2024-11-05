@@ -155,13 +155,13 @@
         </div>
 
         <!-- Optional: Place to the bottom of scripts -->
-        <script type="text/javascript">
+        <!-- <script type="text/javascript">
             const myModal = new bootstrap.Modal(
                 document.getElementById("speechId"),
                 options,
             );
      
-        </script>
+        </script> -->
 <!-- JS Files-->
 <script src="assets/js/jquery.min.js"></script>
 <script src="assets/plugins/simplebar/js/simplebar.min.js"></script>
@@ -176,3 +176,4 @@
 <script src="assets/js/index.js"></script>
 <!-- Main JS-->
 <script src="assets/js/main.js"></script>
+<script src="assets/js/dataTable.js" ></script>

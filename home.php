@@ -14,17 +14,21 @@ if ($_SERVER['REQUEST_METHOD'] = 'get') {
           if (!empty($_SESSION['USER_ID'])) {
                //echo "found";  
                // lấy toàn bộ các thiết bị trong nhà 
+               $userModel = new User();
+               $user = $userModel->find(['u.id =' => $_SESSION['USER_ID']]);
                $thietBiModel = new ThietBi();
-               $dataThietBi = $thietBiModel->getAll(['p.user_id = ' => $_SESSION['USER_ID'],"ltb.ten!="=>'Chip Connect']);
-
+              
+               
+               $dataThietBi = $thietBiModel->getAll(['tb.nha_id = ' => $user['nha_id'],"p.user_id ="=>$_SESSION['USER_ID'] ,"ltb.ten!="=>'Chip Connect']);
+  
                $dataThietBiKhuVuc = [];
                foreach ($dataThietBi ?? [] as $k => $v) {
 
                     $dataThietBiKhuVuc[$v['id_khuvuc']][] = $v;
                }
                // 
-               $thietBiDoAm= $thietBiModel->find(['ltb.ten = '=>'Đo độ ẩm']);
-               $thietBiNhietDo= $thietBiModel->find(['ltb.ten = ' => 'Đo nhiệt độ ']);
+               $thietBiDoAm= $thietBiModel->find(['tb.nha_id = ' => $user['nha_id'],"p.user_id ="=>$_SESSION['USER_ID'] ,'ltb.ten = '=>'Đo độ ẩm']);
+               $thietBiNhietDo= $thietBiModel->find(['tb.nha_id = ' => $user['nha_id'],"p.user_id ="=>$_SESSION['USER_ID'] ,'ltb.ten = ' => 'Đo nhiệt độ ']);
           
           } else {
                $_SESSION['error']="Thông tin sai!";  

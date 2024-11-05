@@ -20,25 +20,19 @@
     <li>
       <a href="javascript:;" class="has-arrow">
         <div class="parent-icon">
-          <ion-icon name="bag-handle-outline"></ion-icon>
+          <i class="lni lni-atlassian"></i>
         </div>
         <div class="menu-title">Quản lý</div>
       </a>
       <ul>
-        <li><a href="managerChildAccount.php">
-            <ion-icon name="ellipse-outline"></ion-icon>Các tài khoản con
-          </a>
-        </li>
-<<<<<<< HEAD
-        <li><a href="managerDevice.php">
-=======
+
         <li><a href="managerDevice.php?action=danh-sach">
 >>>>>>> d3f358d2341ca478ccfdf9a5b650d59646d2a6a7
             <ion-icon name="ellipse-outline"></ion-icon>Danh sách thiết bị
           </a>
         </li>
-        <li><a href="managerPin.php?action=danh-sach">
-          <ion-icon name="ellipse-outline"></ion-icon>Chân pin
+        <li><a href="#">
+            <ion-icon name="ellipse-outline"></ion-icon>Khu vực
           </a>
         </li>
       </ul>
@@ -55,19 +49,49 @@
       </a>
     </li>
     <li>
-      <a href="pages-edit-profile.html">
+      <a href="managerChildAccount.php?action=danh-sach">
         <div class="parent-icon">
-          <ion-icon name="create-outline"></ion-icon>
+          <i class="lni lni-slideshare"></i>
         </div>
-        <div class="menu-title">Phân quyền </div>
+        <div class="menu-title">Quản lý tài khoản con</div>
       </a>
     </li>
-  
+
+    <li class="menu-label">Super Admin</li>
+    <li>
+      <a href="newSetUp.php?action=danh-sach">
+        <div class="parent-icon">
+        <i class="lni lni-cogs"></i>  
+        </div>
+        <div class="menu-title">Thiết lập mới </div>
+      </a>
+    </li>
+    <li>
+      <a href="user.php?action=danh-sach">
+        <div class="parent-icon">
+        <ion-icon name="person-circle-outline"></ion-icon>
+        </div>
+        <div class="menu-title">Các tài khoản hệ thống </div>
+      </a>
+    </li>
+    <li>
+      <a href="managerDevice.php?action=danh-sach-chip-connect">
+        <div class="parent-icon">
+        <i class="lni lni-rss-feed" style="font-size: 15px;"></i>
+        </div>
+        <div class="menu-title">Danh sách chip kết nối</div>
+      </a>
+    </li>
+
     <li>
       <a class="dropdown-item" href="logout.php" previewlistener="true">
         <div class="d-flex align-items-center">
           <div class="">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-log-out"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-log-out">
+              <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+              <polyline points="16 17 21 12 16 7"></polyline>
+              <line x1="21" y1="12" x2="9" y2="12"></line>
+            </svg>
           </div>
           <div class="ms-3"><span>Thoát</span></div>
         </div>
