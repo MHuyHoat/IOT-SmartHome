@@ -12,6 +12,28 @@ if (!isset($_SESSION['USER_NAME'])) {
      header("location:login.php");
      die();
 }
+
+if ($_SERVER['REQUEST_METHOD'] = 'get') {
+     try {
+          $userModel = new User();
+          $userName =  $_SESSION['USER_NAME'];
+
+          $user = $userModel->find([
+               'username' => $userName,
+          ]);
+          if (!empty($user)) {
+               //echo "found";  
+               $thietBiModel = new ThietBi();
+               $dataThietBi = $thietBiModel->getAll(['user_id' => $user['id']]);
+
+               $dataThietBiKhuVuc = [];
+               foreach ($dataThietBi ?? [] as $k => $v) {
+
+                    $dataThietBiKhuVuc[$v['id_khuvuc']][] = $v;
+               }
+          } else {
+               $msg = "Thông tin sai!";
+          }
 // echo json_encode($_REQUEST);
 // echo $_SERVER['REQUEST_METHOD'];
 // die();
@@ -172,3 +194,4 @@ else if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_REQUEST['action'] == 'them-mo
           die();
      }
 }
+     }}
