@@ -1,3 +1,5 @@
+  
+  <link rel="icon" type="image/x-icon" href="assets/images/logo-icon-2.png">
   <!-- loader-->
   <link href="assets/css/pace.min.css" rel="stylesheet" />
   <script src="assets/js/pace.min.js"></script>

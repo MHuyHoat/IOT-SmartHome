@@ -9,10 +9,12 @@ if (!isset($_SESSION['USER_NAME'])) {
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'GET' && $_REQUEST['action']=='danh-sach') {
+
      try {
           $chanPinModel= new ChanPin();
           $listChanPin= $chanPinModel->getAll();
           include('views/managerChanPin/list.view.php');
+        
           ob_end_flush();
      } catch (\Throwable $th) {
           //throw $th;
