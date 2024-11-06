@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <?php
 session_start();
   if($_SESSION['USER_NAME']){
@@ -9,5 +8,3 @@ session_start();
 
 
 ?>
-=======
->>>>>>> 5f606d80680e6e25062e06f58f2aa1a893b41967

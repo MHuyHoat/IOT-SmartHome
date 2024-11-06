@@ -35,7 +35,7 @@
             <ion-icon name="ellipse-outline"></ion-icon>Chân pin
           </a>
         </li>
-        <li><a href="#">
+        <li><a href="managerKhuVuc.php?action=danh-sach">
             <ion-icon name="ellipse-outline"></ion-icon>Khu vực
           </a>
         </li>

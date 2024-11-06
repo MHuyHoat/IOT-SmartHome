@@ -4,9 +4,9 @@
 
 try {
     //code...
-    require_once(__DIR__ . '/../models/ChanPin.php');
+    require_once(__DIR__ . '/../models/KhuVuc.php');
 
-    $chanPinModel = new ChanPin();
+    $khuVucModel = new KhuVuc();
     // Thiết lập tiêu đề HTTP
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -15,8 +15,8 @@ try {
         $data = json_decode($postData, true);
         // Decode the JSON data into a PHP associative array
        
-         if($data['action'] == "deleteChanPin"){
-            $chanPinModel->delete(['id ='=>$data['id']]);
+         if($data['action'] == "deleteKhuVuc"){
+            $khuVucModel->delete(['id ='=>$data['id']]);
             $responseData = [
                 'status' => 'success',
                 'message' => "Đã xóa thành công chân pin ",
