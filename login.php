@@ -2,26 +2,27 @@
      try {
           session_start();
       
-          require_once(__DIR__ . '/models/User.php');
+          require_once(__DIR__ . '/config/DBConn.php');
 
           $msg = "";
           if (isset($_POST['submit'])) {
                try {
-                    $userModel = new User();
+                    $conn=new DBConn();
                     $userName = $_POST['userName'];
                     $password = $_POST['password'];
 
-                    $user = $userModel->find([
-                         'u.username =' => $userName,
-                         'u.password =' => $password
-                    ]);
+                    $user = $conn->executeQuery("SELECT u.*,r.ten as ten_role FROM users as u INNER JOIN role AS r ON u.role_id=r.id  WHERE  u.username='$userName' and u.password='$password' ")->fetch();
                       
                     if (!empty($user)) {
                          //echo "found";  
                          $_SESSION['USER_NAME'] = $user['username'];
                          $_SESSION['USER_ID'] = $user['id'];
                          $_SESSION['USER_ROLE']  = $user['ten_role'];
-                         header("location:home.php");
+                         if($_SESSION['USER_ROLE']=='superadmin'){
+                              header("location:dashboard.php?action=dashboard-admin"); 
+                            }else{
+                              header("location:home.php"); 
+                            }
                     } else {
                          $_SESSION['error'] = "Thông tin sai!";
 
