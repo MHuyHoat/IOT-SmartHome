@@ -50,6 +50,9 @@ class ThietBi
             INNER JOIN nha as n ON $this->alias.nha_id= n.id
             LEFT JOIN chanpin as cp ON $this->alias.chanpin_id=cp.id
              where 1=1 ";
+
+                         // generate chuỗi string đầu vào 
+            $query=$this->helper->strQuery($query,$data);
             // generate chuỗi string đầu vào 
             $query = $this->helper->strQuery($query, $data);
      
