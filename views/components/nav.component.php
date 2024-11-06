@@ -33,10 +33,14 @@
               <ion-icon name="ellipse-outline"></ion-icon>Danh sách thiết bị
             </a>
           </li>
+<<<<<<< HEAD
           <li><a href="managerPin.php?action=danh-sach">
               <ion-icon name="ellipse-outline"></ion-icon>Chân Pin
             </a>
           </li>
+=======
+         
+>>>>>>> 9ecb0482888ccc95074cd80fc7494e0d67363d9d
           <li><a href="managerKhuVuc.php?action=danh-sach">
               <ion-icon name="ellipse-outline"></ion-icon>Khu vực
             </a>
@@ -98,6 +102,14 @@
             <i class="lni lni-rss-feed" style="font-size: 15px;"></i>
           </div>
           <div class="menu-title">Danh sách chip kết nối</div>
+        </a>
+      </li>
+      <li>
+        <a href="managerPin.php?action=danh-sach">
+          <div class="parent-icon">
+          <i class="lni lni-circle-plus"></i>
+          </div>
+          <div class="menu-title">Danh sách chân pin</div>
         </a>
       </li>
 
