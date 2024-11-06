@@ -20,6 +20,7 @@
                          //echo "found";  
                          $_SESSION['USER_NAME'] = $user['username'];
                          $_SESSION['USER_ID'] = $user['id'];
+                         $_SESSION['USER_ROLE']  = $user['ten_role'];
                          header("location:home.php");
                     } else {
                          $_SESSION['error'] = "Thông tin sai!";

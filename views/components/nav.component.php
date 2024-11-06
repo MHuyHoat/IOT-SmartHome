@@ -9,80 +9,98 @@
   </div>
   <!--navigation-->
   <ul class="metismenu" id="menu">
-    <li>
-      <a href="home.php">
-        <div class="parent-icon">
-          <ion-icon name="home-outline"></ion-icon>
-        </div>
-        <div class="menu-title">Trang chủ</div>
-      </a>
-    </li>
-    <li>
-      <a href="javascript:;" class="has-arrow">
-        <div class="parent-icon">
-          <i class="lni lni-atlassian"></i>
-        </div>
-        <div class="menu-title">Quản lý</div>
-      </a>
-      <ul>
+    <!-- Phần dành cho loại tài khoản không phải là superadmin -->
+    <?php if (!empty($_SESSION['USER_ROLE'] && $_SESSION['USER_ROLE'] != 'superadmin')) {
+    ?>
+      <li>
+        <a href="home.php">
+          <div class="parent-icon">
+            <ion-icon name="home-outline"></ion-icon>
+          </div>
+          <div class="menu-title">Trang chủ</div>
+        </a>
+      </li>
+      <li>
+        <a href="javascript:;" class="has-arrow">
+          <div class="parent-icon">
+            <i class="lni lni-atlassian"></i>
+          </div>
+          <div class="menu-title">Quản lý</div>
+        </a>
+        <ul>
 
-        <li><a href="managerDevice.php?action=danh-sach">
-            <ion-icon name="ellipse-outline"></ion-icon>Danh sách thiết bị
-          </a>
-        </li>
-        <li><a href="#">
-            <ion-icon name="ellipse-outline"></ion-icon>Khu vực
-          </a>
-        </li>
-      </ul>
-    </li>
+          <li><a href="managerDevice.php?action=danh-sach">
+              <ion-icon name="ellipse-outline"></ion-icon>Danh sách thiết bị
+            </a>
+          </li>
+          <li><a href="#">
+              <ion-icon name="ellipse-outline"></ion-icon>Khu vực
+            </a>
+          </li>
+        </ul>
+      </li>
 
-    <li class="menu-label">Khác</li>
+      <li class="menu-label">Khác</li>
 
-    <li>
-      <a href="userProfile.php">
-        <div class="parent-icon">
-          <ion-icon name="person-circle-outline"></ion-icon>
-        </div>
-        <div class="menu-title">Người dùng</div>
-      </a>
-    </li>
-    <li>
-      <a href="managerChildAccount.php?action=danh-sach">
-        <div class="parent-icon">
-          <i class="lni lni-slideshare"></i>
-        </div>
-        <div class="menu-title">Quản lý tài khoản con</div>
-      </a>
-    </li>
+      <li>
+        <a href="userProfile.php">
+          <div class="parent-icon">
+            <ion-icon name="person-circle-outline"></ion-icon>
+          </div>
+          <div class="menu-title">Người dùng</div>
+        </a>
+      </li>
+      <li class=" <?=  $_SESSION['USER_ROLE']!='admin'?'d-none':'' ?>  ">
+        <a href="managerChildAccount.php?action=danh-sach">
+          <div class="parent-icon">
+            <i class="lni lni-slideshare"></i>
+          </div>
+          <div class="menu-title">Quản lý tài khoản con</div>
+        </a>
+      </li>
+    <?php } ?>
 
-    <li class="menu-label">Super Admin</li>
-    <li>
-      <a href="newSetUp.php?action=danh-sach">
-        <div class="parent-icon">
-        <i class="lni lni-cogs"></i>  
-        </div>
-        <div class="menu-title">Thiết lập mới </div>
-      </a>
-    </li>
-    <li>
-      <a href="user.php?action=danh-sach">
-        <div class="parent-icon">
-        <ion-icon name="person-circle-outline"></ion-icon>
-        </div>
-        <div class="menu-title">Các tài khoản hệ thống </div>
-      </a>
-    </li>
-    <li>
-      <a href="chipConnect.php?action=danh-sach">
-        <div class="parent-icon">
-        <i class="lni lni-rss-feed" style="font-size: 15px;"></i>
-        </div>
-        <div class="menu-title">Danh sách chip kết nối</div>
-      </a>
-    </li>
+    <!-- Phần dành cho superadmin -->
+    <?php if (!empty($_SESSION['USER_ROLE'] && $_SESSION['USER_ROLE'] == 'superadmin')) {
+    ?>
+      <li class="menu-label">Super Admin</li>
+      <li>
+        <a href="dashboard.php?action=dashboard-admin">
+          <div class="parent-icon">
+            <i class="lni lni-pie-chart"></i>
+          </div>
+          <div class="menu-title">Dashboard </div>
+        </a>
+      </li>
+      <li>
+        <a href="newSetUp.php?action=danh-sach">
+          <div class="parent-icon">
+            <i class="lni lni-cogs"></i>
+          </div>
+          <div class="menu-title">Thiết lập mới </div>
+        </a>
+      </li>
+      <li>
+        <a href="user.php?action=danh-sach">
+          <div class="parent-icon">
+            <ion-icon name="person-circle-outline"></ion-icon>
+          </div>
+          <div class="menu-title">Các tài khoản hệ thống </div>
+        </a>
+      </li>
+      <li>
+        <a href="chipConnect.php?action=danh-sach">
+          <div class="parent-icon">
+            <i class="lni lni-rss-feed" style="font-size: 15px;"></i>
+          </div>
+          <div class="menu-title">Danh sách chip kết nối</div>
+        </a>
+      </li>
 
-    <li>
+      <li>
+      <?php
+    } ?>
+
       <a class="dropdown-item" href="logout.php" previewlistener="true">
         <div class="d-flex align-items-center">
           <div class="">
@@ -95,7 +113,7 @@
           <div class="ms-3"><span>Thoát</span></div>
         </div>
       </a>
-    </li>
+      </li>
   </ul>
   <!--end navigation-->
 </aside>

@@ -20,9 +20,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && $_REQUEST['action'] == 'danh-sach') {
             if (!empty($_SESSION['USER_ID'])) {
                 //echo "found";  
                 // lấy toàn bộ các thiết bị trong nhà 
+                $conn= new DBConn();
                 $thietBiModel = new ThietBi();
 
                 $listThietBi = $thietBiModel->getAllByCategory(["ltb.ten =" => 'Chip Connect']);
+                foreach($listThietBi??[] as $k =>$v){
+                    $nhaId= $listThietBi[$k]['nha_id'];
+                    $countThietBiControl=0;
+                    if(!empty($nhaId)){
+                        $countThietBiControl=count( $conn->executeQuery("SELECT * FROM thietbi WHERE nha_id=$nhaId and id!=".$listThietBi[$k]['id']." ")->fetchAll());
+
+                    }
+                    $listThietBi[$k]['slThietBiControl']=$countThietBiControl;
+                }
                 $loaiThietBiModel = new LoaiThietBi();
                 $listLoaiThietBi = $loaiThietBiModel->getAll(['ten =' => 'Chip Connect']);
                 $khuVucModel = new KhuVuc();

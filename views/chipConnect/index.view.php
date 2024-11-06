@@ -74,22 +74,19 @@
 
                             </div>
                             <div class="table-responsive mt-2">
-                                <table class="table align-middle mb-0"  id="dataTable" >
-                                    <thead class="table-light">
+                                <table class="table align-middle mb-0 "  id="dataTable" >
+                                    <thead class="table-light ">
                                         <tr>
-                                            <th>#ID</th>
-                                            <th>Tên thiết bị </th>
-                                            <th> Chân pin </th>
-                                            <th>Thuộc nhà </th>
-                                            <th>Thuộc khu vực</th>
-                                            <th>Trạng thái</th>
-                                            <th>Thao tác </th>
+                                            <th class="text-center" >#ID</th>
+                                            <th class="text-center"  >Tên thiết bị </th>
+                                            <th  class="text-center" >SL thiết bị điều khiển </th>
+                                            <th class="text-center" >Trạng thái</th>
+                                            <th class="text-center" >Thao tác </th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php if (count($listThietBi) == 0) { ?>
                                             <tr>
-                                                <td>No Data</td>
                                                 <td>No Data</td>
                                                 <td>No Data</td>
                                                 <td>No Data</td>
@@ -103,9 +100,9 @@
                                             for ($j = 0; $j < count($listThietBi); $j++) {
                                             ?>
 
-                                                <tr class=" <?php if ($listThietBi[$j]['permission_type'] == 'view') echo 'd-none';   ?>">
+                                                <tr class="text-center <?php if ($listThietBi[$j]['permission_type'] == 'view') echo 'd-none';   ?>">
                                                     <td># <?= $listThietBi[$j]['id']  ?> </td>
-                                                    <td>
+                                                    <td class="text-center" >
                                                         <div class="d-flex align-items-center gap-3">
                                                             <div class="product-box border">
                                                                 <?= $listThietBi[$j]['image'] ?? "Trống" ?>
@@ -115,12 +112,10 @@
                                                             </div>
                                                         </div>
                                                     </td>
-                                                    <td> <?= $listThietBi[$j]['ten_chanpin'] ?? '...' ?> </td>
-                                                    <td> <?= $listThietBi[$j]['ten_nha'] ?> </td>
-                                                    <td> <?= $listThietBi[$j]['ten_khu_vuc'] ?? "Trống" ?> </td>
-                                                    <td><span class="badge bg-<?= $listThietBi[$j]['trangthai'] == 1 ? "success" : 'danger' ?>"> <?= $listThietBi[$j]['trangthai'] == 1 ? "Bật " : 'Tắt' ?>" </span></td>
+                                                    <td  class="text-center" > <?=$listThietBi[$j]['slThietBiControl']?> </td>
+                                                    <td class="text-center" ><span class="badge bg-<?= !empty($listThietBi[$j]['nha_id'] ) ? "success" : 'danger' ?>"> <?= !empty($listThietBi[$j]['nha_id'] )  ? "Đã kích hoạt " : 'Đang chờ' ?>" </span></td>
 
-                                                    <td>
+                                                    <td class="text-center" >
                                                         <div class="d-flex align-items-center gap-3 fs-6">
                                                             <a href="javascript:;" class="text-primary" data-bs-toggle="modal" data-bs-target="#exampleModalDetailDevice<?= $listThietBi[$j]['id'] ?>">
                                                                 <ion-icon name="eye-outline" role="img" class="md hydrated" aria-label="eye outline"></ion-icon>
