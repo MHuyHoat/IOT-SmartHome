@@ -194,7 +194,7 @@
                       <img src="assets/images/icons/usa.png" alt="" width="35">
                     </div>
                     <div class="country-name flex-grow-1">
-                      <h5 class="mb-0">$84.5K</h5>
+                      <h5 class="mb-0">84.5Tr VND</h5>
                       <p class="mb-0 text-secondary">United states</p>
                     </div>
                     <div class="">
@@ -206,7 +206,7 @@
                       <img src="assets/images/icons/india.png" alt="" width="35">
                     </div>
                     <div class="country-name flex-grow-1">
-                      <h5 class="mb-0">$750</h5>
+                      <h5 class="mb-0">750 Tr VND</h5>
                       <p class="mb-0 text-secondary">India</p>
                     </div>
                     <div class="">
@@ -218,7 +218,7 @@
                       <img src="assets/images/icons/china.png" alt="" width="35">
                     </div>
                     <div class="country-name flex-grow-1">
-                      <h5 class="mb-0">$38.5</h5>
+                      <h5 class="mb-0">38.5 Tr VND</h5>
                       <p class="mb-0 text-secondary">China</p>
                     </div>
                     <div class="">
@@ -230,7 +230,7 @@
                       <img src="assets/images/icons/russia.png" alt="" width="35">
                     </div>
                     <div class="country-name flex-grow-1">
-                      <h5 class="mb-0">$88.0K</h5>
+                      <h5 class="mb-0">88.0 Tr VND</h5>
                       <p class="mb-0 text-secondary">France</p>
                     </div>
                     <div class="">
@@ -242,7 +242,7 @@
                       <img src="assets/images/icons/australia.png" alt="" width="35">
                     </div>
                     <div class="country-name flex-grow-1">
-                      <h5 class="mb-0">$78.3K</h5>
+                      <h5 class="mb-0">78.3 Tr VND</h5>
                       <p class="mb-0 text-secondary">Australia</p>
                     </div>
                     <div class="">
@@ -254,7 +254,7 @@
                       <img src="assets/images/icons/brazil.png" alt="" width="35">
                     </div>
                     <div class="country-name flex-grow-1">
-                      <h5 class="mb-0">$10.5K</h5>
+                      <h5 class="mb-0">10.5 Tr VND</h5>
                       <p class="mb-0 text-secondary">Brazil</p>
                     </div>
                     <div class="">
@@ -266,7 +266,7 @@
                       <img src="assets/images/icons/UAE.png" alt="" width="35">
                     </div>
                     <div class="country-name flex-grow-1">
-                      <h5 class="mb-0">$30.5K</h5>
+                      <h5 class="mb-0">30.5 Tr VND</h5>
                       <p class="mb-0 text-secondary">UAE</p>
                     </div>
                     <div class="">
@@ -375,7 +375,7 @@
         <div class="card radius-10 w-100">
           <div class="card-body">
             <div class="d-flex align-items-center">
-              <h6 class="mb-0">Recent Orders</h6>
+              <h6 class="mb-0">Nhà tạo gần đây</h6>
               <div class="fs-5 ms-auto dropdown">
                 <div class="dropdown-toggle dropdown-toggle-nocaret cursor-pointer" data-bs-toggle="dropdown"><i
                     class="bi bi-three-dots"></i></div>
@@ -393,214 +393,43 @@
               <table class="table align-middle mb-0">
                 <thead class="table-light">
                   <tr>
-                    <th>#ID</th>
-                    <th>Product</th>
-                    <th>Quantity</th>
-                    <th>Price</th>
-                    <th>Date</th>
-                    <th>Status</th>
-                    <th>Actions</th>
+                    <th>Stt</th>
+                    <th>Tên nhà</th>
+                    <th>Tổng số thiết bị</th>
+                    <th>Tổng số tài khoản</th>
+                    <th>Ngày tạo</th>
+                    <!-- <th>Date</th> -->
+                    <th>Trạng thái</th>
+                    <!-- <th>Actions</th> -->
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>#89742</td>
-                    <td>
-                      <div class="d-flex align-items-center gap-3">
-                        <div class="product-box border">
-                          <img src="assets/images/products/11.png" alt="">
-                        </div>
+                <?php
+                                        for ($j = 0; $j < count($recentCreated); $j++) {
+                                        ?>
+                                        
+                                            <tr>
+                                                <td><?= $recentCreated[$j]['stt']?></td>
+                                                <td>
+                                                <div class="d-flex align-items-center gap-3">
+                          <img src="assets\images\property (1).png" alt="">
                         <div class="product-info">
-                          <h6 class="product-name mb-1">Smart Mobile Phone</h6>
+                          <h6 class="product-name mb-1"><?= $recentCreated[$j]['ten']?></h6>
                         </div>
                       </div>
-                    </td>
-                    <td>2</td>
-                    <td>$214</td>
-                    <td><span class="badge bg-success">Completed</span></td>
-                    <td>Apr 8, 2021</td>
-                    <td>
-                      <div class="d-flex align-items-center gap-3 fs-6">
-                        <a href="javascript:;" class="text-primary" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                          title="" data-bs-original-title="View detail" aria-label="Views">
-                          <ion-icon name="eye-outline"></ion-icon>
-                        </a>
-                        <a href="javascript:;" class="text-warning" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                          title="" data-bs-original-title="Edit info" aria-label="Edit">
-                          <ion-icon name="pencil-outline"></ion-icon>
-                        </a>
-                        <a href="javascript:;" class="text-danger" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                          title="" data-bs-original-title="Delete" aria-label="Delete">
-                          <ion-icon name="trash-outline"></ion-icon>
-                        </a>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>#68570</td>
-                    <td>
-                      <div class="d-flex align-items-center gap-3">
-                        <div class="product-box border">
-                          <img src="assets/images/products/07.png" alt="">
-                        </div>
-                        <div class="product-info">
-                          <h6 class="product-name mb-1">Sports Time Watch</h6>
-                        </div>
-                      </div>
-                    </td>
-                    <td>1</td>
-                    <td>$185</td>
-                    <td><span class="badge bg-success">Completed</span></td>
-                    <td>Apr 9, 2021</td>
-                    <td>
-                      <div class="d-flex align-items-center gap-3 fs-6">
-                        <a href="javascript:;" class="text-primary" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                          title="" data-bs-original-title="View detail" aria-label="Views">
-                          <ion-icon name="eye-outline"></ion-icon>
-                        </a>
-                        <a href="javascript:;" class="text-warning" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                          title="" data-bs-original-title="Edit info" aria-label="Edit">
-                          <ion-icon name="pencil-outline"></ion-icon>
-                        </a>
-                        <a href="javascript:;" class="text-danger" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                          title="" data-bs-original-title="Delete" aria-label="Delete">
-                          <ion-icon name="trash-outline"></ion-icon>
-                        </a>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>#38567</td>
-                    <td>
-                      <div class="d-flex align-items-center gap-3">
-                        <div class="product-box border">
-                          <img src="assets/images/products/17.png" alt="">
-                        </div>
-                        <div class="product-info">
-                          <h6 class="product-name mb-1">Women Red Heals</h6>
-                        </div>
-                      </div>
-                    </td>
-                    <td>3</td>
-                    <td>$356</td>
-                    <td><span class="badge bg-danger">Cancelled</span></td>
-                    <td>Apr 10, 2021</td>
-                    <td>
-                      <div class="d-flex align-items-center gap-3 fs-6">
-                        <a href="javascript:;" class="text-primary" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                          title="" data-bs-original-title="View detail" aria-label="Views">
-                          <ion-icon name="eye-outline"></ion-icon>
-                        </a>
-                        <a href="javascript:;" class="text-warning" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                          title="" data-bs-original-title="Edit info" aria-label="Edit">
-                          <ion-icon name="pencil-outline"></ion-icon>
-                        </a>
-                        <a href="javascript:;" class="text-danger" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                          title="" data-bs-original-title="Delete" aria-label="Delete">
-                          <ion-icon name="trash-outline"></ion-icon>
-                        </a>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>#48572</td>
-                    <td>
-                      <div class="d-flex align-items-center gap-3">
-                        <div class="product-box border">
-                          <img src="assets/images/products/04.png" alt="">
-                        </div>
-                        <div class="product-info">
-                          <h6 class="product-name mb-1">Yellow Winter Jacket</h6>
-                        </div>
-                      </div>
-                    </td>
-                    <td>1</td>
-                    <td>$149</td>
-                    <td><span class="badge bg-success">Completed</span></td>
-                    <td>Apr 11, 2021</td>
-                    <td>
-                      <div class="d-flex align-items-center gap-3 fs-6">
-                        <a href="javascript:;" class="text-primary" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                          title="" data-bs-original-title="View detail" aria-label="Views">
-                          <ion-icon name="eye-outline"></ion-icon>
-                        </a>
-                        <a href="javascript:;" class="text-warning" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                          title="" data-bs-original-title="Edit info" aria-label="Edit">
-                          <ion-icon name="pencil-outline"></ion-icon>
-                        </a>
-                        <a href="javascript:;" class="text-danger" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                          title="" data-bs-original-title="Delete" aria-label="Delete">
-                          <ion-icon name="trash-outline"></ion-icon>
-                        </a>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>#96857</td>
-                    <td>
-                      <div class="d-flex align-items-center gap-3">
-                        <div class="product-box border">
-                          <img src="assets/images/products/10.png" alt="">
-                        </div>
-                        <div class="product-info">
-                          <h6 class="product-name mb-1">Orange Micro Headphone</h6>
-                        </div>
-                      </div>
-                    </td>
-                    <td>2</td>
-                    <td>$199</td>
-                    <td><span class="badge bg-danger">Cancelled</span></td>
-                    <td>Apr 15, 2021</td>
-                    <td>
-                      <div class="d-flex align-items-center gap-3 fs-6">
-                        <a href="javascript:;" class="text-primary" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                          title="" data-bs-original-title="View detail" aria-label="Views">
-                          <ion-icon name="eye-outline"></ion-icon>
-                        </a>
-                        <a href="javascript:;" class="text-warning" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                          title="" data-bs-original-title="Edit info" aria-label="Edit">
-                          <ion-icon name="pencil-outline"></ion-icon>
-                        </a>
-                        <a href="javascript:;" class="text-danger" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                          title="" data-bs-original-title="Delete" aria-label="Delete">
-                          <ion-icon name="trash-outline"></ion-icon>
-                        </a>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>#96857</td>
-                    <td>
-                      <div class="d-flex align-items-center gap-3">
-                        <div class="product-box border">
-                          <img src="assets/images/products/12.png" alt="">
-                        </div>
-                        <div class="product-info">
-                          <h6 class="product-name mb-1">Pro Samsung Laptop</h6>
-                        </div>
-                      </div>
-                    </td>
-                    <td>1</td>
-                    <td>$699</td>
-                    <td><span class="badge bg-warning">Pending</span></td>
-                    <td>Apr 18, 2021</td>
-                    <td>
-                      <div class="d-flex align-items-center gap-3 fs-6">
-                        <a href="javascript:;" class="text-primary" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                          title="" data-bs-original-title="View detail" aria-label="Views">
-                          <ion-icon name="eye-outline"></ion-icon>
-                        </a>
-                        <a href="javascript:;" class="text-warning" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                          title="" data-bs-original-title="Edit info" aria-label="Edit">
-                          <ion-icon name="pencil-outline"></ion-icon>
-                        </a>
-                        <a href="javascript:;" class="text-danger" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                          title="" data-bs-original-title="Delete" aria-label="Delete">
-                          <ion-icon name="trash-outline"></ion-icon>
-                        </a>
-                      </div>
-                    </td>
-                  </tr>
+                        
+                        </div>  </td>
+                                                <td> <?= $recentCreated[$j]['soluongthietbi'] ?> </td>
+                                                <td><?= $recentCreated[$j]['soluongnguoidung'] ?></td>
+                                                <td> <?= $recentCreated[$j]['created_at'] ?> </td>
+                                                <td><span class="badge bg-success">Completed</span></td>
+                                               
+                                            </tr>
+
+                                        <?php
+                                        }
+                                        ?>
+
                 </tbody>
               </table>
             </div>

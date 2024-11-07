@@ -10,7 +10,7 @@ try {
     $thietBiModel = new ThietBi();
     $permissionModel= new Permission();
     // Thiết lập tiêu đề HTTP
-
+    header('Content-Type: application/json');
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         $postData = file_get_contents('php://input');
@@ -115,7 +115,27 @@ try {
                 ]);
              }
         }
-    } else {
+     } else if(($_SERVER['REQUEST_METHOD'] == 'GET')){
+           if($_REQUEST['action']='cap-nhat-nhiet-do-do-am'){
+            $data= $_REQUEST;
+          
+            $nhietDo=$data['nhiet-do'];
+            $doAm=$data['do-am'];
+            $helper = new Helpers();
+            $decodeJWT = $helper->decodeJWT($_REQUEST['jwt']);
+            
+            $idChip= $decodeJWT['id'];
+            $conn= new DBConn();
+            $chipConnect= $conn->executeQuery("SELECT * FROM thietbi WHERE id= '$idChip' ")->fetch();
+            $thietBiDoAm= $conn->executeQuery("SELECT * FROM thietbi WHERE nha_id ='".$chipConnect['nha_id']."' AND loai_id= '3' ")->fetch();
+            $conn->executeUpdate("UPDATE thietbi SET du_lieu='".$doAm."' WHERE id='".$thietBiDoAm['id']."'  ");
+            $thietBiNhietDo= $conn->executeQuery("SELECT * FROM thietbi WHERE nha_id ='".$chipConnect['nha_id']."' AND loai_id= '4' ")->fetch();
+            $conn->executeUpdate("UPDATE thietbi SET du_lieu='".$nhietDo."' WHERE id='".$thietBiNhietDo['id']."'  ");
+            echo json_encode([
+                'status'=>"success"
+            ]);
+           }
+     } else {
         echo json_encode([
             'status' => 'error',
             'message' => 'Phương thức không hợp lệ.'
