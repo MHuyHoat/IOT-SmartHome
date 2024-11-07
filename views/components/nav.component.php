@@ -33,7 +33,14 @@
               <ion-icon name="ellipse-outline"></ion-icon>Danh sách thiết bị
             </a>
           </li>
+<<<<<<< HEAD
+          <li><a href="managerPin.php?action=danh-sach">
+              <ion-icon name="ellipse-outline"></ion-icon>Chân Pin
+            </a>
+          </li>
+=======
          
+>>>>>>> 9ecb0482888ccc95074cd80fc7494e0d67363d9d
           <li><a href="managerKhuVuc.php?action=danh-sach">
               <ion-icon name="ellipse-outline"></ion-icon>Khu vực
             </a>
