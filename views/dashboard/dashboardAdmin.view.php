@@ -3,15 +3,16 @@
 
 
 <!-- Mirrored from codervent.com/fobia/demo/ltr/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 26 Oct 2024 13:54:47 GMT -->
+
 <head>
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-     <!-- loader-->
-     <?php
-    include('views/components/head.component.php')
-    ?>
+  <!-- loader-->
+  <?php
+  include('views/components/head.component.php')
+  ?>
 
   <title>HNMU - IOT SmartHome</title>
 </head>
@@ -24,13 +25,11 @@
 
     <!--start sidebar -->
     <?php include('views/components/nav.component.php')  ?>
-        <!--end sidebar -->
+    <!--end sidebar -->
 
-        <!--start top header-->
-        <?php include('views/components/header.component.php')  ?>
-        <!--end top header-->
+    <!--start top header-->
+    <?php include('views/components/header.component.php')  ?>
     <!--end top header-->
-
 
     <!-- start page content wrapper-->
     <div class="page-content-wrapper">
@@ -104,7 +103,7 @@
                 </div>
                 <div class="d-flex align-items-center mt-3">
                   <div>
-                    <h4 class="mb-0"><?=$soTaiKhoan?></h4>
+                    <h4 class="mb-0"><?= $soTaiKhoan ?></h4>
                   </div>
                   <div class="ms-auto">+12.45%</div>
                 </div>
@@ -124,7 +123,7 @@
                 </div>
                 <div class="d-flex align-items-center mt-3">
                   <div>
-                    <h4 class="mb-0"><?=$soNha?></h4>
+                    <h4 class="mb-0"><?= $soNha ?></h4>
                   </div>
                   <div class="ms-auto">+3.12%</div>
                 </div>
@@ -144,7 +143,7 @@
                 </div>
                 <div class="d-flex align-items-center mt-3">
                   <div>
-                    <h4 class="mb-0"> <?=$soThietBi?> </h4>
+                    <h4 class="mb-0"> <?= $soThietBi ?> </h4>
                   </div>
                   <div class="ms-auto">+8.52%</div>
                 </div>
@@ -178,7 +177,7 @@
                       <img src="assets/images/icons/usa.png" alt="" width="35">
                     </div>
                     <div class="country-name flex-grow-1">
-                      <h5 class="mb-0">$84.5K</h5>
+                      <h5 class="mb-0">84.5Tr VND</h5>
                       <p class="mb-0 text-secondary">United states</p>
                     </div>
                     <div class="">
@@ -190,7 +189,7 @@
                       <img src="assets/images/icons/india.png" alt="" width="35">
                     </div>
                     <div class="country-name flex-grow-1">
-                      <h5 class="mb-0">$750</h5>
+                      <h5 class="mb-0">750 Tr VND</h5>
                       <p class="mb-0 text-secondary">India</p>
                     </div>
                     <div class="">
@@ -202,7 +201,7 @@
                       <img src="assets/images/icons/china.png" alt="" width="35">
                     </div>
                     <div class="country-name flex-grow-1">
-                      <h5 class="mb-0">$38.5</h5>
+                      <h5 class="mb-0">38.5 Tr VND</h5>
                       <p class="mb-0 text-secondary">China</p>
                     </div>
                     <div class="">
@@ -214,7 +213,7 @@
                       <img src="assets/images/icons/russia.png" alt="" width="35">
                     </div>
                     <div class="country-name flex-grow-1">
-                      <h5 class="mb-0">$88.0K</h5>
+                      <h5 class="mb-0">88.0 Tr VND</h5>
                       <p class="mb-0 text-secondary">France</p>
                     </div>
                     <div class="">
@@ -226,7 +225,7 @@
                       <img src="assets/images/icons/australia.png" alt="" width="35">
                     </div>
                     <div class="country-name flex-grow-1">
-                      <h5 class="mb-0">$78.3K</h5>
+                      <h5 class="mb-0">78.3 Tr VND</h5>
                       <p class="mb-0 text-secondary">Australia</p>
                     </div>
                     <div class="">
@@ -238,7 +237,7 @@
                       <img src="assets/images/icons/brazil.png" alt="" width="35">
                     </div>
                     <div class="country-name flex-grow-1">
-                      <h5 class="mb-0">$10.5K</h5>
+                      <h5 class="mb-0">10.5 Tr VND</h5>
                       <p class="mb-0 text-secondary">Brazil</p>
                     </div>
                     <div class="">
@@ -250,7 +249,7 @@
                       <img src="assets/images/icons/UAE.png" alt="" width="35">
                     </div>
                     <div class="country-name flex-grow-1">
-                      <h5 class="mb-0">$30.5K</h5>
+                      <h5 class="mb-0">30.5 Tr VND</h5>
                       <p class="mb-0 text-secondary">UAE</p>
                     </div>
                     <div class="">
@@ -290,8 +289,8 @@
                       <ion-icon name="wallet-outline"></ion-icon>
                     </div>
                     <div class="flex-grow-1">
-                      <h6 class="mb-0">$545.69</h6>
-                      <p class="mb-0 text-secondary">Last Month Sales</p>
+                      <h6 class="mb-0">245.69 Tr VND</h6>
+                      <p class="mb-0 text-secondary">1 tuần trước</p>
                     </div>
                     <div class="">
                       <p class="mb-0 text-success d-flex gap-1 align-items-center fw-500 fs-6"><i class='bx bx-up-arrow-alt'></i><span>35%</span></p>
@@ -302,8 +301,8 @@
                       <ion-icon name="flag-outline"></ion-icon>
                     </div>
                     <div class="flex-grow-1">
-                      <h6 class="mb-0">$956.34</h6>
-                      <p class="mb-0 text-secondary">Last Month Sales</p>
+                      <h6 class="mb-0">956.34 Tr VND</h6>
+                      <p class="mb-0 text-secondary">1 tháng trước</p>
                     </div>
                     <div class="">
                       <p class="mb-0 text-danger d-flex gap-1 align-items-center fw-500 fs-6"><i class='bx bx-up-arrow-alt'></i><span>45%</span></p>
@@ -314,8 +313,8 @@
                       <ion-icon name="school-outline"></ion-icon>
                     </div>
                     <div class="flex-grow-1">
-                      <h6 class="mb-0">$6956.48</h6>
-                      <p class="mb-0 text-secondary">Last Year Sales</p>
+                      <h6 class="mb-0">6956.48 Tr VND</h6>
+                      <p class="mb-0 text-secondary">1 năm trước</p>
                     </div>
                     <div class="">
                       <p class="mb-0 text-success d-flex gap-1 align-items-center fw-500 fs-6"><i class='bx bx-up-arrow-alt'></i><span>66%</span></p>
@@ -342,8 +341,8 @@
                   </div>
                 </div>
                 <div class="d-flex align-items-center font-13 gap-2">
-                  <span class="border px-1 rounded cursor-pointer"><i class="bx bxs-circle me-1 text-tiffany"></i>Cliks</span>
-                  <span class="border px-1 rounded cursor-pointer"><i class="bx bxs-circle me-1 text-success"></i>Views</span>
+                  <span class="border px-1 rounded cursor-pointer"><i class="bx bxs-circle me-1 text-tiffany"></i>Truy cập</span>
+                  <span class="border px-1 rounded cursor-pointer"><i class="bx bxs-circle me-1 text-success"></i>Xem</span>
                 </div>
                 <div id="chart2"></div>
               </div>
@@ -359,7 +358,7 @@
         <div class="card radius-10 w-100">
           <div class="card-body">
             <div class="d-flex align-items-center">
-              <h6 class="mb-0">Recent Orders</h6>
+              <h6 class="mb-0">Nhà tạo gần đây</h6>
               <div class="fs-5 ms-auto dropdown">
                 <div class="dropdown-toggle dropdown-toggle-nocaret cursor-pointer" data-bs-toggle="dropdown"><i
                     class="bi bi-three-dots"></i></div>
@@ -374,322 +373,63 @@
               </div>
             </div>
             <div class="table-responsive mt-2">
-              <table class="table align-middle mb-0">
+              <table class="table align-middle mb-0"  id="dataTable">
                 <thead class="table-light">
                   <tr>
-                    <th>#ID</th>
-                    <th>Product</th>
-                    <th>Quantity</th>
-                    <th>Price</th>
-                    <th>Date</th>
-                    <th>Status</th>
-                    <th>Actions</th>
+                    <th>Stt</th>
+                    <th>Tên nhà</th>
+                    <th>Tổng số thiết bị</th>
+                    <th>Tổng số tài khoản</th>
+                    <th>Ngày tạo</th>
+                    <!-- <th>Date</th> -->
+                    <th>Trạng thái</th>
+                    <!-- <th>Actions</th> -->
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>#89742</td>
-                    <td>
-                      <div class="d-flex align-items-center gap-3">
-                        <div class="product-box border">
-                          <img src="assets/images/products/11.png" alt="">
+                  <?php
+                  for ($j = 0; $j < count($recentCreated); $j++) {
+                  ?>
+
+                    <tr>
+                      <td><?= $recentCreated[$j]['stt'] ?></td>
+                      <td>
+                        <div class="d-flex align-items-center gap-3">
+                          <img src="assets\images\property (1).png" alt="">
+                          <div class="product-info">
+                            <h6 class="product-name mb-1"><?= $recentCreated[$j]['ten'] ?></h6>
+                          </div>
                         </div>
-                        <div class="product-info">
-                          <h6 class="product-name mb-1">Smart Mobile Phone</h6>
-                        </div>
-                      </div>
-                    </td>
-                    <td>2</td>
-                    <td>$214</td>
-                    <td><span class="badge bg-success">Completed</span></td>
-                    <td>Apr 8, 2021</td>
-                    <td>
-                      <div class="d-flex align-items-center gap-3 fs-6">
-                        <a href="javascript:;" class="text-primary" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                          title="" data-bs-original-title="View detail" aria-label="Views">
-                          <ion-icon name="eye-outline"></ion-icon>
-                        </a>
-                        <a href="javascript:;" class="text-warning" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                          title="" data-bs-original-title="Edit info" aria-label="Edit">
-                          <ion-icon name="pencil-outline"></ion-icon>
-                        </a>
-                        <a href="javascript:;" class="text-danger" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                          title="" data-bs-original-title="Delete" aria-label="Delete">
-                          <ion-icon name="trash-outline"></ion-icon>
-                        </a>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>#68570</td>
-                    <td>
-                      <div class="d-flex align-items-center gap-3">
-                        <div class="product-box border">
-                          <img src="assets/images/products/07.png" alt="">
-                        </div>
-                        <div class="product-info">
-                          <h6 class="product-name mb-1">Sports Time Watch</h6>
-                        </div>
-                      </div>
-                    </td>
-                    <td>1</td>
-                    <td>$185</td>
-                    <td><span class="badge bg-success">Completed</span></td>
-                    <td>Apr 9, 2021</td>
-                    <td>
-                      <div class="d-flex align-items-center gap-3 fs-6">
-                        <a href="javascript:;" class="text-primary" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                          title="" data-bs-original-title="View detail" aria-label="Views">
-                          <ion-icon name="eye-outline"></ion-icon>
-                        </a>
-                        <a href="javascript:;" class="text-warning" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                          title="" data-bs-original-title="Edit info" aria-label="Edit">
-                          <ion-icon name="pencil-outline"></ion-icon>
-                        </a>
-                        <a href="javascript:;" class="text-danger" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                          title="" data-bs-original-title="Delete" aria-label="Delete">
-                          <ion-icon name="trash-outline"></ion-icon>
-                        </a>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>#38567</td>
-                    <td>
-                      <div class="d-flex align-items-center gap-3">
-                        <div class="product-box border">
-                          <img src="assets/images/products/17.png" alt="">
-                        </div>
-                        <div class="product-info">
-                          <h6 class="product-name mb-1">Women Red Heals</h6>
-                        </div>
-                      </div>
-                    </td>
-                    <td>3</td>
-                    <td>$356</td>
-                    <td><span class="badge bg-danger">Cancelled</span></td>
-                    <td>Apr 10, 2021</td>
-                    <td>
-                      <div class="d-flex align-items-center gap-3 fs-6">
-                        <a href="javascript:;" class="text-primary" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                          title="" data-bs-original-title="View detail" aria-label="Views">
-                          <ion-icon name="eye-outline"></ion-icon>
-                        </a>
-                        <a href="javascript:;" class="text-warning" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                          title="" data-bs-original-title="Edit info" aria-label="Edit">
-                          <ion-icon name="pencil-outline"></ion-icon>
-                        </a>
-                        <a href="javascript:;" class="text-danger" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                          title="" data-bs-original-title="Delete" aria-label="Delete">
-                          <ion-icon name="trash-outline"></ion-icon>
-                        </a>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>#48572</td>
-                    <td>
-                      <div class="d-flex align-items-center gap-3">
-                        <div class="product-box border">
-                          <img src="assets/images/products/04.png" alt="">
-                        </div>
-                        <div class="product-info">
-                          <h6 class="product-name mb-1">Yellow Winter Jacket</h6>
-                        </div>
-                      </div>
-                    </td>
-                    <td>1</td>
-                    <td>$149</td>
-                    <td><span class="badge bg-success">Completed</span></td>
-                    <td>Apr 11, 2021</td>
-                    <td>
-                      <div class="d-flex align-items-center gap-3 fs-6">
-                        <a href="javascript:;" class="text-primary" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                          title="" data-bs-original-title="View detail" aria-label="Views">
-                          <ion-icon name="eye-outline"></ion-icon>
-                        </a>
-                        <a href="javascript:;" class="text-warning" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                          title="" data-bs-original-title="Edit info" aria-label="Edit">
-                          <ion-icon name="pencil-outline"></ion-icon>
-                        </a>
-                        <a href="javascript:;" class="text-danger" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                          title="" data-bs-original-title="Delete" aria-label="Delete">
-                          <ion-icon name="trash-outline"></ion-icon>
-                        </a>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>#96857</td>
-                    <td>
-                      <div class="d-flex align-items-center gap-3">
-                        <div class="product-box border">
-                          <img src="assets/images/products/10.png" alt="">
-                        </div>
-                        <div class="product-info">
-                          <h6 class="product-name mb-1">Orange Micro Headphone</h6>
-                        </div>
-                      </div>
-                    </td>
-                    <td>2</td>
-                    <td>$199</td>
-                    <td><span class="badge bg-danger">Cancelled</span></td>
-                    <td>Apr 15, 2021</td>
-                    <td>
-                      <div class="d-flex align-items-center gap-3 fs-6">
-                        <a href="javascript:;" class="text-primary" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                          title="" data-bs-original-title="View detail" aria-label="Views">
-                          <ion-icon name="eye-outline"></ion-icon>
-                        </a>
-                        <a href="javascript:;" class="text-warning" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                          title="" data-bs-original-title="Edit info" aria-label="Edit">
-                          <ion-icon name="pencil-outline"></ion-icon>
-                        </a>
-                        <a href="javascript:;" class="text-danger" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                          title="" data-bs-original-title="Delete" aria-label="Delete">
-                          <ion-icon name="trash-outline"></ion-icon>
-                        </a>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>#96857</td>
-                    <td>
-                      <div class="d-flex align-items-center gap-3">
-                        <div class="product-box border">
-                          <img src="assets/images/products/12.png" alt="">
-                        </div>
-                        <div class="product-info">
-                          <h6 class="product-name mb-1">Pro Samsung Laptop</h6>
-                        </div>
-                      </div>
-                    </td>
-                    <td>1</td>
-                    <td>$699</td>
-                    <td><span class="badge bg-warning">Pending</span></td>
-                    <td>Apr 18, 2021</td>
-                    <td>
-                      <div class="d-flex align-items-center gap-3 fs-6">
-                        <a href="javascript:;" class="text-primary" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                          title="" data-bs-original-title="View detail" aria-label="Views">
-                          <ion-icon name="eye-outline"></ion-icon>
-                        </a>
-                        <a href="javascript:;" class="text-warning" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                          title="" data-bs-original-title="Edit info" aria-label="Edit">
-                          <ion-icon name="pencil-outline"></ion-icon>
-                        </a>
-                        <a href="javascript:;" class="text-danger" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                          title="" data-bs-original-title="Delete" aria-label="Delete">
-                          <ion-icon name="trash-outline"></ion-icon>
-                        </a>
-                      </div>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+
             </div>
+            </td>
+            <td> <?= $recentCreated[$j]['soluongthietbi'] ?> </td>
+            <td><?= $recentCreated[$j]['soluongnguoidung'] ?></td>
+            <td> <?= $recentCreated[$j]['created_at'] ?> </td>
+            <td><span class="badge bg-success">Hoàn thành</span></td>
+
+            </tr>
+
+          <?php
+                  }
+          ?>
+
+          </tbody>
+          </table>
           </div>
-        </div>
-      </div>
-      <!-- end page content-->
-    </div>
-    <!--end page content wrapper-->
-
-
-    <!--start footer-->
-    <footer class="footer">
-      <div class="footer-text">
-        Copyright © 2023. All right reserved.
-      </div>
-    </footer>
-    <!--end footer-->
-
-
-    <!--Start Back To Top Button-->
-    <a href="javaScript:;" class="back-to-top">
-      <ion-icon name="arrow-up-outline"></ion-icon>
-    </a>
-    <!--End Back To Top Button-->
-
-    <!--start switcher-->
-    <div class="switcher-body">
-      <button class="btn btn-primary btn-switcher shadow-sm" type="button" data-bs-toggle="offcanvas"
-        data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">
-        <ion-icon name="color-palette-outline" class="me-0"></ion-icon>
-      </button>
-      <div class="offcanvas offcanvas-end shadow border-start-0 p-2" data-bs-scroll="true" data-bs-backdrop="false"
-        tabindex="-1" id="offcanvasScrolling">
-        <div class="offcanvas-header border-bottom">
-          <h5 class="offcanvas-title" id="offcanvasScrollingLabel">Theme Customizer</h5>
-          <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"></button>
-        </div>
-        <div class="offcanvas-body">
-          <h6 class="mb-0">Theme Variation</h6>
-          <hr>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="LightTheme" value="option1" checked>
-            <label class="form-check-label" for="LightTheme">Light</label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="DarkTheme" value="option2">
-            <label class="form-check-label" for="DarkTheme">Dark</label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="SemiDark" value="option3">
-            <label class="form-check-label" for="SemiDark">Semi Dark</label>
-          </div>
-          <hr />
-          <h6 class="mb-0">Header Colors</h6>
-          <hr />
-          <div class="header-colors-indigators">
-            <div class="row row-cols-auto g-3">
-              <div class="col">
-                <div class="indigator headercolor1" id="headercolor1"></div>
-              </div>
-              <div class="col">
-                <div class="indigator headercolor2" id="headercolor2"></div>
-              </div>
-              <div class="col">
-                <div class="indigator headercolor3" id="headercolor3"></div>
-              </div>
-              <div class="col">
-                <div class="indigator headercolor4" id="headercolor4"></div>
-              </div>
-              <div class="col">
-                <div class="indigator headercolor5" id="headercolor5"></div>
-              </div>
-              <div class="col">
-                <div class="indigator headercolor6" id="headercolor6"></div>
-              </div>
-              <div class="col">
-                <div class="indigator headercolor7" id="headercolor7"></div>
-              </div>
-              <div class="col">
-                <div class="indigator headercolor8" id="headercolor8"></div>
-              </div>
-            </div>
-          </div>
-
         </div>
       </div>
     </div>
-    <!--end switcher-->
-
-
-    <!--start overlay-->
-    <div class="overlay nav-toggle-icon"></div>
-    <!--end overlay-->
-
+    <!-- end page content-->
   </div>
-  <!--end wrapper-->
-
 
 
   <?php include('views/components/footer.component.php'); ?>
 
-
+  <script src="assets/js/home.js"></script>
 </body>
 
 
 <!-- Mirrored from codervent.com/fobia/demo/ltr/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 26 Oct 2024 13:56:33 GMT -->
+
 </html>

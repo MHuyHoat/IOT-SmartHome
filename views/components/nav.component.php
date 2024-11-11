@@ -20,14 +20,14 @@
           <div class="menu-title">Trang chủ</div>
         </a>
       </li>
-      <li>
+      <li class="<?= ($_SESSION['USER_ROLE'] == 'user')?'d-none':''  ?>">
         <a href="javascript:;" class="has-arrow">
           <div class="parent-icon">
             <i class="lni lni-atlassian"></i>
           </div>
           <div class="menu-title">Quản lý</div>
         </a>
-        <ul>
+        <ul >
 
           <li><a href="managerDevice.php?action=danh-sach">
               <ion-icon name="ellipse-outline"></ion-icon>Danh sách thiết bị
