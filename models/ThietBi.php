@@ -24,10 +24,12 @@ class ThietBi
             die();
         }
     }
-    public function  setUserModel(){
+    public function  setUserModel()
+    {
         $this->userModel = new User();
     }
-    public function setPermissionModel(){
+    public function setPermissionModel()
+    {
         $this->permissionsModel = new Permission();
     }
     public function getAll($data = [])
@@ -52,7 +54,7 @@ class ThietBi
              where 1=1 ";
             // generate chuỗi string đầu vào 
             $query = $this->helper->strQuery($query, $data);
-     
+
             $stmt = $this->conn->executeQuery($query);
 
             //Hiển thị kết quả, vòng lặp sau đây sẽ dừng lại khi đã duyệt qua toàn bộ kết quả
@@ -81,7 +83,7 @@ class ThietBi
              where 1=1 ";
             // generate chuỗi string đầu vào 
             $query = $this->helper->strQuery($query, $data);
-     
+
             $stmt = $this->conn->executeQuery($query);
 
             //Hiển thị kết quả, vòng lặp sau đây sẽ dừng lại khi đã duyệt qua toàn bộ kết quả
@@ -114,7 +116,7 @@ class ThietBi
 
             // generate chuỗi string đầu vào 
             $query = $this->helper->strQuery($query, $data);
-            
+
             $stmt = $this->conn->executeQuery($query);
 
             //Hiển thị kết quả, vòng lặp sau đây sẽ dừng lại khi đã duyệt qua toàn bộ kết quả
@@ -135,16 +137,19 @@ class ThietBi
             $lastId = $this->conn->executeInsert($query);
             // gan quyen permission cho cac tai khoan trong nha
             $this->setUserModel();
-            $listUser =    $this->conn->executeQuery("SELECT * FROM users as u WHERE u.nha_id=".$data['nha_id']."")->fetchAll();
-            $this->setPermissionModel();
-            foreach ($listUser as $key => $value) {
-                # code...
-                $this->permissionsModel->create([
-                    'permission_type' => 'control',
-                    'user_id' => $value['id'],
-                    'thietbi_id' => $lastId
-                ]);
+            if (!empty($data['nha_id'])) {
+                $listUser =    $this->conn->executeQuery("SELECT * FROM users as u WHERE u.nha_id=" . $data['nha_id'] . "")->fetchAll();
+                $this->setPermissionModel();
+                foreach ($listUser as $key => $value) {
+                    # code...
+                    $this->permissionsModel->create([
+                        'permission_type' => 'control',
+                        'user_id' => $value['id'],
+                        'thietbi_id' => $lastId
+                    ]);
+                }
             }
+
 
             //Hiển thị kết quả, vòng lặp sau đây sẽ dừng lại khi đã duyệt qua toàn bộ kết quả
             return $lastId;
@@ -176,11 +181,11 @@ class ThietBi
             //code...            
             $query =  " DELETE FROM $this->table  WHERE 1=1 ";
             $query = $this->helper->strDelete($query, $data);
-             $this->conn->executeUpdate($query);
-             $this->setPermissionModel();
-             $this->permissionsModel->delete([
-                'thietbi_id ='=>$data['id']
-             ]);
+            $this->conn->executeUpdate($query);
+            $this->setPermissionModel();
+            $this->permissionsModel->delete([
+                'thietbi_id =' => $data['id']
+            ]);
             //Hiển thị kết quả, vòng lặp sau đây sẽ dừng lại khi đã duyệt qua toàn bộ kết quả
             return true;
         } catch (\Throwable $th) {

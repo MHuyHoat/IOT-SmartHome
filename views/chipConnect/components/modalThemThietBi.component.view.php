@@ -10,7 +10,7 @@
                                 <div
                                     class="modal-dialog "
                                     role="document">
-                                    <form class="modal-content" action="managerDevice.php?action=them-moi" method="POST">
+                                    <form class="modal-content" action="chipConnect.php?action=them-moi" method="POST">
                                         <div class="modal-header">
                                             <h5 class="modal-title" id="modalTitleId">
                                                 Thêm thiết bị
