@@ -4,26 +4,18 @@
 
 <!-- Mirrored from codervent.com/fobia/demo/ltr/authentication-sign-in-cover.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 26 Oct 2024 14:07:13 GMT -->
 
+
 <head>
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- loader-->
-  <link href="assets/css/pace.min.css" rel="stylesheet" />
-  <script src="assets/js/pace.min.js"></script>
+    <!-- loader-->
+    <?php
+    include('views/components/head.component.php')
+    ?>
 
-  <!--plugins-->
-  <link href="assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet" />
-
-  <!-- CSS Files -->
-  <link href="assets/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/css/bootstrap-extended.css" rel="stylesheet">
-  <link href="assets/css/style.css" rel="stylesheet">
-  <link href="assets/css/icons.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&amp;display=swap" rel="stylesheet">
-
-  <title>HNMU - IOT SmartHome</title>
+    <title>HNMU - IOT SmartHome</title>
 </head>
 
 <body class="bg-white">

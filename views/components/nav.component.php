@@ -33,11 +33,19 @@
               <ion-icon name="ellipse-outline"></ion-icon>Danh sách thiết bị
             </a>
           </li>
-         
-          <li><a href="managerKhuVuc.php?action=danh-sach">
-              <ion-icon name="ellipse-outline"></ion-icon>Khu vực
+          <li><a href="managerLoaiThietBi.php?action=danh-sach">
+          <ion-icon name="ellipse-outline"></ion-icon> Loại thiết bị 
             </a>
           </li>
+          <li><a href="managerKhuVuc.php?action=danh-sach">
+          <ion-icon name="ellipse-outline"></ion-icon> Khu vực
+            </a>
+          </li>
+          <li><a href="managerViTri.php?action=danh-sach">
+          <ion-icon name="ellipse-outline"></ion-icon> Vị trí
+            </a>
+          </li>
+         
         </ul>
       </li>
 

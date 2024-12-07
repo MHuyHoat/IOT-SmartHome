@@ -46,14 +46,14 @@
                             <ol class="breadcrumb mb-0 p-0 align-items-center">
                                 <li class="breadcrumb-item"><a href="javascript:;"><ion-icon name="home-outline" role="img" class="md hydrated" aria-label="home outline"></ion-icon></a>
                                 </li>
-                                <li class="breadcrumb-item active" aria-current="page">Danh sách các khu vực trong nhà </li>
+                                <li class="breadcrumb-item active" aria-current="page">Danh sách các vị trí trong nhà </li>
                             </ol>
                         </nav>
                     </div>
                     <div class="ms-auto">
                         <div class="btn-group">
                             <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal"
-                                data-bs-target="#modalThemKhuVuc">Thêm khu vực </button>
+                                data-bs-target="#modalThemKhuVuc">Thêm vị trí </button>
                             <!-- Button trigger modal -->
 
 
@@ -70,7 +70,7 @@
 
                         <div class="card-body">
                             <div class="d-flex align-items-center">
-                                <h6 class="mb-0">Danh sách các khu vực </h6>
+                                <h6 class="mb-0">Danh sách các vị trí </h6>
 
                             </div>
                             <div class="table-responsive mt-2">
@@ -78,7 +78,7 @@
                                     <thead class="table-light">
                                         <tr>
                                             <th>#ID</th>
-                                            <th>Tên khu vực </th>
+                                            <th>Tên vị trí </th>
                                             <th>Thuộc nhà </th>
                                             <th>Thao tác </th>
                                         </tr>
@@ -86,26 +86,25 @@
                                     <tbody>
                                     
                                             <?php
-                                            for ($j = 0; $j < count($listKhuVuc); $j++) {
+                                            for ($j = 0; $j < count($listViTri); $j++) {
                                             ?>
 
                                                     <td># <?= $j + 1 ?> </td>
                                                     <td>
                                                         <div class="d-flex align-items-center gap-3">
                                                             <div class="product-info">
-                                                                <h6 class="product-name mb-1"> <?= $listKhuVuc[$j]['ten'] ?? "Trống" ?> </h6>
+                                                                <h6 class="product-name mb-1"> <?= $listViTri[$j]['ten'] ?? "Trống" ?> </h6>
                                                             </div>
                                                         </div>
                                                     </td>
                                                     <td> <?= $listNha['ten'] ?> </td>
                                                     <td>
                                                         <div class="d-flex align-items-center gap-3 fs-6">
-                                                         
-
-                                                            <a href="managerKhuVuc.php?action=chinh-sua&id=<?= $listKhuVuc[$j]['id'] ?> " class="text-warning" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Edit info" aria-label="Edit">
+                                                           
+                                                            <a href="managerViTri.php?action=chinh-sua&id=<?= $listViTri[$j]['id'] ?> " class="text-warning" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Edit info" aria-label="Edit">
                                                                 <ion-icon name="pencil-outline" role="img" class="md hydrated" aria-label="pencil outline"></ion-icon>
                                                             </a>
-                                                            <a href="javascript:;" onclick="deleteKhuVuc(`<?= $listKhuVuc[$j]['ten'] ?>`,<?= $listKhuVuc[$j]['id'] ?>)" class="text-danger" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Delete" aria-label="Delete">
+                                                            <a href="javascript:;" onclick="deleteKhuVuc(`<?= $listViTri[$j]['ten'] ?>`,<?= $listViTri[$j]['id'] ?>)" class="text-danger" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Delete" aria-label="Delete">
                                                                 <ion-icon name="trash-outline" role="img" class="md hydrated" aria-label="trash outline"></ion-icon>
                                                             </a>
                                                         </div>
@@ -129,9 +128,9 @@
         </div>
         <!--end page content wrapper-->
 
-        <?php include('views/managerKhuVuc/components/modalThemKhuVuc.component.view.php'); ?>
+        <?php include('views/managerViTri/components/modalThemViTri.component.view.php'); ?>
         <?php include('views/components/footer.component.php'); ?>
-        <script src="assets/js/managerKhuVuc.js"></script>
+        <script src="assets/js/managerViTri.js"></script>
 </body>
 
 
