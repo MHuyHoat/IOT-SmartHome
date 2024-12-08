@@ -5,6 +5,7 @@ require_once(__DIR__ . '/models/ThietBi.php');
 require_once(__DIR__ . '/models/LoaiThietBi.php');
 require_once(__DIR__ . '/models/Nha.php');
 require_once(__DIR__ . '/models/KhuVuc.php');
+require_once(__DIR__ . '/models/ViTri.php');
 require_once(__DIR__ . '/models/User.php');
 require_once(__DIR__ . '/models/ChanPin.php');
 require_once(__DIR__ . '/models/Permission.php');
@@ -28,12 +29,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && $_REQUEST['action'] == 'danh-sach') {
                     $thietBiModel = new ThietBi();
                     $listThietBi = $thietBiModel->getAll(['tb.nha_id =' => $user['nha_id'],"p.user_id ="=>$_SESSION['USER_ID'] , "ltb.ten!=" => 'Chip Connect']);
                     $loaiThietBiModel = new LoaiThietBi();
-                    $listLoaiThietBi = $loaiThietBiModel->getAll(['ten !=' => 'Chip Connect']);
+                    $listLoaiThietBi = $loaiThietBiModel->getAll(['ltb.nha_id =' => $user['nha_id']]);
+
                     $khuVucModel = new KhuVuc();
                     $listKhuVuc = $khuVucModel->getAll(['kv.nha_id =' => $user['nha_id']]);
                     $chipConnect = $thietBiModel->find(['p.user_id =' => $_SESSION['USER_ID'], "tb.loai_id >" => '0']);
                     $chanPinModel = new ChanPin();
                     $listChanPin = $chanPinModel->getAll();
+                    $viTriModel= new ViTri();
+                    $listViTri = $viTriModel->getAll(['vt.nha_id =' => $user['nha_id']]);
+                    include('views/managerDevice/list.view.php');
                } else {
                     $_SESSION['error'] = "Bạn phải đăng nhập để sử dụng chức năng!";
 
@@ -61,10 +66,11 @@ else if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_REQUEST['action'] == 'them-mo
                     //echo "found";  
                     // lấy toàn bộ các thiết bị trong nhà 
                     unset($_REQUEST['action']);
-
                     $thietBiModel = new ThietBi();
+                     $_REQUEST['ten']=$thietBiModel->getTenThietBiByLoaiKhuVucViTri($_REQUEST['loai_id'],$_REQUEST['khuvuc_id'],$_REQUEST['vitri_id']);
+                     $_REQUEST['mieu_ta']=trim($_REQUEST['mieu_ta']," ");
                      $thietBiModel->create($_REQUEST);
-
+               
                     $_SESSION['success'] = "Thêm dữ liệu thành công!";
 
                     header("location:managerDevice.php?action=danh-sach");
@@ -93,12 +99,15 @@ else if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_REQUEST['action'] == 'them-mo
           $thietBiModel = new ThietBi();
           $detail = $thietBiModel->find(['tb.id =' => $_REQUEST['id']]);
           $loaiThietBiModel = new LoaiThietBi();
-          $listLoaiThietBi = $loaiThietBiModel->getAll(['ten !=' => 'Chip Connect']);
+          $listLoaiThietBi = $loaiThietBiModel->getAll(['ltb.nha_id =' => $user['nha_id']]);
           $khuVucModel = new KhuVuc();
           $listKhuVuc = $khuVucModel->getAll(['kv.nha_id =' => $user['nha_id']]);
           $chipConnect = $thietBiModel->find(['p.user_id =' => $_SESSION['USER_ID'], "tb.loai_id >" => '0']);
           $chanPinModel = new ChanPin();
           $listChanPin = $chanPinModel->getAll();
+
+          $viTriModel= new ViTri();
+          $listViTri = $viTriModel->getAll(['vt.nha_id =' => $user['nha_id']]);
           include('views/managerDevice/edit.view.php');
           ob_end_flush();
      } catch (\Throwable $th) {
@@ -116,6 +125,8 @@ else if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_REQUEST['action'] == 'them-mo
                     unset($_REQUEST['action']);
                     $id = $_REQUEST['id'];
                     $thietBiModel = new ThietBi();
+                    $_REQUEST['ten']=$thietBiModel->getTenThietBiByLoaiKhuVucViTri($_REQUEST['loai_id'],$_REQUEST['khuvuc_id'],$_REQUEST['vitri_id']);
+                    $_REQUEST['mieu_ta']=trim($_REQUEST['mieu_ta']," ");
                     $thietBiModel->update($id, $_REQUEST);
                     $_SESSION['success'] = "Cập nhật dữ liệu thành công!";
 

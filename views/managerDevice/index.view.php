@@ -74,14 +74,14 @@
 
                             </div>
                             <div class="table-responsive mt-2">
-                                <table class="table align-middle mb-0"  id="dataTable" >
+                                <table class="table align-middle mb-0" id="dataTable">
                                     <thead class="table-light">
                                         <tr>
                                             <th>#ID</th>
-                                            <th>Tên thiết bị </th>
+                                            <th> Loại thiết bị</th>
+                                            <th> Khu vực</th>
+                                            <th> Vị trí</th>
                                             <th> Chân pin </th>
-                                            <th>Thuộc nhà </th>
-                                            <th>Thuộc khu vực</th>
                                             <th>Trạng thái</th>
                                             <th>Thao tác </th>
                                         </tr>
@@ -94,30 +94,39 @@
                                                 <td>No Data</td>
                                                 <td>No Data</td>
                                                 <td>No Data</td>
-                                                <td>No Data</td>
-                                                <td>No Data</td>
+
                                             </tr>
                                         <?php
                                         } else { ?>
                                             <?php
                                             for ($j = 0; $j < count($listThietBi); $j++) {
                                             ?>
+                                                <?php
+                                                $parts = [
+                                                    $listThietBi[$j]['ten_loai_thietbi'] ?? "",
+                                                    $listThietBi[$j]['ten_khu_vuc'] ?? "",
+                                                    $listThietBi[$j]['ten_vi_tri'] ?? ""
+                                                ];
 
+                                                // Sử dụng implode để nối các phần tử lại với nhau
+                                                $listThietBi[$j]['ten'] = implode(" - ", array_filter($parts));
+                                                ?>
                                                 <tr class=" <?php if ($listThietBi[$j]['permission_type'] == 'view') echo 'd-none';   ?>">
                                                     <td># <?= $j + 1 ?> </td>
                                                     <td>
                                                         <div class="d-flex align-items-center gap-3">
                                                             <div class="product-box border">
-                                                            <img class="img-loathietbi" src="<?=$listThietBi[$j]['image']?>" alt="Image LoaiThietBi">
+                                                                <img class="img-loathietbi" src="<?= $listThietBi[$j]['image'] ?>" alt="Image LoaiThietBi">
                                                             </div>
                                                             <div class="product-info">
-                                                                <h6 class="product-name mb-1"> <?= $listThietBi[$j]['ten'] ?? "Trống" ?> </h6>
+
+                                                                <h6 class="product-name mb-1"> <?= $listThietBi[$j]['ten_loai_thietbi'] ?> </h6>
                                                             </div>
                                                         </div>
                                                     </td>
+                                                    <td> <?= $listThietBi[$j]['ten_khu_vuc'] ?? '...' ?> </td>
+                                                    <td> <?= $listThietBi[$j]['ten_vi_tri'] ?? '...' ?> </td>
                                                     <td> <?= $listThietBi[$j]['ten_chanpin'] ?? '...' ?> </td>
-                                                    <td> <?= $listThietBi[$j]['ten_nha'] ?> </td>
-                                                    <td> <?= $listThietBi[$j]['ten_khu_vuc'] ?? "Trống" ?> </td>
                                                     <td><span class="badge bg-<?= $listThietBi[$j]['trangthai'] == 1 ? "success" : 'danger' ?>"> <?= $listThietBi[$j]['trangthai'] == 1 ? "Bật " : 'Tắt' ?>" </span></td>
 
                                                     <td>
@@ -130,8 +139,8 @@
                                                                 <div class="modal-dialog">
                                                                     <div class="modal-content">
                                                                         <div class="modal-header">
-                                                                            <h5 class="modal-title" id="exampleModalLabel">Thông tin thiết bị :  <img class="img-loathietbi" src="<?=$listThietBi[$j]['image']?>" alt="Image LoaiThietBi">
-                                                                                <span style="font-size: 15px;" class="ms-1"> <?= $listThietBi[$j]['ten'] ?></span>
+                                                                            <h5 class="modal-title" id="exampleModalLabel"> <img class="img-loathietbi" src="<?= $listThietBi[$j]['image'] ?>" alt="Image LoaiThietBi">   Thông tin thiết bị : 
+                                                                                
                                                                             </h5>
                                                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                                         </div>

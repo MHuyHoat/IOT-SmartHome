@@ -36,22 +36,24 @@ class ThietBi
     {
         try {
             //code...            
-            $query = "SELECT  
+            $query = "SELECT 
             $this->alias.* ,
              ltb.ten as ten_loai_thietbi , ltb.id as id_loai_thietbi,
              ltb.default_image as image , 
               kv.ten as ten_khu_vuc, kv.id as id_khuvuc,
-              p.permission_type , p.id as permission_id ,
+              p.permission_type , p.id as permission_id,
               n.ten as ten_nha,
-              cp.ten as ten_chanpin
+              cp.ten as ten_chanpin,
+              vt.ten as ten_vi_tri
             from $this->table AS  $this->alias
             INNER JOIN permissions AS p on $this->alias.id= p.thietbi_id
             INNER JOIN users  AS u on u.id= p.user_id
-            INNER JOIN loai_thietbi AS ltb ON $this->alias.loai_id=ltb.id 
-            INNER JOIN khuvuc AS kv ON $this->alias.khuvuc_id = kv.id
-            INNER JOIN nha as n ON $this->alias.nha_id= n.id
+            LEFT JOIN loai_thietbi AS ltb ON $this->alias.loai_id=ltb.id 
+            LEFT JOIN khuvuc AS kv ON $this->alias.khuvuc_id = kv.id
+            LEFT JOIN nha as n ON $this->alias.nha_id= n.id
             LEFT JOIN chanpin as cp ON $this->alias.chanpin_id=cp.id
-             where 1=1 ";
+            LEFT JOIN vitri as vt ON $this->alias.vitri_id=vt.id
+            WHERE 1=1 ";
             // generate chuỗi string đầu vào 
             $query = $this->helper->strQuery($query, $data);
           
@@ -104,14 +106,17 @@ class ThietBi
               kv.ten as ten_khu_vuc, kv.id as id_khuvuc,
               p.permission_type , p.id as permission_id,
               n.ten as ten_nha,
-              cp.ten as ten_chanpin
+              cp.ten as ten_chanpin,
+              vt.ten as ten_vi_tri
             from $this->table AS  $this->alias
             INNER JOIN permissions AS p on $this->alias.id= p.thietbi_id
             INNER JOIN users  AS u on u.id= p.user_id
-            INNER JOIN loai_thietbi AS ltb ON $this->alias.loai_id=ltb.id 
+            LEFT JOIN loai_thietbi AS ltb ON $this->alias.loai_id=ltb.id 
             LEFT JOIN khuvuc AS kv ON $this->alias.khuvuc_id = kv.id
             LEFT JOIN nha as n ON $this->alias.nha_id= n.id
             LEFT JOIN chanpin as cp ON $this->alias.chanpin_id=cp.id
+            LEFT JOIN vitri as vt ON $this->alias.vitri_id=vt.id
+            
              where 1=1 ";
 
             // generate chuỗi string đầu vào 
@@ -153,6 +158,31 @@ class ThietBi
 
             //Hiển thị kết quả, vòng lặp sau đây sẽ dừng lại khi đã duyệt qua toàn bộ kết quả
             return $lastId;
+        } catch (\Throwable $th) {
+            echo  $th;
+            die();
+        }
+    }
+   
+    public function getTenThietBiByLoaiKhuVucViTri($idLoai,$idKhuVuc,$idViTri){
+        try {
+            //code...            
+            $query =  " SELECT ten FROM loai_thietbi where id=$idLoai ";
+            $stmt = $this->conn->executeQuery($query);
+            //Hiển thị kết quả, vòng lặp sau đây sẽ dừng lại khiば duyệt qua toàn bộ kết quả
+            $row= $stmt->fetch();
+            $tenLoai=$row['ten'];
+            $query =  " SELECT ten FROM khuvuc where id=$idKhuVuc ";
+            $stmt = $this->conn->executeQuery($query);
+            //Hiển thị kết quả, vòng lặp sau đây sẽ dừng lại khiば duyệt qua toàn bộ kết quả
+            $row= $stmt->fetch();
+            $tenKhuVuc=$row['ten'];
+            $query =  " SELECT ten FROM vitri where id=$idViTri ";
+            $stmt = $this->conn->executeQuery($query);
+            //Hiển thị kết quả, vòng lặp sau đây sẽ dừng lại khiば duyệt qua toàn bộ kết quả
+            $row= $stmt->fetch();
+            $tenViTri=$row['ten'];
+            return $tenLoai." - ".$tenKhuVuc." - ".$tenViTri;
         } catch (\Throwable $th) {
             echo  $th;
             die();

@@ -54,30 +54,28 @@
         </div>
         <!--end breadcrumb-->
 
-        <form class="card p-3" action="?action=cap-nhat&id=<?=$detail['id']?>" method="POST">
+        <form class="card p-3" action="?action=cap-nhat&id=<?= $detail['id'] ?>" method="POST">
           <div class="title d-flex justify-content-center">
             <div class="d-flex align-items-center gap-3">
               <div class="product-box border">
-                <?= $detail['image'] ?? "Trống" ?>
+              <img class="img-loathietbi" src="<?= $detail['image'] ?>" alt="Image LoaiThietBi">
               </div>
               <div class="product-info">
+                <?php
+                $parts = [
+                  $listThietBi[$j]['ten_loai_thietbi'] ?? "",
+                  $listThietBi[$j]['ten_khu_vuc'] ?? "",
+                  $listThietBi[$j]['ten_vi_tri'] ?? ""
+                ];
+
+                // Sử dụng implode để nối các phần tử lại với nhau
+                $listThietBi[$j]['ten'] = implode(" - ", array_filter($parts));
+                ?>
                 <h6 class="product-name mb-1"> <?= $detail['ten'] ?? "Trống" ?> </h6>
               </div>
             </div>
           </div>
-          <div class="col-12 mt-2">
-            <label for="inputEmail" class="form-label">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-codesandbox">
-                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
-                <polyline points="7.5 4.21 12 6.81 16.5 4.21"></polyline>
-                <polyline points="7.5 19.79 7.5 14.6 3 12"></polyline>
-                <polyline points="21 12 16.5 14.6 16.5 19.79"></polyline>
-                <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
-                <line x1="12" y1="22.08" x2="12" y2="12"></line>
-              </svg>
-              Tên thiết bị </label>
-            <input type="text" class="form-control" name="ten" value="<?= $detail['ten'] ?>" placeholder="Nhập tên thiết bị " required>
-          </div>
+          
           <div class="col-12 mt-3">
             <label for="inputEmail" class="form-label">
               <i class="lni lni-arrow-down-circle"></i>
@@ -100,6 +98,68 @@
                     value="<?= $listLoaiThietBi[$j]['id'] ?>">
 
                     <?= $listLoaiThietBi[$j]['ten'] ?> </option>
+
+                <?php
+                }
+                ?>
+
+              </select>
+            </div>
+
+          </div>
+          <div class="col-12 mt-2">
+            <label for="inputEmail" class="form-label">
+              <i class="lni lni-apartment"></i>
+              Khu vực
+            </label>
+            <div class="mb-3">
+
+              <select
+                required
+                class="form-select "
+                name="khuvuc_id"
+                id="">
+                <option value="">Chọn khu vực</option>
+                <?php
+                for ($j = 0; $j < count($listKhuVuc); $j++) {
+                ?>
+
+                  <option
+                    <?= $detail['khuvuc_id'] == $listKhuVuc[$j]['id'] ? 'selected' : '' ?>
+                    value="<?= $listKhuVuc[$j]['id'] ?>">
+
+                    <?= $listKhuVuc[$j]['ten'] ?> </option>
+
+                <?php
+                }
+                ?>
+
+              </select>
+            </div>
+
+          </div>
+          <div class="col-12 mt-2">
+            <label for="inputEmail" class="form-label">
+              <i class="lni lni-apartment"></i>
+              Vị Trí
+            </label>
+            <div class="mb-3">
+
+              <select
+                required
+                class="form-select "
+                name="vitri_id"
+                id="">
+                <option value="">Chọn vị trí</option>
+                <?php
+                for ($j = 0; $j < count($listViTri); $j++) {
+                ?>
+
+                  <option
+                    <?= $detail['vitri_id'] == $listViTri[$j]['id'] ? 'selected' : '' ?>
+                    value="<?= $listViTri[$j]['id'] ?>">
+
+                    <?= $listViTri[$j]['ten'] ?> </option>
 
                 <?php
                 }
@@ -140,41 +200,11 @@
             </div>
 
           </div>
-          <div class="col-12 mt-2">
-            <label for="inputEmail" class="form-label">
-              <i class="lni lni-apartment"></i>
-              Chọn nơi đặt thiết bị
-            </label>
-            <div class="mb-3">
-
-              <select
-                required
-                class="form-select "
-                name="khuvuc_id"
-                id="">
-                <option value="">Chọn khu vực</option>
-                <?php
-                for ($j = 0; $j < count($listKhuVuc); $j++) {
-                ?>
-
-                  <option
-                    <?= $detail['khuvuc_id'] == $listKhuVuc[$j]['id'] ? 'selected' : '' ?>
-                    value="<?= $listKhuVuc[$j]['id'] ?>">
-
-                    <?= $listKhuVuc[$j]['ten'] ?> </option>
-
-                <?php
-                }
-                ?>
-
-              </select>
-            </div>
-
-          </div>
+         
           <div class="col-12 mt-2">
             <label for="inputPassword" class="form-label"> <i class="lni lni-amazon"></i> Miêu tả</label>
-            <textarea type="text" rows="4" name="mieu_ta" class="form-control"  placeholder="Miêu tả thiết bị">
-            <?= $detail['mieu_ta']??'' ?>
+            <textarea type="text" rows="4" name="mieu_ta" class="form-control" placeholder="Miêu tả thiết bị">
+            <?= $detail['mieu_ta'] ?? '' ?>
             </textarea>
           </div>
           <div class="col-12 mt-2 d-none">
