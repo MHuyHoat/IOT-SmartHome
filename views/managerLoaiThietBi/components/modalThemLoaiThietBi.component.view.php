@@ -10,7 +10,7 @@
                                 <div
                                     class="modal-dialog "
                                     role="document">
-                                    <form class="modal-content" action="managerLoaiThietBi.php?action=them-moi" method="POST">
+                                    <form class="modal-content" action="managerLoaiThietBi.php?action=them-moi" method="POST"  enctype="multipart/form-data" >
                                         <div class="modal-header">
                                             <h5 class="modal-title" id="modalTitleId">
                                                 Thêm Loại thiết bị 
@@ -34,6 +34,12 @@
                                                     </svg>
                                                     Tên Loại thiết bị  </label>
                                                 <input type="text" class="form-control" name="ten" placeholder="Nhập tên Loại thiết bị  " required >
+                                            </div>
+                                            <div class="col-12 mt-2">
+                                                <label for="inputEmail" class="form-label">
+                                                   <i class="fas fa-image    "></i>
+                                                   Nhãn thiết bị  </label>
+                                                <input type="file" class="form-control" name="default_image" placeholder="Nhập nhãn thiết bị  "  >
                                             </div>
                                             <div class="col-12 mt-2">
                                                 <input type="text" name="nha_id" class="form-control" id="inputPassword" value="<?= $user['nha_id'] ?>" hidden>

@@ -13,7 +13,14 @@ try {
   $data = $thietBiModel->getAll([
     'tb.parent_id =' => $decodeJWT['id'],
   ]);
-
+  foreach ($data as $key => $value) {
+    # code...
+    $result=[
+      'chanpin_id'=>$value['chanpin_id'],
+      'trangthai'=>$value['trangthai']
+    ];
+    $data[$key]=$result;
+  }
   $jsonString = json_encode($data);
   echo $jsonString;
 } catch (\Throwable $th) {

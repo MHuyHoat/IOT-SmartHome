@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && $_REQUEST['action'] == 'danh-sach') {
                     $listLoaiThietBi = $loaiThietBiModel->getAll(['ten !=' => 'Chip Connect']);
                     $khuVucModel = new KhuVuc();
                     $listKhuVuc = $khuVucModel->getAll(['kv.nha_id =' => $user['nha_id']]);
-                    $chipConnect = $thietBiModel->find(['p.user_id =' => $_SESSION['USER_ID'], "ltb.ten=" => 'Chip Connect']);
+                    $chipConnect = $thietBiModel->find(['p.user_id =' => $_SESSION['USER_ID'], "tb.loai_id >" => '0']);
                     $chanPinModel = new ChanPin();
                     $listChanPin = $chanPinModel->getAll();
                } else {
@@ -96,7 +96,7 @@ else if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_REQUEST['action'] == 'them-mo
           $listLoaiThietBi = $loaiThietBiModel->getAll(['ten !=' => 'Chip Connect']);
           $khuVucModel = new KhuVuc();
           $listKhuVuc = $khuVucModel->getAll(['kv.nha_id =' => $user['nha_id']]);
-          $chipConnect = $thietBiModel->find(['p.user_id =' => $_SESSION['USER_ID'], "ltb.ten=" => 'Chip Connect']);
+          $chipConnect = $thietBiModel->find(['p.user_id =' => $_SESSION['USER_ID'], "tb.loai_id >" => '0']);
           $chanPinModel = new ChanPin();
           $listChanPin = $chanPinModel->getAll();
           include('views/managerDevice/edit.view.php');

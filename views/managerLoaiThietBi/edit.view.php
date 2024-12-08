@@ -53,10 +53,10 @@
 
         </div>
         <!--end breadcrumb-->
-        <form class="card p-3" action="?action=cap-nhat&id=<?=$detailKhuVuc['id']?>" method="POST">
-        <div class="col-12 mt-2">
+        <form class="card p-3" action="?action=cap-nhat&id=<?= $detailLoaiThietBi['id'] ?>" method="POST" enctype="multipart/form-data" >
+          <div class="col-12 mt-2">
             <label for="inputPassword" class="form-label"><b>#</b>ID</label>
-            <input type="text" value="<?= $detailKhuVuc['id'] ?>" name="id" class="form-control" id="inputPassword" readonly></input>
+            <input type="text" value="<?= $detailLoaiThietBi['id'] ?>" name="id" class="form-control" id="inputPassword" readonly></input>
           </div>
           <div class="col-12 mt-2">
             <label for="inputEmail" class="form-label">
@@ -69,11 +69,19 @@
                 <line x1="12" y1="22.08" x2="12" y2="12"></line>
               </svg>
               Tên vị trí </label>
-            <input type="text" class="form-control" name="ten" value="<?= $detailKhuVuc['ten'] ?>" placeholder="Nhập tên vị trí" required>
+            <input type="text" class="form-control" name="ten" value="<?= $detailLoaiThietBi['ten'] ?>" placeholder="Nhập tên vị trí" required>
+          </div>
+          <div class="col-12 mt-2">
+            <label for="inputEmail" class="form-label">
+              <i class="fas fa-image    "></i>
+              
+              Nhãn thiết bị </label>
+              <img src="<?=$detailLoaiThietBi['default_image'] ?>" width="20px" height="20px" alt="">
+               <input type="file" class="form-control" name="default_image" placeholder="Nhập nhãn thiết bị" accept="image/*">
           </div>
           <div class="col-12 mt-2">
             <label for="inputPassword" class="form-label"> <i class="lni lni-amazon"></i> Thuộc nhà</label>
-            <input type="text" rows="4" value="<?= $listNha['ten']?>" name="" class="form-control" id="inputPassword" readonly ></input>
+            <input type="text" rows="4" value="<?= $listNha['ten'] ?>" name="" class="form-control" id="inputPassword" readonly></input>
           </div>
           <div class="d-flex justify-content-center mt-4">
             <div>

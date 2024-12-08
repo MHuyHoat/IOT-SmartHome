@@ -23,7 +23,17 @@
     width: 40px;
     height: 40px;
 }
-
+div.loaithietbi-box{
+    padding: 0.2rem;
+}
+ div.loaithietbi-box > img{
+    width: 25px;
+    height: auto;
+ }
+ img.img-loathietbi{
+    width: 25px;
+    height: auto;
+ }
 @media (min-width: 490px) {
     .area{
         width: 50%;

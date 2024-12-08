@@ -79,6 +79,7 @@
                                         <tr>
                                             <th>#ID</th>
                                             <th>Tên Loại thiết bị  </th>
+                                            <th>SL thiết bị  </th>
                                             <th>Thuộc nhà </th>
                                             <th>Thao tác </th>
                                         </tr>
@@ -92,14 +93,15 @@
                                                     <td># <?= $j + 1 ?> </td>
                                                     <td>
                                                     <div class="d-flex align-items-center gap-3">
-                                                            <div class="product-box border">
-                                                                <?= $listLoaiThietBi[$j]['default_image'] ?? "Trống" ?>
+                                                            <div class="loaithietbi-box border">
+                                                                <img src="<?=$listLoaiThietBi[$j]['default_image']?>" alt="">
                                                             </div>
                                                             <div class="product-info">
                                                                 <h6 class="product-name mb-1"> <?= $listLoaiThietBi[$j]['ten'] ?? "Trống" ?> </h6>
                                                             </div>
                                                         </div>  
                                                     </td>
+                                                    <td> <?= $listLoaiThietBi[$j]['soThietBi'] ?> </td>
                                                     <td> <?= $listNha['ten'] ?> </td>
                                                     <td>
                                                         <div class="d-flex align-items-center gap-3 fs-6">

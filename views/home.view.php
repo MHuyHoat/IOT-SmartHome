@@ -194,7 +194,9 @@
                                                     ?>
                                                         <div class="   d-flex mb-2 align-items-center justify-content-between theme-icons shadow-sm p-2 cursor-pointer rounded">
                                                             <div class="font-22 d-flex align-items-center">
-                                                                <?= $v[$j]['image'] ?>
+                                                         
+                                                                <img class="img-loathietbi" src="<?=$v[$j]['image']?>" alt="Image LoaiThietBi">
+                                                          
                                                                 <span style="font-size: 15px;" class="ms-1"> <?= $v[$j]['ten'] ?></span>
                                                             </div>
 
@@ -220,7 +222,7 @@
                                                     ?>
                                                         <div class="   d-flex mb-2 align-items-center justify-content-between theme-icons shadow-sm p-2 cursor-pointer rounded">
                                                             <div class="font-22 d-flex align-items-center">
-                                                                <?= $v[$j]['image'] ?>
+                                                            <img class="img-loathietbi" src="<?=$v[$j]['image']?>" alt="Image LoaiThietBi">
                                                                 <span style="font-size: 15px;" class="ms-1"> <?= $v[$j]['ten'] ?></span>
                                                             </div>
 

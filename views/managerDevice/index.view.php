@@ -108,7 +108,7 @@
                                                     <td>
                                                         <div class="d-flex align-items-center gap-3">
                                                             <div class="product-box border">
-                                                                <?= $listThietBi[$j]['image'] ?? "Trống" ?>
+                                                            <img class="img-loathietbi" src="<?=$listThietBi[$j]['image']?>" alt="Image LoaiThietBi">
                                                             </div>
                                                             <div class="product-info">
                                                                 <h6 class="product-name mb-1"> <?= $listThietBi[$j]['ten'] ?? "Trống" ?> </h6>
@@ -130,7 +130,7 @@
                                                                 <div class="modal-dialog">
                                                                     <div class="modal-content">
                                                                         <div class="modal-header">
-                                                                            <h5 class="modal-title" id="exampleModalLabel">Thông tin thiết bị : <?= $listThietBi[$j]['image'] ?>
+                                                                            <h5 class="modal-title" id="exampleModalLabel">Thông tin thiết bị :  <img class="img-loathietbi" src="<?=$listThietBi[$j]['image']?>" alt="Image LoaiThietBi">
                                                                                 <span style="font-size: 15px;" class="ms-1"> <?= $listThietBi[$j]['ten'] ?></span>
                                                                             </h5>
                                                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>

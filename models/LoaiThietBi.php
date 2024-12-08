@@ -32,6 +32,31 @@ class LoaiThietBi
             die();
         }
     }
+    public function getAllWithSoLuongThietBi($data = [])
+    {
+        try {
+            //code...            
+            $query = "SELECT $this->alias.*
+            FROM $this->table as $this->alias
+              where 1=1 ";
+            // generate chuỗi string đầu vào 
+            $query = $this->helper->strQuery($query, $data);
+            $stmt = $this->conn->executeQuery($query);
+
+            //Hiển thị kết quả, vòng lặp sau đây sẽ dừng lại khi đã duyệt qua toàn bộ kết quả
+            $listLoaiThietBi= $stmt->fetchAll();
+           
+            foreach ($listLoaiThietBi as $key => $value) {
+                # code...
+                $listLoaiThietBi[$key]['soThietBi']=$this->conn->executeQuery("SELECT * FROM thietbi where loai_id=" . $value['id'] . "")->rowCount();
+            }
+            
+            return $listLoaiThietBi;
+        } catch (\Throwable $th) {
+            echo  $th;
+            die();
+        }
+    }
     public function find($data = [])
     {
         try {
@@ -60,8 +85,6 @@ class LoaiThietBi
             $query = $this->helper->strInsert($query, $data);
 
             $lastId = $this->conn->executeInsert($query);
-
-
             //Hiển thị kết quả, vòng lặp sau đây sẽ dừng lại khi đã duyệt qua toàn bộ kết quả
             return $lastId;
         } catch (\Throwable $th) {
