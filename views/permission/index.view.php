@@ -68,9 +68,9 @@
                                     <thead class="table-light">
                                         <tr>
                                             <th>#ID</th>
-                                            <th>Tên thiết bị </th>
-
-                                            <th>Thuộc khu vực</th>
+                                            <th> Loại thiết bị</th>
+                                            <th> Khu vực</th>
+                                            <th> Vị trí</th>
                                             <th>Điều khiển</th>
                                             <th>Chỉ xem </th>
                                         </tr>
@@ -83,6 +83,7 @@
                                                 <td>No Data</td>
                                                 <td>No Data</td>
                                                 <td>No Data</td>
+                                                <td>No Data</td>
                                             </tr>
                                         <?php
                                         } else { ?>
@@ -90,20 +91,21 @@
                                             for ($j = 0; $j < count($listThietBi); $j++) {
                                             ?>
 
-                                                <tr >
+                                                <tr>
                                                     <td># <?= $j + 1 ?> </td>
                                                     <td>
                                                         <div class="d-flex align-items-center gap-3">
                                                             <div class="product-box border">
-                                                                <?= $listThietBi[$j]['image'] ?? "Trống" ?>
+                                                                <img class="img-loathietbi" src="<?= $listThietBi[$j]['image'] ?>" alt="Image LoaiThietBi">
                                                             </div>
                                                             <div class="product-info">
-                                                                <h6 class="product-name mb-1"> <?= $listThietBi[$j]['ten'] ?? "Trống" ?> </h6>
+
+                                                                <h6 class="product-name mb-1"> <?= $listThietBi[$j]['ten_loai_thietbi'] ?> </h6>
                                                             </div>
                                                         </div>
                                                     </td>
-
-                                                    <td> <?= $listThietBi[$j]['ten_khu_vuc'] ?? "Trống" ?> </td>
+                                                    <td> <?= $listThietBi[$j]['ten_khu_vuc'] ?? '...' ?> </td>
+                                                    <td> <?= $listThietBi[$j]['ten_vi_tri'] ?? '...' ?> </td>
                                                     <td>
                                                         <div class="form-check">
                                                             <div class="form-check ">
