@@ -87,7 +87,7 @@
                                                             </div>
                                                             <div>
                                                                 <p class="mb-1">Số lượng thiết bị ghi </p>
-                                                                <p class="mb-0 h5">1</p>
+                                                                <p class="mb-0 h5"> <?= !empty($thietBiDoAm)?1:0  ?> </p>
                                                             </div>
                                                         </div>
                                                         <div class="d-flex align-items-start gap-3 mb-3">

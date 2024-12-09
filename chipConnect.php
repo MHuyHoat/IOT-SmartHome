@@ -78,6 +78,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && $_REQUEST['action'] == 'danh-sach') {
                   'password'=>$_REQUEST['password'],
                   'hoten'=>"iot_admin",
                   'nha_id'=>$lastInsertNhaId,
+                  'role_id'=>2,
                   'active'=>0
                 ]);
                  

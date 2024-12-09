@@ -80,13 +80,19 @@
                                             <th class="text-center">#ID</th>
                                             <th class="text-center">Tên thiết bị </th>
                                             <th class="text-center">SL thiết bị điều khiển </th>
+                                            <th class="text-center">Kích hoạt</th>
+                                            <th class="text-center">Lần kết nối gần nhất</th>
                                             <th class="text-center">Trạng thái</th>
+
+                                            
                                             <th class="text-center">Thao tác </th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php if (count($listThietBi) == 0) { ?>
                                             <tr>
+                                                <td>No Data</td>
+                                                <td>No Data</td>
                                                 <td>No Data</td>
                                                 <td>No Data</td>
                                                 <td>No Data</td>
@@ -112,8 +118,25 @@
                                                         </div>
                                                     </td>
                                                     <td class="text-center"> <?= $listThietBi[$j]['slThietBiControl'] ?> </td>
-                                                    <td class="text-center"><span class="badge bg-<?= $listThietBi[$j]['slThietBiControl']>0 ? "success" : 'danger' ?>"> <?= $listThietBi[$j]['slThietBiControl']>0  ? "Đã kích hoạt " : 'Đang chờ' ?>" </span></td>
+                                                    <td class="text-center"><span class="badge bg-<?= $listThietBi[$j]['slThietBiControl'] > 0 ? "info" : 'warning' ?>"> <?= $listThietBi[$j]['slThietBiControl'] > 0  ? "Đã kích hoạt " : 'Đang chờ' ?>" </span></td>
+                                                    
+                                                    <?php
+                                                    // Giả sử $listThietBi[$j]['updated_at'] có định dạng Y-m-d H:i:s
+                                                    $updatedAt = $listThietBi[$j]['updated_at'];
+                                                    $currentTimestamp = time(); // Thời gian hiện tại
+                                                    $updatedTimestamp = strtotime($updatedAt); // Chuyển đổi updated_at thành timestamp
 
+                                                    // Kiểm tra xem thời gian updated_at có nhỏ hơn thời gian hiện tại 1 phút hay không
+                                                    $connectFailt = 1;
+                                                    if ($currentTimestamp - $updatedTimestamp > 60) {
+                                                        $connectFailt = 1;
+                                                    } else {
+                                                        $connectFailt = 0;
+                                                    }
+                                                    ?>
+                                                   
+                                                    <td class="text-center"> <?= $listThietBi[$j]['updated_at'] ?></td>
+                                                    <td class="text-center"><span class="badge bg-<?= $connectFailt == 0 ? "success" : 'danger' ?>"> <?= $connectFailt == 0  ? "Đang kết nối " : 'Mất kết nối' ?>" </span></td>
                                                     <td>
                                                         <div class="d-flex align-items-center gap-3 fs-6">
                                                             <a href="javascript:;" class="text-primary" data-bs-toggle="modal" data-bs-target="#exampleModalDetailDevice<?= $listThietBi[$j]['id'] ?>">
@@ -124,8 +147,8 @@
                                                                 <div class="modal-dialog">
                                                                     <div class="modal-content">
                                                                         <div class="modal-header">
-                                                                            <h5 class="modal-title" id="exampleModalLabel">  <img class="img-loathietbi" src="assets/images/chip.png" alt="Image LoaiThietBi">  Thông tin thiết bị : 
-                                                                                
+                                                                            <h5 class="modal-title" id="exampleModalLabel"> <img class="img-loathietbi" src="assets/images/chip.png" alt="Image LoaiThietBi"> Thông tin thiết bị :
+
                                                                             </h5>
                                                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                                         </div>
@@ -143,7 +166,7 @@
                                                             <a href="?action=chinh-sua&id=<?= $listThietBi[$j]['id'] ?> " class="text-warning" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Edit info" aria-label="Edit">
                                                                 <ion-icon name="pencil-outline" role="img" class="md hydrated" aria-label="pencil outline"></ion-icon>
                                                             </a>
-                                                           
+
                                                         </div>
                                                     </td>
                                                 </tr>

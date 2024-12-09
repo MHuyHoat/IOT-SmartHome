@@ -197,6 +197,7 @@ class ThietBi
             // generate chuỗi string đầu vào 
             $query = $this->helper->strUpdate($query, $data);
             $query .= " WHERE id = $id ";
+           
             $lastId = $this->conn->executeUpdate($query);
             //Hiển thị kết quả, vòng lặp sau đây sẽ dừng lại khi đã duyệt qua toàn bộ kết quả
             return true;

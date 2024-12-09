@@ -81,7 +81,7 @@
           <div class="menu-title">Dashboard </div>
         </a>
       </li>
-      <li>
+      <li class="d-none">
         <a href="newSetUp.php?action=danh-sach">
           <div class="parent-icon">
             <i class="lni lni-cogs"></i>

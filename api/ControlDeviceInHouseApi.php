@@ -22,6 +22,7 @@ try {
     $data[$key]=$result;
   }
   $jsonString = json_encode($data);
+  $thietBiModel->update($decodeJWT['id'],['updated_at'=>date('Y-m-d H:i:s')]);
   echo $jsonString;
 } catch (\Throwable $th) {
   //throw $th;

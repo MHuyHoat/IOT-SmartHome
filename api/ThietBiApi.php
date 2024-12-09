@@ -150,6 +150,7 @@ try {
                 $thietBiDoAm=$value;
               }
             }
+            
             if(empty($thietBiDoAm) && empty($thietBiNhietDo)){
                 $responseData = [
                     'status' => 'error',
@@ -157,6 +158,7 @@ try {
                 ];
                 echo json_encode($responseData);
               }else{
+                
                 $thietBiModel->update($thietBiDoAm['id'], ['du_lieu'=>$data['do-am']]);
                 $thietBiModel->update($thietBiNhietDo['id'], ['du_lieu'=>$data['nhiet-do']]);
     

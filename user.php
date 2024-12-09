@@ -13,14 +13,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && $_REQUEST['action'] == 'danh-sach') {
      try {
           $userModel = new User();
           $user = $userModel->find(['u.id =' => $_SESSION['USER_ID']]);
-          $listUser = $userModel->getAll([]);
+          $listUser = $userModel->getAll(['u.active ='=>1]);
           $roleModel = new Role();
           $listRole = $roleModel->getAll();
 
           $nhaModel= new Nha();
           $listNha= $nhaModel->getAll();
-           
-       
+         
           include('views/user/index.view.php');
           ob_end_flush();
      } catch (\Throwable $th) {

@@ -14,6 +14,5 @@ define('CONFIG_CHECK_TEXT_VI_TRI', [
   
     "tất cả vị trí",
      "trong nhà",
-     "tất cả",
 ]);
 ?>

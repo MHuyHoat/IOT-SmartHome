@@ -141,11 +141,13 @@ class Helpers
             try {
             $loaiThietBi = mb_strtolower($value['ten_loai_thietbi'], 'UTF-8'); 
             $khuvuc =  mb_strtolower( $value['ten_khu_vuc'], 'UTF-8');
-            $vitri =  mb_strtolower( $value['ten_loai_thietbi'], 'UTF-8');
+            $vitri =  mb_strtolower( $value['ten_vi_tri'], 'UTF-8');
 
             if ((strstr($text, $loaiThietBi) || $this->CHECK_TEXT_LOAI_THIET_BI($text) ) 
+            && (strstr($text, $vitri) || $this->CHECK_TEXT_LOAI_VI_TRI($text))  
             && (strstr($text, $khuvuc) || $this-> CHECK_TEXT_LOAI_KHU_VUC($text) )
-            && (strstr($text, $vitri) || $this->CHECK_TEXT_LOAI_VI_TRI($text))) {
+            ) {
+
                 return true;
             }else return false;
             } catch (\Throwable $th) {

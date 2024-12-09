@@ -38,9 +38,9 @@ class User
             // generate chuỗi string đầu vào 
 
             $query = $this->helper->strQuery($query, $data);
-
+     
             $stmt = $this->conn->executeQuery($query);
-
+            
             //Hiển thị kết quả, vòng lặp sau đây sẽ dừng lại khi đã duyệt qua toàn bộ kết quả
             return $stmt->fetchAll();
         } catch (\Throwable $th) {
