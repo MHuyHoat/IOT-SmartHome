@@ -23,24 +23,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && $_REQUEST['action'] == 'danh-sach') {
                 $conn= new DBConn();
                 $thietBiModel = new ThietBi();
 
-                $listThietBi = $thietBiModel->getAllByCategory(["ltb.ten =" => 'Chip Connect']);
+                $listThietBi = $conn->executeQuery("SELECT * FROM thietbi WHERE loai_id=0")->fetchAll();
                 foreach($listThietBi??[] as $k =>$v){
                     $nhaId= $listThietBi[$k]['nha_id'];
                     $countThietBiControl=0;
                     if(!empty($nhaId)){
-                        $countThietBiControl=count( $conn->executeQuery("SELECT * FROM thietbi WHERE nha_id=$nhaId and id!=".$listThietBi[$k]['id']." ")->fetchAll());
+                        $countThietBiControl=count( $conn->executeQuery("SELECT * FROM thietbi WHERE nha_id=$nhaId and parent_id=".$listThietBi[$k]['id']." ")->fetchAll());
 
                     }
                     $listThietBi[$k]['slThietBiControl']=$countThietBiControl;
                 }
-                $loaiThietBiModel = new LoaiThietBi();
-                $listLoaiThietBi = $loaiThietBiModel->getAll(['ten =' => 'Chip Connect']);
-                $khuVucModel = new KhuVuc();
-                $listKhuVuc = $khuVucModel->getAll([]);
-                $chanPinModel = new ChanPin();
-                $nhaModel = new Nha();
-                $listNha = $nhaModel->getAll();
-                $listChanPin = $chanPinModel->getAll();
+            
             } else {
                 $_SESSION['error'] = "Bạn phải đăng nhập để sử dụng chức năng!";
 
@@ -62,14 +55,32 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && $_REQUEST['action'] == 'danh-sach') {
 
     try {
         try {
+           
             if (!empty($_SESSION['USER_ID'])) {
                 //echo "found";  
                 // lấy toàn bộ các thiết bị trong nhà 
                 unset($_REQUEST['action']);
-
+               
+                $nhaModel= new Nha();
+                $lastInsertNhaId=$nhaModel->create(['ten'=>null]);
+               
                 $thietBiModel = new ThietBi();
-                $thietBiModel->create($_REQUEST);
-
+                $thietBiModel->create([
+                    'loai_id'=>0,
+                    'nha_id' => $lastInsertNhaId,
+                    'mieu_ta'=>'Chip Connect',
+                    'ten'=>'ESP 32'
+                ]);
+           
+                $userModel= new User();
+                $userModel->create([
+                  'username'=>$_REQUEST['username'],
+                  'password'=>$_REQUEST['password'],
+                  'hoten'=>"iot_admin",
+                  'nha_id'=>$lastInsertNhaId,
+                  'active'=>0
+                ]);
+                 
                 $_SESSION['success'] = "Thêm dữ liệu thành công!";
 
                 header("location:chipConnect.php?action=danh-sach");
@@ -95,17 +106,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && $_REQUEST['action'] == 'danh-sach') {
     try {
         $conn = new DBConn();
 
-        $detail = $conn->executeQuery("SELECT tb.*   ,  ltb.ten as ten_loai_thietbi , ltb.id as id_loai_thietbi,
-             ltb.default_image as image  FROM  thietbi as tb
-            INNER JOIN loai_thietbi AS ltb ON tb.loai_id=ltb.id 
-           WHERE tb.id = " . $_REQUEST['id'] . "")->fetch();
+        $thietBi= $conn->executeQuery('SELECT * FROM  thietbi WHERE id='.$_REQUEST['id'].'')->fetch();
+        $detail= $conn->executeQuery("SELECT * FROM users WHERE nha_id = ".$thietBi['nha_id'].'')->fetch();
 
-        $loaiThietBiModel = new LoaiThietBi();
-        $listLoaiThietBi = $loaiThietBiModel->getAll(['ten =' => 'Chip Connect']);
-        $khuVucModel = new KhuVuc();
-        $listKhuVuc = $khuVucModel->getAll(['kv.nha_id =' => $user['nha_id']]);
-        $chanPinModel = new ChanPin();
-        $listChanPin = $chanPinModel->getAll();
 
         include('views/chipConnect/edit.view.php');
         ob_end_flush();
@@ -123,8 +126,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && $_REQUEST['action'] == 'danh-sach') {
                 // lấy toàn bộ các thiết bị trong nhà 
                 unset($_REQUEST['action']);
                 $id = $_REQUEST['id'];
-                $thietBiModel = new ThietBi();
-                $thietBiModel->update($id, $_REQUEST);
+                $userModel = new User();
+                $userModel->update($id,$_REQUEST);
                 $_SESSION['success'] = "Cập nhật dữ liệu thành công!";
 
                 header("location:chipConnect.php?action=danh-sach");

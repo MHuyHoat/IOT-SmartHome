@@ -5,7 +5,11 @@ session_start();
     if($_SESSION['USER_ROLE']=='superadmin'){
       header("location:dashboard.php?action=dashboard-admin"); 
     }else{
-      header("location:home.php"); 
+      if((int)$_SESSION['USER_ACTIVE']==0){
+        header("location:newSetUp.php?action=danh-sach");
+      }else{
+        header("location:home.php"); 
+      }
     }
  
   }else{

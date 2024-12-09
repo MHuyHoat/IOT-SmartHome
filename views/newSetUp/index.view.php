@@ -22,10 +22,10 @@
 
 
     <!--start wrapper-->
-    <div class="wrapper">
+    <div class="wrapper toggled">
 
         <!--start sidebar -->
-        <?php include('views/components/nav.component.php')  ?>
+
         <!--end sidebar -->
 
         <!--start top header-->
@@ -36,54 +36,69 @@
         <!-- start page content wrapper-->
         <div class="page-content-wrapper">
 
-        
-                <!-- start page content-->
-                <div class="page-content">
-                    <!--start breadcrumb-->
-                    <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-                        <div class="breadcrumb-title pe-3"> Thiết lập mới </div>
-                        <div class="ps-3">
-                            <nav aria-label="breadcrumb">
-                                <ol class="breadcrumb mb-0 p-0 align-items-center">
-                                    <li class="breadcrumb-item"><a href="javascript:;"><ion-icon name="home-outline" role="img" class="md hydrated" aria-label="home outline"></ion-icon></a>
-                                    </li>
-                                    <li class="breadcrumb-item active" aria-current="page">Tạo mới cho ngôi nhà của người dùng </li>
-                                </ol>
-                            </nav>
-                        </div>
 
+            <!-- start page content-->
+            <div class="page-content">
+                <!--start breadcrumb-->
+                <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+                    <div class="breadcrumb-title pe-3"> Thiết lập mới </div>
+                    <div class="ps-3">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb mb-0 p-0 align-items-center">
+                                <li class="breadcrumb-item"><a href="javascript:;"><ion-icon name="home-outline" role="img" class="md hydrated" aria-label="home outline"></ion-icon></a>
+                                </li>
+                                <li class="breadcrumb-item active" aria-current="page">Cài đặt dữ liệu cho ngôi nhà của bạn </li>
+                            </ol>
+                        </nav>
                     </div>
-                    <!--end breadcrumb-->
 
-                    <div class="page-content">
-                        <div id="container" class="container mt-5">
-                            <div class="progress px-1" style="height: 3px;">
-                                <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                            <div class="step-container d-flex justify-content-between">
-                                <div class="step-circle" onclick="displayStep(1)">1</div>
-                                <div class="step-circle" onclick="displayStep(2)">2</div>
-                                <div class="step-circle" onclick="displayStep(3)">3</div>
-                            </div>
-
-                            <form action="?action=them-moi" method="POST" id="multi-step-form">
-                                <div class="step step-1">
-                                    <?php include('views/newSetUp/component/step1.view.php')  ?>
-                                </div>
-
-                                <div class="step step-2">
-                                    <?php include('views/newSetUp/component/step2.view.php')  ?>
-                                </div>
-
-                                <div class="step step-3">
-                                    <?php include('views/newSetUp/component/step3.view.php')  ?>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                    <!-- end page content-->
                 </div>
-      
+                <!--end breadcrumb-->
+
+                <div class="page-content">
+                    <div id="container" class="container mt-5">
+
+
+
+                        <form action="?action=them-moi" method="POST" id="multi-step-form">
+
+
+                            <!-- Step 2 form fields here -->
+                            <h3>Nhập dữ liệu bên dưới </h3>
+                            <div class="mb-3">
+                                <div class="col-12 mt-2 ">
+                                    <label for="inputPassword" class="form-label"> <i class="lni lni-apartment"></i> Tên nhà </label>
+                                    <input type="text" name="ten_nha" class="form-control" placeholder="Nhập tên nhà">
+                                </div>
+                                <div class="col-12 mt-2 " id="khuvuc">
+                                    <div class="col-12 mt-2 ">
+                                        <label for="inputPassword" class="form-label"> <i class="lni lni-page-break"></i> Tên phòng (Khu vực lắp đặt ) </label>
+                                        <input type="text" name="ten_khuvuc[]" class="form-control" placeholder="Tên phòng">
+                                    </div>
+                                </div>
+                                <div class="col-12 mt-2">
+                                    <button type="button" class="btn btn-secondary btn-sm" onclick="themKhuVuc()">
+                                        <i class="fa fa-plus" aria-hidden="true"></i>
+                                        <span>Thêm khu vực</span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-end">
+                                <div>
+                                    <button type="button" onclick="window.history.back()" class="btn btn-primary prev-step" class="btn btn-primary prev-step">Hủy</button>
+                                </div>
+                                <div class="ms-2">
+                                    <button type="submit" class="btn btn-success">Hoàn thành</button>
+                                </div>
+                            </div>
+
+
+                        </form>
+                    </div>
+                </div>
+                <!-- end page content-->
+            </div>
+
             <!--end page content wrapper-->
 
 

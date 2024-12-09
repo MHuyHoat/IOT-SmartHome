@@ -1,82 +1,51 @@
-
-                            <!-- Modal -->
-                            <div
-                                class="modal fade"
-                                id="modalAddThietBi"
-                                tabindex="-1"
-                                role="dialog"
-                                aria-labelledby="modalTitleId"
-                                aria-hidden="true">
-                                <div
-                                    class="modal-dialog "
-                                    role="document">
-                                    <form class="modal-content" action="chipConnect.php?action=them-moi" method="POST">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="modalTitleId">
-                                                Thêm thiết bị
-                                            </h5>
-                                            <button
-                                                type="button"
-                                                class="btn-close"
-                                                data-bs-dismiss="modal"
-                                                aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-
-
-                                            <div class="col-12 mt-2">
-                                                <label for="inputEmail" class="form-label">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-codesandbox">
-                                                        <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
-                                                        <polyline points="7.5 4.21 12 6.81 16.5 4.21"></polyline>
-                                                        <polyline points="7.5 19.79 7.5 14.6 3 12"></polyline>
-                                                        <polyline points="21 12 16.5 14.6 16.5 19.79"></polyline>
-                                                        <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
-                                                        <line x1="12" y1="22.08" x2="12" y2="12"></line>
-                                                    </svg>
-                                                    Tên thiết bị </label>
-                                                <input type="text" class="form-control" name="ten" placeholder="Nhập tên thiết bị " required >
-                                            </div>
-                                            <div class="col-12 mt-2">
-                                                <label for="inputEmail" class="form-label">
-                                                    <i class="lni lni-arrow-down-circle"></i>
-                                                    Loại thiết bị
-                                                </label>
-                                                <div class="mb-3">
-
-                                                    <select
-                                                    required
-                                                        class="form-select "
-                                                        name="loai_id"
-                                                        id="">
-                                                        <?php
-                                                        for ($j = 0; $j < count($listLoaiThietBi); $j++) {
-                                                        ?>
-
-                                                            <option value="<?= $listLoaiThietBi[$j]['id'] ?>">
-
-                                                                <?= $listLoaiThietBi[$j]['ten'] ?> </option>
-
-                                                        <?php
-                                                        }
-                                                        ?>
-
-                                                    </select>
-                                                </div>
-
-                                            </div>
-                                    
-                                            
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button
-                                                type="button"
-                                                class="btn btn-secondary"
-                                                data-bs-dismiss="modal">
-                                                Hủy
-                                            </button>
-                                            <button type="submit" class="btn btn-primary">Thêm</button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
+<div
+    class="modal fade"
+    id="modalAddThietBi"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="modalTitleId"
+    aria-hidden="true">
+    <form
+        action="?action=them-moi"
+        method="POST"
+        class="modal-dialog "
+        role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalTitleId">
+                    Thêm chip
+                </h5>
+                <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="col-12 mt-2">
+                    <label for="inputEmail" class="form-label">
+                        <i class="lni lni-angular"></i>
+                        Tên đăng nhập </label>
+                    <input type="text" class="form-control" name="username" placeholder="Tên đăng nhập" required>
+                </div>
+                <div class="col-12 mt-2">
+                    <label for="inputPassword" class="form-label">
+                        <i class="lni lni-cog"></i>
+                        Mật khẩu </label>
+                    <input type="password" name="password" class="form-control" id="inputPassword" placeholder="Mật khẩu " required>
+                </div>
+               
+           
+            </div>
+            <div class="modal-footer">
+                <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-bs-dismiss="modal">
+                    Hủy
+                </button>
+                <button type="submit" class="btn btn-primary">Thêm</button>
+            </div>
+        </div>
+    </form>
+</div>

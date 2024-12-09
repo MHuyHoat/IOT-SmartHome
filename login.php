@@ -18,10 +18,17 @@
                          $_SESSION['USER_NAME'] = $user['username'];
                          $_SESSION['USER_ID'] = $user['id'];
                          $_SESSION['USER_ROLE']  = $user['ten_role'];
+                         $_SESSION['USER_ACTIVE']  = $user['active'];
+                         $_SESSION['NHA_ID']  = $user['nha_id'];
+
                          if($_SESSION['USER_ROLE']=='superadmin'){
                               header("location:dashboard.php?action=dashboard-admin"); 
                             }else{
-                              header("location:home.php"); 
+                              if((int)$_SESSION['USER_ACTIVE']==0){
+                                   header("location:newSetUp.php?action=danh-sach");
+                                 }else{
+                                   header("location:home.php"); 
+                                 }
                             }
                     } else {
                          $_SESSION['error'] = "Thông tin sai!";

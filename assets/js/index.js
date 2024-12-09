@@ -491,7 +491,7 @@ var options = {
       }
     },
     colors: ["#fc00ff"],
-    series: [90],
+    series: [doAm??0],
     stroke: {
       //lineCap: 'round',
       dashArray: 4

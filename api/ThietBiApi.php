@@ -123,7 +123,53 @@ try {
                 ]);
              }
         }
-    } else {
+    } else if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+        $data=$_REQUEST;
+         if($data['action']=='cap-nhat-nhiet-do-do-am'){
+            $decodeJWT = $helpers->decodeJWT($_REQUEST['jwt']);
+            //echo "found";  
+            // lấy toàn bộ các thiết bị trong nhà 
+            $thietBiModel = new ThietBi();
+            $listThietBi = $thietBiModel->getAll([
+              'tb.parent_id =' => $decodeJWT['id'],
+            ]);
+            $thietBiNhietDo=null;
+            $thietBiDoAm=null;
+            foreach ($listThietBi as $key => $value) {
+              # code...
+              if(!empty($thietBiDoAm) && !empty($thietBiNhietDo)){
+                break;
+              }
+              $valueTenLoaiThietBi= mb_strtolower($value['ten_loai_thietbi'], 'UTF-8');
+             
+              if(strstr($valueTenLoaiThietBi,'nhiệt độ') ){
+             
+                $thietBiNhietDo=$value;
+              }else if(strstr($valueTenLoaiThietBi,'độ ẩm') ){
+                
+                $thietBiDoAm=$value;
+              }
+            }
+            if(empty($thietBiDoAm) && empty($thietBiNhietDo)){
+                $responseData = [
+                    'status' => 'error',
+                    'message' => "Lỗi chưa tạo thiết bị nhiệt độ hoặc độ ạm",
+                ];
+                echo json_encode($responseData);
+              }else{
+                $thietBiModel->update($thietBiDoAm['id'], ['du_lieu'=>$data['do-am']]);
+                $thietBiModel->update($thietBiNhietDo['id'], ['du_lieu'=>$data['nhiet-do']]);
+    
+                $responseData = [
+                    'status' => 'success',
+                    'message' => "Đã thay đổi thành công trạng thái thiết bị ",
+                ];
+                echo json_encode($responseData);
+                }
+            
+            
+         }
+    }else{
         echo json_encode([
             'status' => 'error',
             'message' => 'Phương thức không hợp lệ.'

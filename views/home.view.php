@@ -121,7 +121,7 @@
                                                             </div>
                                                         </div>
                                                         <div class="">
-                                                            <h3 class="mb-2">Hiện tại : <?= $thietBiNhietDo['du_lieu'] ?></h3>
+                                                            <h3 class="mb-2">Hiện tại : <?= $thietBiNhietDo['du_lieu']??0.0 ?> độ C</h3>
                                                             <div class="d-flex align-items-center gap-2">
                                                                 <div class="widget-icon-small bg-light-danger text-danger">
                                                                     <ion-icon name="arrow-down-outline" role="img" class="md hydrated" aria-label="arrow down outline"></ion-icon>
@@ -287,7 +287,9 @@
         </div>
         <!--end page content wrapper-->
 
-
+         <script>
+            var doAm= <?= $thietBiDoAm['du_lieu']??0.0 ?>;
+         </script>
         <?php include('views/components/footer.component.php'); ?>
 
         <script src="assets/js/home.js"></script>

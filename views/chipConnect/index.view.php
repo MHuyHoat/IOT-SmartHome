@@ -74,20 +74,19 @@
 
                             </div>
                             <div class="table-responsive mt-2">
-                                <table class="table align-middle mb-0 "  id="dataTable" >
+                                <table class="table align-middle mb-0 " id="dataTable">
                                     <thead class="table-light ">
                                         <tr>
-                                            <th class="text-center" >#ID</th>
-                                            <th class="text-center"  >Tên thiết bị </th>
-                                            <th  class="text-center" >SL thiết bị điều khiển </th>
-                                            <th class="text-center" >Trạng thái</th>
-                                            <th class="text-center" >Thao tác </th>
+                                            <th class="text-center">#ID</th>
+                                            <th class="text-center">Tên thiết bị </th>
+                                            <th class="text-center">SL thiết bị điều khiển </th>
+                                            <th class="text-center">Trạng thái</th>
+                                            <th class="text-center">Thao tác </th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php if (count($listThietBi) == 0) { ?>
                                             <tr>
-                                                <td>No Data</td>
                                                 <td>No Data</td>
                                                 <td>No Data</td>
                                                 <td>No Data</td>
@@ -102,20 +101,20 @@
 
                                                 <tr class="text-center <?php if ($listThietBi[$j]['permission_type'] == 'view') echo 'd-none';   ?>">
                                                     <td># <?= $listThietBi[$j]['id']  ?> </td>
-                                                    <td class="text-center" >
+                                                    <td class="text-center">
                                                         <div class="d-flex align-items-center gap-3">
                                                             <div class="product-box border">
-                                                                <?= $listThietBi[$j]['image'] ?? "Trống" ?>
+                                                                <img class="img-loathietbi" src="assets/images/chip.png" alt="Image LoaiThietBi">
                                                             </div>
                                                             <div class="product-info">
                                                                 <h6 class="product-name mb-1"> <?= $listThietBi[$j]['ten'] ?? "Trống" ?> </h6>
                                                             </div>
                                                         </div>
                                                     </td>
-                                                    <td  class="text-center" > <?=$listThietBi[$j]['slThietBiControl']?> </td>
-                                                    <td class="text-center" ><span class="badge bg-<?= !empty($listThietBi[$j]['nha_id'] ) ? "success" : 'danger' ?>"> <?= !empty($listThietBi[$j]['nha_id'] )  ? "Đã kích hoạt " : 'Đang chờ' ?>" </span></td>
+                                                    <td class="text-center"> <?= $listThietBi[$j]['slThietBiControl'] ?> </td>
+                                                    <td class="text-center"><span class="badge bg-<?= $listThietBi[$j]['slThietBiControl']>0 ? "success" : 'danger' ?>"> <?= $listThietBi[$j]['slThietBiControl']>0  ? "Đã kích hoạt " : 'Đang chờ' ?>" </span></td>
 
-                                                    <td class="text-center" >
+                                                    <td>
                                                         <div class="d-flex align-items-center gap-3 fs-6">
                                                             <a href="javascript:;" class="text-primary" data-bs-toggle="modal" data-bs-target="#exampleModalDetailDevice<?= $listThietBi[$j]['id'] ?>">
                                                                 <ion-icon name="eye-outline" role="img" class="md hydrated" aria-label="eye outline"></ion-icon>
@@ -125,8 +124,8 @@
                                                                 <div class="modal-dialog">
                                                                     <div class="modal-content">
                                                                         <div class="modal-header">
-                                                                            <h5 class="modal-title" id="exampleModalLabel">Thông tin thiết bị : <?= $listThietBi[$j]['image'] ?>
-                                                                                <span style="font-size: 15px;" class="ms-1"> <?= $listThietBi[$j]['ten'] ?></span>
+                                                                            <h5 class="modal-title" id="exampleModalLabel">  <img class="img-loathietbi" src="assets/images/chip.png" alt="Image LoaiThietBi">  Thông tin thiết bị : 
+                                                                                
                                                                             </h5>
                                                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                                         </div>
@@ -141,12 +140,10 @@
                                                                 </div>
                                                             </div>
 
-                                                            <a href="chipConnect.php?action=chinh-sua&id=<?= $listThietBi[$j]['id'] ?> " class="text-warning" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Edit info" aria-label="Edit">
+                                                            <a href="?action=chinh-sua&id=<?= $listThietBi[$j]['id'] ?> " class="text-warning" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Edit info" aria-label="Edit">
                                                                 <ion-icon name="pencil-outline" role="img" class="md hydrated" aria-label="pencil outline"></ion-icon>
                                                             </a>
-                                                            <a href="javascript:;" onclick="deleteThietBi(`<?= $listThietBi[$j]['ten'] ?>`,<?= $listThietBi[$j]['id'] ?>)" class="text-danger" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Delete" aria-label="Delete">
-                                                                <ion-icon name="trash-outline" role="img" class="md hydrated" aria-label="trash outline"></ion-icon>
-                                                            </a>
+                                                           
                                                         </div>
                                                     </td>
                                                 </tr>
