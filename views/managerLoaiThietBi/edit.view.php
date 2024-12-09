@@ -77,7 +77,7 @@
               
               Nhãn thiết bị </label>
               <img src="<?=$detailLoaiThietBi['default_image'] ?>" width="20px" height="20px" alt="">
-               <input type="file" class="form-control" name="default_image" placeholder="Nhập nhãn thiết bị" accept="image/*">
+               <input type="file" class="form-control" name="default_image" accept="image/*">
           </div>
           <div class="col-12 mt-2">
             <label for="inputPassword" class="form-label"> <i class="lni lni-amazon"></i> Thuộc nhà</label>

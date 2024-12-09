@@ -7,10 +7,11 @@ try {
     require_once(__DIR__ . '/../models/ThietBi.php');
     require_once(__DIR__.'/../models/Permission.php');
     require_once(__DIR__.'/../config/DBConn.php');
+    require_once(__DIR__.'/../helpers/Helpers.php');
     $thietBiModel = new ThietBi();
     $permissionModel= new Permission();
     // Thiết lập tiêu đề HTTP
-
+     $helpers = new Helpers();
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         $postData = file_get_contents('php://input');
@@ -34,20 +35,17 @@ try {
             echo json_encode($responseData);
         } else if ($data['action'] == "controlTrangThaiBySpeech") {
             $text = mb_strtolower($data['text'], 'UTF-8');
-            $dataThietBi = $thietBiModel->getAll(['tb.nha_id' => $data['nhaId']]);
+            $dataThietBi = $thietBiModel->getAll(['tb.nha_id' => $data['nhaId'],'tb.loai_id !=' => '0']);
             $thietBiThayDoi = null;
-
+            $listThietBi=[];
             foreach ($dataThietBi as $key => $value) {
                 // Chuyển đổi tên thiết bị sang chữ thường
-                $tenThietBi = mb_strtolower(trim($value['ten']), 'UTF-8');
-
                 // Kiểm tra xem $text có chứa $tenThietBi không
-                if (strstr($text, $tenThietBi)) {
-                    $thietBiThayDoi = $value;
-                    break;
+                if ($helpers->checkDeviceOnTextSpeech($text, $value)) {
+                    $listThietBi[] = $value;
                 }
             }
-            if (empty($thietBiThayDoi)) {
+            if (count($listThietBi)==0) {
                 $responseData = [
                     'status' => 'error',
 
@@ -58,20 +56,30 @@ try {
                 echo json_encode($responseData);
             } else {
                 if (strstr($text, 'bật')) {
-                    $thietBiModel->update($thietBiThayDoi['id'], ['trangthai' => 1]);
+                    foreach ($listThietBi as $key => $value) {
+                        # code...
+                        $listThietBi[$key]['trangthai']=1;
+                        $thietBiModel->update($value['id'], ['trangthai' => 1]);
+                    }
+                   
                     $responseData = [
                         'status' => 'success',
                         'message' => "Đã thay đổi thành công trạng thái thiết bị ",
-                        'data' => $thietBiModel->find(['tb.id = ' =>  $thietBiThayDoi['id']])
+                        'data' => $listThietBi
                     ];
                     // Chuyển đổi dữ liệu thành JSON và trả về
                     echo json_encode($responseData);
                 } else if (strstr($text, 'tắt')) {
-                    $thietBiModel->update($thietBiThayDoi['id'], ['trangthai' => 0]);
+                    foreach ($listThietBi as $key => $value) {
+                        # code...
+                        $listThietBi[$key]['trangthai']=0;
+                        $thietBiModel->update($value['id'], ['trangthai' => 0]);
+                    }
+                   
                     $responseData = [
                         'status' => 'success',
                         'message' => "Đã thay đổi thành công trạng thái thiết bị ",
-                        'data' => $thietBiModel->find(['tb.id = ' =>  $thietBiThayDoi['id']])
+                         'data' => $listThietBi
                     ];
                     // Chuyển đổi dữ liệu thành JSON và trả về
                     echo json_encode($responseData);

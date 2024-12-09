@@ -87,8 +87,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && $_REQUEST['action'] == 'danh-sach') {
         $helpers= new Helpers();
          
         // Assuming you want to update other fields, not the ID itself
-        $_REQUEST['default_image']=$helpers->convertFileToBase64($_FILES['default_image']);
-            
+        echo json_encode($_FILES['default_image']);
+        
+        if(isset($_FILES['default_image']['tmp_name'])) $_REQUEST['default_image']=$helpers->convertFileToBase64($_FILES['default_image']);
+       
         $loaiThietBiModel = new LoaiThietBi();
         $loaiThietBiModel->update($id, $_REQUEST); // Update other fields using ID
 

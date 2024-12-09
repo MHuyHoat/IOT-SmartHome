@@ -47,9 +47,13 @@ function setTrangThaiThietBiBoiGiongNoi(userId) {
       if (data.status == "success") {
         toastr.success("Bạn đã đổi trạng thái thiết bị thành công ");
         console.log(data);
-        document.querySelector(`#statusTrangThai${data.data.id}`).checked =
-          data.data.trangthai == 1 ? true : false;
+        let listThietBi=data.data;
+        listThietBi.forEach(element => {
+          document.querySelector(`#statusTrangThai${element.id}`).checked =
+          element.trangthai == 1 ? true : false;
         document.querySelector("#cancelModalSpeech").click();
+        });
+       
       } else {
         toastr.error(data.message);
       }

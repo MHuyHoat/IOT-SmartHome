@@ -121,7 +121,7 @@
                                                             </div>
                                                         </div>
                                                         <div class="">
-                                                            <h3 class="mb-2">Hiện tại :  <?=  $thietBiNhietDo['du_lieu'] ?></h3>
+                                                            <h3 class="mb-2">Hiện tại : <?= $thietBiNhietDo['du_lieu'] ?></h3>
                                                             <div class="d-flex align-items-center gap-2">
                                                                 <div class="widget-icon-small bg-light-danger text-danger">
                                                                     <ion-icon name="arrow-down-outline" role="img" class="md hydrated" aria-label="arrow down outline"></ion-icon>
@@ -153,9 +153,9 @@
                                                             </div>
                                                             <div class="d-flex align-items-center mt-3">
                                                                 <div>
-                                                                    <h4 class="mb-0"> <?= count($dataThietBi)?> thiết bị </h4>
+                                                                    <h4 class="mb-0"> <?= count($dataThietBi) ?> thiết bị </h4>
                                                                 </div>
-                                                           
+
                                                             </div>
                                                         </div>
                                                     </div>
@@ -168,7 +168,7 @@
                             <div class="row mb-3 ">
                                 <div class="col-xl-6 col-lg-8">
                                     <div class="section-title  mt-30 pb-40">
-                                        <h4 class="title wow fadeInUp"> Các thiết bị trong nhà  </h4>
+                                        <h4 class="title wow fadeInUp"> Các thiết bị trong nhà </h4>
                                     </div> <!-- section title -->
                                 </div>
                             </div> <!-- row -->
@@ -184,19 +184,28 @@
                                             </div>
                                             <div class="row">
                                                 <?php
-                                                $midleArea =  count($v)>2? ((int)( count($v) / 2)):count($v);
+                                                $midleArea =  count($v) > 2 ? ((int)(count($v) / 2)) : count($v);
 
                                                 ?>
 
-                                                <div class="col-md-5 <?=$midleArea?> ">
+                                                <div class="col-md-5 <?= $midleArea ?> ">
                                                     <?php
                                                     for ($j = 0; $j < $midleArea; $j++) {
                                                     ?>
+                                                        <?php
+                                                        $parts = [
+                                                            $v[$j]['ten_loai_thietbi'] ?? "",
+                                                            $v[$j]['ten_vi_tri'] ?? ""
+                                                        ];
+
+                                                        // Sử dụng implode để nối các phần tử lại với nhau
+                                                        $v[$j]['ten'] = implode(" - ", array_filter($parts));
+                                                        ?>
                                                         <div class="   d-flex mb-2 align-items-center justify-content-between theme-icons shadow-sm p-2 cursor-pointer rounded">
                                                             <div class="font-22 d-flex align-items-center">
-                                                         
-                                                                <img class="img-loathietbi" src="<?=$v[$j]['image']?>" alt="Image LoaiThietBi">
-                                                          
+
+                                                                <img class="img-loathietbi" src="<?= $v[$j]['image'] ?>" alt="Image LoaiThietBi">
+
                                                                 <span style="font-size: 15px;" class="ms-1"> <?= $v[$j]['ten'] ?></span>
                                                             </div>
 
@@ -220,9 +229,18 @@
                                                     <?php
                                                     for ($j = $midleArea; $j < count($v); $j++) {
                                                     ?>
+                                                    <?php
+                                                        $parts = [
+                                                            $v[$j]['ten_loai_thietbi'] ?? "",
+                                                            $v[$j]['ten_vi_tri'] ?? ""
+                                                        ];
+
+                                                        // Sử dụng implode để nối các phần tử lại với nhau
+                                                        $v[$j]['ten'] = implode(" - ", array_filter($parts));
+                                                        ?>
                                                         <div class="   d-flex mb-2 align-items-center justify-content-between theme-icons shadow-sm p-2 cursor-pointer rounded">
                                                             <div class="font-22 d-flex align-items-center">
-                                                            <img class="img-loathietbi" src="<?=$v[$j]['image']?>" alt="Image LoaiThietBi">
+                                                                <img class="img-loathietbi" src="<?= $v[$j]['image'] ?>" alt="Image LoaiThietBi">
                                                                 <span style="font-size: 15px;" class="ms-1"> <?= $v[$j]['ten'] ?></span>
                                                             </div>
 
